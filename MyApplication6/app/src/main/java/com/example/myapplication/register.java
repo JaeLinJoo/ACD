@@ -3,14 +3,14 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import java.util.List;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,9 +19,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class register extends AppCompatActivity {
-    private static final String BASE = "http://172.30.1.41:3002";
-    EditText id, password, pwc;
-    String text,text1, text2;
+    private static final String BASE = "http://192.168.0.14:3002";
+
+    EditText id, password, pwc, telenumber, email, name;
+    String text,text1, text2, text3, text4, text5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,10 @@ public class register extends AppCompatActivity {
         id = (EditText) findViewById(R.id.id);
         password = (EditText) findViewById(R.id.password);
         pwc = (EditText) findViewById(R.id.pwc);
+        telenumber = (EditText) findViewById(R.id.telenumber);
+        email = (EditText) findViewById(R.id.email);
+        name = (EditText) findViewById(R.id.name1);
+
         Button register1 = (Button) findViewById(R.id.register1);
         Button ret = (Button) findViewById(R.id.ret);
 
@@ -51,6 +57,9 @@ public class register extends AppCompatActivity {
                 text = id.getText().toString();
                 text1 = password.getText().toString();
                 text2 = pwc.getText().toString();
+                text3 = telenumber.getText().toString();
+                text4 = email.getText().toString();
+                text5 = name.getText().toString();
 
                 if(!text1.equals(text2)){
                     Toast.makeText(getApplicationContext(), "비밀번호와 비밀번호확인이 서로 다릅니다!", Toast.LENGTH_LONG).show();
@@ -58,7 +67,7 @@ public class register extends AppCompatActivity {
                 else{
                     GetService service = retrofit.create(GetService.class);
 
-                    Call<Dummy> call = service.listDummies(text,text1);
+                    Call<Dummy> call = service.listDummies(text,text1,text3,text4,text5);
                     call.enqueue(dummies);
                 }
             }
@@ -81,12 +90,12 @@ public class register extends AppCompatActivity {
                 }
             } else
             {
-                Toast.makeText(getApplicationContext(), "실패", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "실패1", Toast.LENGTH_LONG).show();
             }
         }
         @Override
         public void onFailure(Call<Dummy> call, Throwable t) {
-            Toast.makeText(getApplicationContext(), "실패", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "실패2", Toast.LENGTH_LONG).show();
         }
     };
 }

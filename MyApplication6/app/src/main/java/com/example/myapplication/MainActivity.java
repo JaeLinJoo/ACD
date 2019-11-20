@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +18,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
+
 public class MainActivity extends AppCompatActivity {
-    private static final String BASE = "http://172.30.1.41:3002";
+    private static final String BASE = "http://192.168.0.14:3002";
 
     EditText position, password;
     Button getButton, register;
@@ -31,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         getButton = (Button) findViewById(R.id.login);
         register = (Button) findViewById(R.id.register);
-
+        //Log.e("정보", Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
         register.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -44,12 +48,15 @@ public class MainActivity extends AppCompatActivity {
         getButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(BASE)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
+
                 text = position.getText().toString();
                 text1 = password.getText().toString();
+
                 LoginInterface service = retrofit.create(LoginInterface.class);
 
                 Call<Dummy> call = service.listDummies(text,text1);
@@ -63,9 +70,13 @@ public class MainActivity extends AppCompatActivity {
         public void onResponse(Call<Dummy> call, Response<Dummy> response) {
             if (response.isSuccessful()) {
                 Dummy dummy = response.body();
+
                 //StringBuilder builder = new StringBuilder();
                 if(dummy.isCheck()){
                     Toast.makeText(getApplicationContext(), "로그인성공!", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                    SharedPreference.setAttribute(getApplicationContext(),"id",text);
+                    startActivity(intent);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다!", Toast.LENGTH_LONG).show();
@@ -81,5 +92,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "실패!", Toast.LENGTH_LONG).show();
         }
     };
+
 }
 

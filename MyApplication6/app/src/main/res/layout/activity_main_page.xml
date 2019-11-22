@@ -45,7 +45,7 @@
         android:layout_marginTop="17dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
-        android:text="테스트"
+        android:text="팀 만들기"
         app:layout_constraintEnd_toEndOf="@+id/tele"
         app:layout_constraintTop_toBottomOf="@+id/tele" />
 
@@ -53,10 +53,43 @@
         android:id="@+id/mypagebt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="456dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
+        android:layout_marginBottom="8dp"
         android:text="마이페이지"
+        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
         app:layout_constraintEnd_toEndOf="@+id/test"
-        app:layout_constraintTop_toBottomOf="@+id/test" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mypagebt" />
+
+    <Button
+        android:id="@+id/sport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="스포츠"
+        tools:layout_editor_absoluteX="288dp"
+        tools:layout_editor_absoluteY="327dp" />
+
+    <Button
+        android:id="@+id/music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="음악"
+        app:layout_constraintBaseline_toBaselineOf="@+id/ret"
+        tools:layout_editor_absoluteX="47dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

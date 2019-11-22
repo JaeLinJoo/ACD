@@ -31,4 +31,11 @@ public interface GetService {
 
     @GET("/myinfo/{position}")
     Call<MyInfo> callMyInfo(@Path("position") String id);
+
+    @Multipart
+    @POST("/postteam")
+    Call<Dummy> postteam(@Part MultipartBody.Part image, @Part("id") RequestBody id, @Part("teamName") RequestBody tn, @Part("objective") RequestBody ob, @Part("objectives") RequestBody obs, @Part("admit") RequestBody ad, @Part("pay") RequestBody pa, @Part("time") RequestBody ti, @Part("intro") RequestBody it, @Part("start") RequestBody st, @Part("end") RequestBody ed, @Part("mentor") RequestBody mt, @Part("member_count") RequestBody mc, @Part("category1") RequestBody cg1, @Part("category2") RequestBody cg2);
+
+    @GET("/showTeamList/{position}")
+    Call<List<TeamList>> showTeamList(@Path("position") String id);
 }

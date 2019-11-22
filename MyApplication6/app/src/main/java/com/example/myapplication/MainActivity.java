@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainActivity extends AppCompatActivity {
-    private static final String BASE = "http://192.168.0.14:3002";
+    private static final String BASE = GetIP.BASE;
 
     EditText position, password;
     Button getButton, register;
@@ -35,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         getButton = (Button) findViewById(R.id.login);
         register = (Button) findViewById(R.id.register);
-        //Log.e("정보", Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
+
         register.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

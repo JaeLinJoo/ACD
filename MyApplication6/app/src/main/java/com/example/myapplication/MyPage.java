@@ -32,7 +32,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MyPage extends AppCompatActivity {
-    private static final String BASE = "http://192.168.0.14:3002";
+    private static final String BASE = GetIP.BASE;
     private static final int REQUEST_CODE = 0;
 
     Button imgbt, ret;
@@ -187,7 +187,7 @@ public class MyPage extends AppCompatActivity {
             return;
         }
         int lByteArraySize = pData.length;
-        Log.e("asdvggg",getApplicationContext().getFilesDir().toString()+"/"+filename);
+
         try{
             File lOutFile = new File(getApplicationContext().getFilesDir().toString()+"/"+filename);
             FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);

@@ -18,7 +18,7 @@ storage = multer.diskStorage({
         return cb(null, "" + (raw.toString('hex')) + (path.extname(file.originalname)));
       });
     }
-  });
+});
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -146,6 +146,7 @@ app.get('/myinfo/:position',function(req,res){
         if(!err){ 
             var str, result;
             fs.readFile(__dirname +"/uploads/" + rows[0].img,function(err, data){
+                
                 if(!err){
                     var name = rows[0].realname;
                     var can = rows[0].can;
@@ -161,6 +162,47 @@ app.get('/myinfo/:position',function(req,res){
                 }
             })
            
+        }
+    })
+})
+
+app.post('/postteam',multer({storage: storage}).single('image'),function(req, res){
+    var result;
+    var id = req.body.id;
+    var pay = parseInt(req.body.pay);
+    var count = parseInt(req.body.member_count);
+    connection.query('SELECT * from team where name = ?',[req.body.teamtheme],function(err, rows){
+        if(!err){
+            if(!rows[0]){
+                connection.query('Insert into team(name, objective, objectives, admit, pay, time, intro, start, end, mentor, member_count, category1, category2, img, leader, user) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',[req.body.teamName, req.body.objective, req.body.objectives, req.body.admit, pay, req.body.time, req.body.intro, req.body.start, req.body.end, req.body.mentor, count, req.body.category1, req.body.category2, req.file.filename, id, id]);
+                result = {check: true};
+            }
+            else{
+                result = {check: false};
+            }
+            res.json(result);
+        }
+    })
+})
+
+app.get('/showTeamList/:position',function(req, res){
+    var result=[];
+    var id = req.params.position;
+    connection.query('SELECT * from team', function(err, rows){
+        if(!err){
+            for(var i = 0; i < rows.length; i++){
+                var name = rows[i].name;
+                var content = rows[i].intro;
+                var category1 = rows[i].category1;
+                var category2 = rows[i].category2;
+                var str, data;
+                
+                data = fs.readFileSync(__dirname +"\\uploads\\" + rows[i].img);
+                str = bin2String(data);
+                
+                result.push({name: name, content: content, mainimg: str, category1: category1, category2: category2});
+            }
+            res.json(result);
         }
     })
 })

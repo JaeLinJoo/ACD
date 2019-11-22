@@ -19,7 +19,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class register extends AppCompatActivity {
-    private static final String BASE = "http://192.168.0.14:3002";
+    private static final String BASE = GetIP.BASE;
 
     EditText id, password, pwc, telenumber, email, name;
     String text,text1, text2, text3, text4, text5;

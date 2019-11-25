@@ -86,7 +86,7 @@ public class register extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "이미 가입된 학번입니다!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "이미 가입된 아이디입니다!", Toast.LENGTH_LONG).show();
                 }
             } else
             {

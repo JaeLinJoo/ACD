@@ -7,9 +7,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -24,10 +24,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainPage extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
-    private static final int REQUEST_CODE = 0;
 
-    TextView textView;
-    Button ret, tele, test, mypage, sport, music;
+    Button ret, maketeam, mentor, mypage, sport, music, lang, human, craft, etc;
     ListView listView;
 
     @Override
@@ -35,15 +33,17 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-        textView = (TextView) findViewById(R.id.textView2);
         ret = (Button) findViewById(R.id.ret);
-        tele = (Button) findViewById(R.id.tele);
         sport = (Button) findViewById(R.id.sport);
         music = (Button) findViewById(R.id.music);
-        test = (Button) findViewById(R.id.test);
-        mypage = (Button) findViewById(R.id.mypagebt);
-        listView = (ListView) findViewById(R.id.listview);
-
+        maketeam = (Button) findViewById(R.id.maketeam);
+        mentor = (Button) findViewById(R.id.mentor);
+        mypage = (Button) findViewById(R.id.mypage);
+        listView = (ListView) findViewById(R.id.listview3);
+        lang = (Button) findViewById(R.id.lang);
+        human = (Button) findViewById(R.id.human);
+        craft = (Button) findViewById(R.id.craft);
+        etc = (Button) findViewById(R.id.etc);
 
         dataSetting();
 
@@ -63,10 +63,18 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
+        maketeam.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MakeTeamPage.class);
+                startActivity(intent);
+            }
+        });
+
         sport.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                SharedPreference.setAttribute(getApplicationContext(),"category1", "sport");
+                SharedPreference.setAttribute(getApplicationContext(),"category1", "스포츠");
                 Intent intent = new Intent(getApplicationContext(), CategoryList.class);
                 startActivity(intent);
             }
@@ -75,50 +83,48 @@ public class MainPage extends AppCompatActivity {
         music.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                SharedPreference.setAttribute(getApplicationContext(),"category1", "music");
+                SharedPreference.setAttribute(getApplicationContext(),"category1", "악기");
                 Intent intent = new Intent(getApplicationContext(), CategoryList.class);
                 startActivity(intent);
             }
         });
 
-        tele.setOnClickListener(new View.OnClickListener() {
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-            String id = SharedPreference.getAttribute(getApplicationContext(),"id");
+        lang.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                GetService service = retrofit.create(GetService.class);
-
-                Call<LogInfo> call = service.listLogInfo(id);
-                call.enqueue(dummies);
+            public void onClick(View v){
+                SharedPreference.setAttribute(getApplicationContext(),"category1", "언어");
+                Intent intent = new Intent(getApplicationContext(), CategoryList.class);
+                startActivity(intent);
             }
         });
-        test.setOnClickListener(new View.OnClickListener() {
+
+        human.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MakeTeamPage.class);
+            public void onClick(View v){
+                SharedPreference.setAttribute(getApplicationContext(),"category1", "인문학");
+                Intent intent = new Intent(getApplicationContext(), CategoryList.class);
+                startActivity(intent);
+            }
+        });
+
+        craft.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                SharedPreference.setAttribute(getApplicationContext(),"category1", "공예");
+                Intent intent = new Intent(getApplicationContext(), CategoryList.class);
+                startActivity(intent);
+            }
+        });
+
+        etc.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                SharedPreference.setAttribute(getApplicationContext(),"category1", "기타");
+                Intent intent = new Intent(getApplicationContext(), CategoryList.class);
                 startActivity(intent);
             }
         });
     }
-    Callback dummies = new Callback<LogInfo>(){
-        @Override
-        public void onResponse(Call<LogInfo> call, Response<LogInfo> response) {
-            if (response.isSuccessful()) {
-                LogInfo dummy = response.body();
-                textView.setText(dummy.telenumber);
-            } else
-            {
-                Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
-            }
-        }
-        @Override
-        public void onFailure(Call<LogInfo> call, Throwable t) {
-            Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
-        }
-    };
 
     private void dataSetting(){
         Retrofit retrofit = new Retrofit.Builder()
@@ -133,7 +139,7 @@ public class MainPage extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<TeamList>> call, Response<List<TeamList>> response) {
                 Bitmap bitmap;
-                MyAdapter mMyAdapter = new MyAdapter();
+                final MyAdapter mMyAdapter = new MyAdapter();
                 if (response.isSuccessful()) {
                     List<TeamList> dummy = response.body();
 
@@ -146,11 +152,20 @@ public class MainPage extends AppCompatActivity {
                         if(file.exists()){
                             String filepath = file.getPath();
                             bitmap = BitmapFactory.decodeFile(filepath);
-                            mMyAdapter.addItem(bitmap, d.getName(), d.getContent());
+                            mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(), d.getCategory1()+" / "+d.getCategory2());
                         }
                     }
                     /* 리스트뷰에 어댑터 등록 */
                     listView.setAdapter(mMyAdapter);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            SharedPreference.setAttribute(getApplicationContext(), "teamname", mMyAdapter.getItem(i).getName());
+                            Intent intent = new Intent(getApplicationContext(), JoinTeam.class);
+                            startActivity(intent);
+                        }
+                    });
+
                 } else
                 {
                     Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();

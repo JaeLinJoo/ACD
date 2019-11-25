@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,14 +23,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CategoryList extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
     TextView cg;
-    ListView listView;
+    ListView listView1, listView2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_list);
 
-        listView = (ListView) findViewById(R.id.listview);
-        cg = (TextView) findViewById(R.id.cg1);
+        listView1 = (ListView) findViewById(R.id.list1);
+        listView2 = (ListView) findViewById(R.id.list2);
+        cg = (TextView) findViewById(R.id.category);
 
         cg.setText(SharedPreference.getAttribute(getApplicationContext(),"category1"));
         dataSetting();
@@ -48,11 +50,12 @@ public class CategoryList extends AppCompatActivity {
             public void onResponse(Call<List<TeamList>> call, Response<List<TeamList>> response) {
                 Bitmap bitmap;
                 MyAdapter mMyAdapter = new MyAdapter();
+                MyAdapter mMyAdapter1 = new MyAdapter();
                 if (response.isSuccessful()) {
                     List<TeamList> dummy = response.body();
 
                     for(TeamList d:dummy){
-                        if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1"))){
+                        if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1")) && d.getState().equals("모집중")){
                             byte[] a = string2Bin(d.getMainimg());
                             writeToFile("teamprofile.jpg", a);
 
@@ -61,12 +64,25 @@ public class CategoryList extends AppCompatActivity {
                             if(file.exists()){
                                 String filepath = file.getPath();
                                 bitmap = BitmapFactory.decodeFile(filepath);
-                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent());
+                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            }
+                        }
+                        if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1")) && d.getState().equals("진행중")){
+                            byte[] a = string2Bin(d.getMainimg());
+                            writeToFile("teamprofile.jpg", a);
+
+                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
+
+                            if(file.exists()){
+                                String filepath = file.getPath();
+                                bitmap = BitmapFactory.decodeFile(filepath);
+                                mMyAdapter1.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
                             }
                         }
                     }
                     /* 리스트뷰에 어댑터 등록 */
-                    listView.setAdapter(mMyAdapter);
+                    listView1.setAdapter(mMyAdapter);
+                    listView2.setAdapter(mMyAdapter1);
                 } else
                 {
                     Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();

@@ -273,7 +273,7 @@ public class MakeTeamPage extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("정보",Integer.toString(member_count));
+                //Log.e("정보",Integer.toString(member_count));
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(BASE)
                         .addConverterFactory(GsonConverterFactory.create())

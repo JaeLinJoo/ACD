@@ -174,7 +174,7 @@ app.post('/postteam',multer({storage: storage}).single('image'),function(req, re
     connection.query('SELECT * from team where name = ?',[req.body.teamtheme],function(err, rows){
         if(!err){
             if(!rows[0]){
-                connection.query('Insert into team(name, objective, objectives, admit, pay, time, intro, start, end, mentor, member_count, category1, category2, img, leader, user) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',[req.body.teamName, req.body.objective, req.body.objectives, req.body.admit, pay, req.body.time, req.body.intro, req.body.start, req.body.end, req.body.mentor, count, req.body.category1, req.body.category2, req.file.filename, id, id]);
+                connection.query('Insert into team(name, objective, objectives, admit, pay, time, intro, start, end, mentor, member_count, category1, category2, img, leader, user, state, current) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',[req.body.teamName, req.body.objective, req.body.objectives, req.body.admit, pay, req.body.time, req.body.intro, req.body.start, req.body.end, req.body.mentor, count, req.body.category1, req.body.category2, req.file.filename, id, id, '1', 1]);
                 result = {check: true};
             }
             else{
@@ -191,18 +191,111 @@ app.get('/showTeamList/:position',function(req, res){
     connection.query('SELECT * from team', function(err, rows){
         if(!err){
             for(var i = 0; i < rows.length; i++){
+                var state;
                 var name = rows[i].name;
                 var content = rows[i].intro;
                 var category1 = rows[i].category1;
                 var category2 = rows[i].category2;
+                var user = rows[i].user;
+                if(rows[i].state=='1'){
+                    state = '모집중';
+                }
+                if(rows[i].state=='2'){
+                    state = '진행중'
+                }
+                var s = rows[i].user.split(';');
+                var count = s.length.toString()+' / '+rows[i].member_count;
                 var str, data;
                 
                 data = fs.readFileSync(__dirname +"\\uploads\\" + rows[i].img);
                 str = bin2String(data);
                 
-                result.push({name: name, content: content, mainimg: str, category1: category1, category2: category2});
+                result.push({name: name, content: content, mainimg: str, category1: category1, category2: category2, state: state, count: count, user: user});
             }
             res.json(result);
+        }
+    })
+})
+
+app.get('/join/:position',function(req, res){
+    var name = req.params.position;
+    var result;
+
+    connection.query('SELECT * from team where name = ?',[name], function(err, rows){
+        if(!err){
+            var peroid = rows[0].start +' ~ ' +rows[0].end;
+            var s = rows[0].user.split(';');
+            var count = s.length.toString() + ' / ' + rows[0].member_count.toString();
+            data = fs.readFileSync(__dirname +"\\uploads\\" + rows[0].img);
+            str = bin2String(data);
+            result = {teamname: rows[0].name,
+                    member_count: count,
+                    category1: rows[0].category1,
+                    category2: rows[0].category2,
+                    teamname1: rows[0].name,
+                    intro: rows[0].intro,
+                    peroid: peroid,
+                    obj: rows[0].objective,
+                    admit: rows[0].admit,
+                    mentor_pay: rows[0].pay.toString(),
+                    time: rows[0].time,
+                    objlist: rows[0].objectives,
+                    img: str,
+                    ismentor: rows[0].mentor}
+                
+            res.json(result);
+        }
+    })
+})
+
+app.post('/submit',function(req, res){
+    var id = req.body.id;
+    var result;
+
+    connection.query('SELECT * from team where name = ?',[req.body.teamname], function(err, rows){
+        if(!err){
+            if(rows[0].mentor == '0' && req.body.isMentor==true){//멘토가 필요없으면 false
+                result = {check: false};
+                res.json(result);
+            }
+            else{
+                var user = rows[0].user;
+                var users = user.split(';');
+                if(users.length!=rows[0].member_count){//팀등록 성공
+                    user = user + ';' + id;
+                    connection.query('UPDATE team SET user = ? where name = ?',[user, req.body.teamname]);//팀의 유저 리스트 등록
+                    connection.query('SELECT * from tb where name = ?',[id], function(err, rows){
+                        if(!err){
+                            var teamn1;
+                            var teamn = rows[0].team;
+                            if(teamn==null){
+                                teamn1 = req.body.teamname;
+                            }
+                            else{
+                                teamn1 = teamn +';'+ req.body.teamname;
+                            }
+                            connection.query('UPDATE tb SET team = ? where name = ?',[teamn1, id]);//유저의 팀 리스트 등록
+                        }
+                    })
+                    if(req.body.isMentor){//멘토면 멘토등록
+                        connection.query('UPDATE team SET mentorname = ? where name = ?',[id, req.body.teamname]);
+                        connection.query('UPDATE team SET mentor = ? where name = ?',['0', req.body.teamname]);
+                    }
+
+                    if((users.length+1)==rows[0].member_count){//꽉 찼을시
+                        connection.query('UPDATE team SET state = ? where name = ?', ['2', req.body.teamname]);
+                    }
+                    
+                    connection.query('INSERT into teamUserInfo(id, name, can) values (?, ?, ?)',[id, req.body.teamname, req.body.can]);//팀 정보에 유저가 입력한 캔 수 업데이트
+                    
+                    result = {check: true};
+                    res.json(result);
+                }
+                else{//팀 인원이 꽉찼을 경우
+                    result = {check: false};
+                    res.json(result);
+                }
+            }
         }
     })
 })

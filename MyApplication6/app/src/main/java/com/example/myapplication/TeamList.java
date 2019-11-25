@@ -6,6 +6,9 @@ public class TeamList {
     private String mainimg;
     private String category1;
     private String category2;
+    private String state;
+    private String count;
+    private String user;
 
     public String getName() {
         return name;
@@ -26,4 +29,17 @@ public class TeamList {
     public String getCategory2() {
         return category2;
     }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getCount() {
+        return count;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
 }

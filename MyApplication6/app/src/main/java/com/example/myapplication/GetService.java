@@ -5,7 +5,6 @@ import java.util.List;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -38,4 +37,14 @@ public interface GetService {
 
     @GET("/showTeamList/{position}")
     Call<List<TeamList>> showTeamList(@Path("position") String id);
+
+    @GET("/join/{position}")
+    Call<JoinList> showJoinList(@Path("position") String name);
+
+    @FormUrlEncoded
+    @POST("/submit")
+    Call<Dummy> submitTeam(@Field("teamname") String teamname ,@Field("id") String id, @Field("can") int can, @Field("isMentor") boolean isMentor);
+
+    @GET("/getGroupId/{targetGroup}")
+    Call<GroupInfo> getGroupinfo(@Path("targetGroup") String groupId);
 }

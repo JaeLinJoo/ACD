@@ -9,7 +9,8 @@ telenumber char(15),
 email char(15),
 realname char(10),
 can int(4),
-img char(50)
+img char(50),
+team char(200)
 );
 
 create table team(
@@ -28,5 +29,14 @@ category1 char(10),
 category2 char(10),
 img char(50),
 leader char(15),
-user char(200)
+user char(200),
+state char(2),
+current int(4),
+mentorname char(20)
+);
+
+create table teamUserInfo(
+id char(20),
+name char(20),
+can int(4)
 );

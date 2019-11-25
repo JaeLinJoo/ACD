@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MakeTeamPage"></activity>
+        <activity android:name=".TeamPage"></activity>
+        <activity android:name=".JoinTeam" />
+        <activity android:name=".MakeTeamPage" />
         <activity android:name=".CategoryList" />
         <activity android:name=".MakeTeam" />
         <activity android:name=".MyPage" />

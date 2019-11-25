@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string-array name = "spinner_do">
+    <string-array name="spinner_do">
         <item>스포츠</item>
         <item>인문학</item>
         <item>언어</item>
@@ -8,41 +8,41 @@
         <item>공예</item>
         <item>기타</item>
     </string-array>
-    <string-array name = "spinner_do_sports">
+    <string-array name="spinner_do_sports">
         <item>축구</item>
         <item>농구</item>
         <item>자전거</item>
         <item>배드민턴</item>
         <item>테니스</item>
     </string-array>
-    <string-array name = "spinner_do_inmunhak">
+    <string-array name="spinner_do_inmunhak">
         <item>독서</item>
         <item>정치</item>
         <item>시사경제</item>
         <item>역사</item>
         <item>글쓰기</item>
     </string-array>
-    <string-array name = "spinner_do_language">
+    <string-array name="spinner_do_language">
         <item>영어</item>
         <item>중국어</item>
         <item>일본어</item>
         <item>프랑스어</item>
         <item>베트남어</item>
     </string-array>
-    <string-array name = "spinner_do_music">
+    <string-array name="spinner_do_music">
         <item>기타</item>
         <item>피아노</item>
         <item>드럼</item>
         <item>바이올린</item>
     </string-array>
-    <string-array name = "spinner_do_handmade">
+    <string-array name="spinner_do_handmade">
         <item>캘리그라피</item>
         <item>수채화</item>
         <item>펜드로잉</item>
         <item>뜨개질</item>
         <item>손바느질</item>
     </string-array>
-    <string-array name = "spinner_count">
+    <string-array name="spinner_count">
         <item>2</item>
         <item>3</item>
         <item>4</item>

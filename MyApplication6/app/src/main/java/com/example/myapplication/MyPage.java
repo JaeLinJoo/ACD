@@ -7,12 +7,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
+
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -38,10 +40,14 @@ public class MyPage extends AppCompatActivity {
     Button imgbt, ret;
     ImageView imageView;
     TextView name, can;
+    ListView lv, lv1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
+
+        lv = (ListView) findViewById(R.id.listviewJ);
+        lv1 =(ListView) findViewById(R.id.listViewM);
 
         imgbt = (Button) findViewById(R.id.imgbt);
         ret = (Button) findViewById(R.id.ret);
@@ -55,6 +61,9 @@ public class MyPage extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView2);
         name = (TextView) findViewById(R.id.name);
         can = (TextView) findViewById(R.id.can);
+
+        dataSetting();
+        dataSetting1();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)
@@ -123,7 +132,7 @@ public class MyPage extends AppCompatActivity {
                     f.createNewFile();
 
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    img.compress(Bitmap.CompressFormat.JPEG,1,bos);
+                    img.compress(Bitmap.CompressFormat.JPEG,75,bos);
                     byte[] bitmapdata = bos.toByteArray();
 
                     FileOutputStream fos = new FileOutputStream(f);
@@ -197,5 +206,109 @@ public class MyPage extends AppCompatActivity {
         }catch(Throwable e){
             e.printStackTrace(System.out);
         }
+    }
+    private void dataSetting(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        String id = SharedPreference.getAttribute(getApplicationContext(),"id");
+        GetService service = retrofit.create(GetService.class);
+
+        Call<List<TeamList>> call = service.showTeamList(id);
+        call.enqueue(new Callback<List<TeamList>>(){
+            @Override
+            public void onResponse(Call<List<TeamList>> call, Response<List<TeamList>> response) {
+                Bitmap bitmap;
+                final MyAdapter mMyAdapter = new MyAdapter();
+                if (response.isSuccessful()) {
+                    List<TeamList> dummy = response.body();
+
+                    for(TeamList d:dummy){
+                        if(d.getState().equals("진행중") && d.getUser().contains(SharedPreference.getAttribute(getApplicationContext(),"id"))){
+                            byte[] a = string2Bin(d.getMainimg());
+                            writeToFile("teamprofile.jpg", a);
+
+                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
+
+                            if(file.exists()) {
+                                String filepath = file.getPath();
+                                bitmap = BitmapFactory.decodeFile(filepath);
+                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            }
+                        }
+                    }
+                    /* 리스트뷰에 어댑터 등록 */
+                    lv.setAdapter(mMyAdapter);
+                    lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            SharedPreference.setAttribute(getApplicationContext(), "teamname", mMyAdapter.getItem(i).getName());
+                            Intent intent = new Intent(getApplicationContext(), TeamPage.class);
+                            startActivity(intent);
+                        }
+                    });
+                } else
+                {
+                    Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<List<TeamList>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+    private void dataSetting1(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        String id = SharedPreference.getAttribute(getApplicationContext(),"id");
+        GetService service = retrofit.create(GetService.class);
+
+        Call<List<TeamList>> call = service.showTeamList(id);
+        call.enqueue(new Callback<List<TeamList>>(){
+            @Override
+            public void onResponse(Call<List<TeamList>> call, Response<List<TeamList>> response) {
+                Bitmap bitmap;
+                final MyAdapter mMyAdapter = new MyAdapter();
+                if (response.isSuccessful()) {
+                    List<TeamList> dummy = response.body();
+
+                    for(TeamList d:dummy){
+                        if(d.getState().equals("모집중")&& d.getUser().contains(SharedPreference.getAttribute(getApplicationContext(),"id"))){
+                            byte[] a = string2Bin(d.getMainimg());
+                            writeToFile("teamprofile.jpg", a);
+
+                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
+
+                            if(file.exists()){
+                                String filepath = file.getPath();
+                                bitmap = BitmapFactory.decodeFile(filepath);
+                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            }
+                        }
+                    }
+                    /* 리스트뷰에 어댑터 등록 */
+                    lv1.setAdapter(mMyAdapter);
+                    lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            SharedPreference.setAttribute(getApplicationContext(), "teamname", mMyAdapter.getItem(i).getName());
+                            Intent intent = new Intent(getApplicationContext(), JoinTeam.class);
+                            startActivity(intent);
+                        }
+                    });
+                } else
+                {
+                    Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<List<TeamList>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

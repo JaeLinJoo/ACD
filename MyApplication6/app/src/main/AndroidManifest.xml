@@ -17,7 +17,6 @@
         <activity android:name=".JoinTeam" />
         <activity android:name=".MakeTeamPage" />
         <activity android:name=".CategoryList" />
-        <activity android:name=".MakeTeam" />
         <activity android:name=".MyPage" />
         <activity android:name=".MainPage" />
         <activity android:name=".register" />

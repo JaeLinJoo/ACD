@@ -335,8 +335,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="65dp"
                 android:background="@drawable/layout_border"
+                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -356,6 +357,7 @@
                         android:id="@+id/radioGroup_mento"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <RadioButton

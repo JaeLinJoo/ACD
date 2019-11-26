@@ -6,7 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".register">
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints" />
+
+
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#FFE082"
@@ -39,12 +48,13 @@
         android:id="@+id/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="187dp"
+        app:layout_constraintTop_toBottomOf="@id/layout"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -101,10 +111,9 @@
         android:id="@+id/register1"
         android:layout_width="205dp"
         android:layout_height="53dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="68dp"
         android:text="가입"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
@@ -186,10 +195,11 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="397dp"
+        android:layout_width="0dp"
         android:layout_height="107dp"
+        app:layout_constraintBottom_toTopOf="@id/id"
         app:srcCompat="@drawable/logo_acd"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="78dp" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,7 +30,8 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="   My Page"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -90,7 +91,7 @@
             android:layout_width="300dp"
             android:layout_height="55dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/layout_border"
+            android:background="@drawable/mypagecan"
             android:orientation="horizontal">
 
             <ImageView
@@ -116,7 +117,8 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="CAN"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

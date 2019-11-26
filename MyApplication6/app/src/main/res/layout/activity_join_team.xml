@@ -33,7 +33,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="모집중/"
+                    android:text=" 모집중/"
                     android:textSize="24sp" />
 
                 <TextView
@@ -275,17 +275,19 @@
 
                 <TextView
                     android:id="@+id/textView42"
-                    android:layout_width="91dp"
+                    android:layout_width="88dp"
                     android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
                     android:layout_weight="1"
                     android:background="@drawable/textview_style"
                     android:gravity="center"
                     android:text="멘토" />
 
                 <LinearLayout
-                    android:layout_width="302dp"
+                    android:layout_width="279dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@drawable/layout_border"
                     android:orientation="vertical">
 
                     <TextView
@@ -293,8 +295,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
-                        android:gravity="center"
                         android:background="@drawable/textview_style"
+                        android:gravity="center"
                         android:text="멘토지원비" />
 
                     <TextView
@@ -323,11 +325,11 @@
 
                 <TextView
                     android:id="@+id/textView45"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:background="@drawable/textview_style"
+                    android:gravity="center"
                     android:text="만나는시간" />
 
                 <TextView
@@ -348,11 +350,11 @@
 
                 <TextView
                     android:id="@+id/textView55"
-                    android:layout_width="70dp"
+                    android:layout_width="75dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:background="@drawable/textview_style"
+                    android:gravity="center"
                     android:text="챌린지 캔" />
 
                 <EditText

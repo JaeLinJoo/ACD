@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -22,22 +21,19 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CategoryList extends AppCompatActivity {
+public class MentorPage extends AppCompatActivity {
+
     private static final String BASE = GetIP.BASE;
-    TextView cg;
-    ListView listView1, listView2;
+    ListView mentorlist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_list);
+        setContentView(R.layout.activity_mentor_page);
 
-        listView1 = (ListView) findViewById(R.id.list1);
-        listView2 = (ListView) findViewById(R.id.list2);
-        cg = (TextView) findViewById(R.id.category);
-
-        cg.setText(SharedPreference.getAttribute(getApplicationContext(),"category1"));
-        dataSetting();
+        mentorlist = (ListView)findViewById(R.id.mentorlist);
     }
+
     private void dataSetting(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)
@@ -46,18 +42,18 @@ public class CategoryList extends AppCompatActivity {
         String id = SharedPreference.getAttribute(getApplicationContext(),"id");
         GetService service = retrofit.create(GetService.class);
 
-        Call<List<TeamList>> call = service.showTeamList(id);
-        call.enqueue(new Callback<List<TeamList>>(){
+        Call<List<MentorTeamList>> call = service.showMentorTeamList(id);
+        call.enqueue(new Callback<List<MentorTeamList>>(){
             @Override
-            public void onResponse(Call<List<TeamList>> call, Response<List<TeamList>> response) {
+            public void onResponse(Call<List<MentorTeamList>> call, Response<List<MentorTeamList>> response) {
                 Bitmap bitmap;
-                final MyAdapter mMyAdapter = new MyAdapter();
-                final MyAdapter mMyAdapter1 = new MyAdapter();
+                final MentorAdapter mMyAdapter = new MentorAdapter();
+
                 if (response.isSuccessful()) {
-                    List<TeamList> dummy = response.body();
+                    List<MentorTeamList> dummy = response.body();
 
-                    for(TeamList d:dummy){
-                        if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1")) && d.getState().equals("모집중")){
+                    for(MentorTeamList d:dummy){
+                        if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1")) && d.getState().equals("모집중")&&d.getMentor().equals("1")){
                             byte[] a = string2Bin(d.getMainimg());
                             writeToFile("teamprofile.jpg", a);
 
@@ -66,27 +62,14 @@ public class CategoryList extends AppCompatActivity {
                             if(file.exists()){
                                 String filepath = file.getPath();
                                 bitmap = BitmapFactory.decodeFile(filepath);
-                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
-                            }
-                        }
-                        if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1")) && d.getState().equals("진행중")){
-                            byte[] a = string2Bin(d.getMainimg());
-                            writeToFile("teamprofile.jpg", a);
-
-                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
-
-                            if(file.exists()){
-                                String filepath = file.getPath();
-                                bitmap = BitmapFactory.decodeFile(filepath);
-                                mMyAdapter1.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getPay(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
                             }
                         }
                     }
                     /* 리스트뷰에 어댑터 등록 */
-                    listView1.setAdapter(mMyAdapter);
-                    listView2.setAdapter(mMyAdapter1);
+                    mentorlist.setAdapter(mMyAdapter);
 
-                    listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    mentorlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             SharedPreference.setAttribute(getApplicationContext(), "teamname", mMyAdapter.getItem(i).getName());
@@ -94,23 +77,18 @@ public class CategoryList extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
-                    listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            SharedPreference.setAttribute(getApplicationContext(), "teamname", mMyAdapter1.getItem(i).getName());
-                            Intent intent = new Intent(getApplicationContext(), JoinTeam.class);
-                            startActivity(intent);
-                        }
-                    });
+
                 } else
                 {
                     Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
                 }
             }
+
             @Override
-            public void onFailure(Call<List<TeamList>> call, Throwable t) {
+            public void onFailure(Call<List<MentorTeamList>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
             }
+
         });
     }
 

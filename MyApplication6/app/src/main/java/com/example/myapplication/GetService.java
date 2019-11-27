@@ -38,6 +38,9 @@ public interface GetService {
     @GET("/showTeamList/{position}")
     Call<List<TeamList>> showTeamList(@Path("position") String id);
 
+    @GET("/showMentorTeamList/{position}")
+    Call<List<MentorTeamList>> showMentorTeamList(@Path("position") String id);
+
     @GET("/join/{position}")
     Call<JoinList> showJoinList(@Path("position") String name);
 

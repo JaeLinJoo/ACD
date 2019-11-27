@@ -55,6 +55,14 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
+        mentor.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MentorPage.class);
+                startActivity(intent);
+            }
+        });
+
         ret.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

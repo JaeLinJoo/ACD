@@ -6,9 +6,10 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="115dp"
-        app:srcCompat="@drawable/logo_acd" />
+        android:layout_width="436dp"
+        android:layout_height="123dp"
+        android:layout_gravity="fill_horizontal"
+        app:srcCompat="@drawable/logo_upup" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="186dp"
+                android:layout_height="117dp"
                 android:orientation="vertical">
 
                 <!-- 카테고리 버튼-->
@@ -43,8 +44,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="카테고리로 소모임 찾기"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -114,8 +116,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="전체 모집중인 소모임"
-                        android:textSize="24sp" />
+                        android:textColor="#080808"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <ListView

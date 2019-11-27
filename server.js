@@ -171,10 +171,16 @@ app.post('/postteam',multer({storage: storage}).single('image'),function(req, re
     var id = req.body.id;
     var pay = parseInt(req.body.pay);
     var count = parseInt(req.body.member_count);
+    var can = parseInt(req.body.can);
+    var ss = req.body.objectives.split(';');
     connection.query('SELECT * from team where name = ?',[req.body.teamtheme],function(err, rows){
         if(!err){
             if(!rows[0]){
                 connection.query('Insert into team(name, objective, objectives, admit, pay, time, intro, start, end, mentor, member_count, category1, category2, img, leader, user, state, current) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',[req.body.teamName, req.body.objective, req.body.objectives, req.body.admit, pay, req.body.time, req.body.intro, req.body.start, req.body.end, req.body.mentor, count, req.body.category1, req.body.category2, req.file.filename, id, id, '1', 1]);
+                connection.query('Insert into teamUserInfo(id, name, can) values(?, ?, ?)',[id, req.body.teamName, can]);
+                for(var i = 0; i < ss.length; i++){
+                    connection.query('Insert into teamObjective(id, name, objective, isadmit, img) values(?, ?, ?, ?, ?)',[id, req.body.teamName, ss[i], '인증 필요', 'null']);
+                }
                 result = {check: true};
             }
             else{
@@ -182,6 +188,40 @@ app.post('/postteam',multer({storage: storage}).single('image'),function(req, re
             }
             res.json(result);
         }
+    })
+})
+
+app.post('/admit',multer({storage: storage}).single('image'),function(req, res){
+    var result;
+    var id = req.body.id;
+    var name = req.body.teamname;
+    var obj = req.body.objective;
+
+    connection.query('UPDATE teamObjective SET img = ? where id =? AND name =? AND objective =?',[req.file.filename ,id, name, obj])
+    connection.query('UPDATE teamObjective SET isadmit = ? where id =? AND name =? AND objective =?',['인증 됨',id, name, obj])
+    result={check: true, message:'인증 완료'};
+    res.json(result);
+})
+
+app.post('/showAdmit',function(req,res){
+    var result;
+    var id = req.body.id;
+    var name = req.body.teamname;
+    var obj = req.body.objective;
+
+    connection.query('SELECT * from teamObjective where id = ? AND name = ? AND objective = ?',[id, name, obj],function(err, rows){
+        if(!err){
+            if(rows[0].img == 'null'){
+                str = null;
+            }
+            else{
+                data = fs.readFileSync(__dirname +"\\uploads\\" + rows[0].img);
+                str = bin2String(data);
+            }
+            result = {img: str, isadmit: rows[0].isadmit};
+            res.json(result);
+        }
+        
     })
 })
 
@@ -288,6 +328,11 @@ app.post('/submit',function(req, res){
                     
                     connection.query('INSERT into teamUserInfo(id, name, can) values (?, ?, ?)',[id, req.body.teamname, req.body.can]);//팀 정보에 유저가 입력한 캔 수 업데이트
                     
+                    var objs = rows[0].objectives.split(';');//개인별 목표 db만들기
+                    for(var i =0; i<objs.length; i++){
+                        connection.query('INSERT into teamObjective(id, name, objective, isadmit, img) values (?, ?, ?, ?, ?)',[id, req.body.teamname, objs[i], '인증 필요', 'null']);
+                    }
+                    
                     result = {check: true};
                     res.json(result);
                 }
@@ -299,6 +344,88 @@ app.post('/submit',function(req, res){
         }
     })
 })
+
+
+app.post('/getGroupId',function(req,res){
+    var groupid=req.body.targetGroup;
+    var id = req.body.targetID;
+    var result;
+    var can;
+    connection.query('SELECT * from teamUserInfo where id = ? AND name = ?',[id,groupid],function(err, rows){
+        can = rows[0].can;
+    })
+    connection.query('SELECT * from team where name=?',[groupid],function(err,rows){
+        if(!err){
+            var group=rows[0];
+            var category = group.category1 + ' / ' + group.category2;
+            data = fs.readFileSync(__dirname +"\\uploads\\" + rows[0].img);
+            str = bin2String(data);
+            result={
+                category: category,
+                can: can,
+                objectives:group.objectives,
+                img: str
+            };
+            res.json(result);
+        }
+    })
+})
+
+app.post('/admitlist',function(req, res){
+    var name = req.body.teamname;
+    var result = [];
+
+    connection.query('SELECT * from teamObjective where name = ?',[name],function(err, rows){
+        for(var i = 0;i < rows.length;i++){
+            if(rows[i].img=='null'){
+                str = null;
+            }
+            else{
+                data = fs.readFileSync(__dirname +"\\uploads\\" + rows[i].img);
+                str = bin2String(data);
+            }
+            result.push({img: str, id: rows[i].id, objective: rows[i].objective})
+        }
+        res.json(result);
+    })
+})
+
+app.post('/calculateObjective',function(req, res){
+    var result;
+    var id = req.body.id;
+    var name = req.body.teamname;
+    var yesin = 0;
+    var noin = 0;
+    var yesgr = 0; 
+    var nogr = 0;
+
+    connection.query('SELECT * from teamObjective where name = ?',[name],function(err, rows){
+        if(!err){
+            for(var i = 0; i < rows.length; i++){
+                if(rows[i].id==id){
+                    if(rows[i].isadmit == '인증 됨'){
+                        yesin++;
+                    }
+                    else{
+                        noin++;
+                    }
+                }
+                if(rows[i].isadmit == '인증 됨'){
+                    yesgr++;
+                }
+                else{
+                    nogr++;
+                }
+            }
+            var individual = yesin*100 / (yesin+noin);
+            var group = yesgr*100 / (yesgr+nogr);
+            result = {individual: parseInt(individual), group: parseInt(group)};
+            console.log(result);
+            res.json(result);
+        }
+    })
+})
+
  
 app.listen(3002, function() {
         console.log('Example app listend on port 3002!');

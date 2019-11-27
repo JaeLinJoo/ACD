@@ -63,7 +63,7 @@ public class MakeTeamPage extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener callbackMethod_finish;
     String mentor;
     Button postimg, post, add;
-    EditText teamname, objective, admit, pay, time, intro;
+    EditText teamname, objective, admit, pay, time, intro, can;
     RadioButton yes, no;
     ImageView imageView;
     ListView listView;
@@ -84,6 +84,7 @@ public class MakeTeamPage extends AppCompatActivity {
         pay = (EditText) findViewById(R.id.editText_mento_pay);
         time = (EditText) findViewById(R.id.editText_모임시간);
         intro = (EditText) findViewById(R.id.editText_intro);
+        can = (EditText) findViewById(R.id.editText);
 
         yes = (RadioButton) findViewById(R.id.radioButton_mento_yes);
         no = (RadioButton) findViewById(R.id.radioButton_mento_no);
@@ -291,6 +292,7 @@ public class MakeTeamPage extends AppCompatActivity {
                 String text6 = time.getText().toString();
                 String text7 = intro.getText().toString();
                 String text8 = Integer.toString(member_count);
+                String text9 = can.getText().toString();
 
                 ArrayList<String> s = new ArrayList<String>();
                 for(int i=0;i<listViewItemList.size();i++){
@@ -329,8 +331,9 @@ public class MakeTeamPage extends AppCompatActivity {
                 RequestBody mc = RequestBody.create(MediaType.parse("multipart/form-data"), text8);
                 RequestBody cg1 = RequestBody.create(MediaType.parse("multipart/form-data"), choice_do);
                 RequestBody cg2 = RequestBody.create(MediaType.parse("multipart/form-data"), choice_se);
+                RequestBody can1 = RequestBody.create(MediaType.parse("multipart/form-data"), text9);
 
-                Call<Dummy> call = retrofitInterface.postteam(body, fullName, tn, ob, obs, ad, pa, ti, it, st, ed, mt, mc, cg1, cg2);
+                Call<Dummy> call = retrofitInterface.postteam(body, fullName, tn, ob, obs, ad, pa, ti, it, st, ed, mt, mc, cg1, cg2, can1);
 
                 call.enqueue(new Callback<Dummy>() {
                     @Override

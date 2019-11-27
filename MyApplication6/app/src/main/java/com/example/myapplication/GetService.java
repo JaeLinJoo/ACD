@@ -33,7 +33,7 @@ public interface GetService {
 
     @Multipart
     @POST("/postteam")
-    Call<Dummy> postteam(@Part MultipartBody.Part image, @Part("id") RequestBody id, @Part("teamName") RequestBody tn, @Part("objective") RequestBody ob, @Part("objectives") RequestBody obs, @Part("admit") RequestBody ad, @Part("pay") RequestBody pa, @Part("time") RequestBody ti, @Part("intro") RequestBody it, @Part("start") RequestBody st, @Part("end") RequestBody ed, @Part("mentor") RequestBody mt, @Part("member_count") RequestBody mc, @Part("category1") RequestBody cg1, @Part("category2") RequestBody cg2);
+    Call<Dummy> postteam(@Part MultipartBody.Part image, @Part("id") RequestBody id, @Part("teamName") RequestBody tn, @Part("objective") RequestBody ob, @Part("objectives") RequestBody obs, @Part("admit") RequestBody ad, @Part("pay") RequestBody pa, @Part("time") RequestBody ti, @Part("intro") RequestBody it, @Part("start") RequestBody st, @Part("end") RequestBody ed, @Part("mentor") RequestBody mt, @Part("member_count") RequestBody mc, @Part("category1") RequestBody cg1, @Part("category2") RequestBody cg2, @Part("can") RequestBody can);
 
     @GET("/showTeamList/{position}")
     Call<List<TeamList>> showTeamList(@Path("position") String id);
@@ -45,6 +45,23 @@ public interface GetService {
     @POST("/submit")
     Call<Dummy> submitTeam(@Field("teamname") String teamname ,@Field("id") String id, @Field("can") int can, @Field("isMentor") boolean isMentor);
 
-    @GET("/getGroupId/{targetGroup}")
-    Call<GroupInfo> getGroupinfo(@Path("targetGroup") String groupId);
+    @FormUrlEncoded
+    @POST("/getGroupId")
+    Call<TeamInfo> getGroupinfo(@Field("targetGroup") String groupId, @Field("targetID") String id);
+
+    @Multipart
+    @POST("/admit")
+    Call<DummyMessage> getAdmit(@Part MultipartBody.Part image, @Part("id") RequestBody id, @Part("teamname") RequestBody teamname, @Part("objective") RequestBody objective);
+
+    @FormUrlEncoded
+    @POST("/showAdmit")
+    Call<ObjectiveAdmit> showAdmit(@Field("id") String id, @Field("teamname") String teamname, @Field("objective") String objective);
+
+    @FormUrlEncoded
+    @POST("/admitlist")
+    Call<List<AdmitList>> admitlist(@Field("teamname") String teamname);
+
+    @FormUrlEncoded
+    @POST("/calculateObjective")
+    Call<Calculate> calculateObjective(@Field("id") String id, @Field("teamname") String teamname);
 }

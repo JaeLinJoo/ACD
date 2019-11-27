@@ -2,10 +2,13 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,8 +52,8 @@ public class CategoryList extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<TeamList>> call, Response<List<TeamList>> response) {
                 Bitmap bitmap;
-                MyAdapter mMyAdapter = new MyAdapter();
-                MyAdapter mMyAdapter1 = new MyAdapter();
+                final MyAdapter mMyAdapter = new MyAdapter();
+                final MyAdapter mMyAdapter1 = new MyAdapter();
                 if (response.isSuccessful()) {
                     List<TeamList> dummy = response.body();
 
@@ -83,6 +86,14 @@ public class CategoryList extends AppCompatActivity {
                     /* 리스트뷰에 어댑터 등록 */
                     listView1.setAdapter(mMyAdapter);
                     listView2.setAdapter(mMyAdapter1);
+                    listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            SharedPreference.setAttribute(getApplicationContext(), "teamname", mMyAdapter1.getItem(i).getName());
+                            Intent intent = new Intent(getApplicationContext(), ChallengeTeam.class);
+                            startActivity(intent);
+                        }
+                    });
                 } else
                 {
                     Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();

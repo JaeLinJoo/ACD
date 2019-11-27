@@ -15,8 +15,8 @@ team char(200)
 
 create table team(
 name char(20),
-objective char(100),
-objectives char(50),
+objective char(50),
+objectives char(200),
 admit char(10),
 pay int(4),
 time char(20),
@@ -39,4 +39,12 @@ create table teamUserInfo(
 id char(20),
 name char(20),
 can int(4)
+);
+
+create table teamObjective(
+id char(20),
+name char(20),
+objective char(30),
+isadmit char(10),
+img char(50)
 );

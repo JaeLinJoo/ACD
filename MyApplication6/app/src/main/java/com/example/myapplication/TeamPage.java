@@ -2,10 +2,21 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -13,121 +24,113 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class TeamPage extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
-    //    Button btn_check = findViewById(R.id.button_check);
-    TextView tv_subGoals;
 
+    ImageView imageView;
+    TextView teamname, category, can;
+    Button manage, admit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_page);
-
-        tv_subGoals = findViewById(R.id.text_subGoals);
+        String id = SharedPreference.getAttribute(getApplicationContext(),"id");
+        String team = SharedPreference.getAttribute(getApplicationContext(),"teamname");
+        teamname = (TextView) findViewById(R.id.teamname);
+        category = (TextView) findViewById(R.id.category);
+        can = (TextView) findViewById(R.id.can);
+        imageView = (ImageView) findViewById(R.id.imageView4);
+        manage = (Button) findViewById(R.id.button);
+        admit = (Button) findViewById(R.id.button2);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         GetService service = retrofit.create(GetService.class);
-        Call<GroupInfo> call = service.getGroupinfo(SharedPreference.getAttribute(getApplicationContext(), "teamname"));    //이거 클릭한 팀아이디 넣도록 변경
-        call.enqueue(dummies);
+        Call<TeamInfo> call = service.getGroupinfo(team, id);
+        Call<Calculate> call1 = service.calculateObjective(id, team);
+        call.enqueue(new Callback<TeamInfo>(){
+            @Override
+            public void onResponse(Call<TeamInfo> call, Response<TeamInfo> response) {
+                if (response.isSuccessful()) {
+
+                    TeamInfo dummy = response.body();
+                    teamname.setText(SharedPreference.getAttribute(getApplicationContext(),"teamname"));
+                    category.setText(dummy.category);
+                    can.setText(Integer.toString(dummy.can));
+
+                    String buffer = dummy.img;
+
+                    byte[] a = string2Bin(buffer);
+                    writeToFile("profile.jpg", a);
+
+                    File file = new File(getApplicationContext().getFilesDir().toString()+"/profile.jpg");
+                    if(file.exists()){
+                        String filepath = file.getPath();
+                        Bitmap bitmap = BitmapFactory.decodeFile(filepath);
+                        imageView.setImageBitmap(bitmap);
+                    }
+
+                    SharedPreference.setAttribute(getApplicationContext(),"objs", dummy.objectives);
+
+                    String[] obj = dummy.objectives.split(";");
 
 
-//        btn_check.setOnClickListener((v) -> {
-//            Intent intent = new Intent(getApplicationContext(), CheckPage.class);
-//            startActivity(intent);
-//        });
-    }
-
-    Callback dummies = new Callback<GroupInfo>() {
-        @Override
-        public void onResponse(Call<GroupInfo> call, Response<GroupInfo> response) {
-            if (response.isSuccessful()) {
-                GroupInfo dummy = response.body();
-                ArrayList<String> groupUserNames = new ArrayList<>();
-                Collections.addAll(groupUserNames, dummy.user.split(";"));
-                Log.e("유저이름들", groupUserNames.toString());
-
-                String thisUserName = SharedPreference.getAttribute(getApplicationContext(), "id");
-                Log.e("지금 유저이름", thisUserName);
-
-                String[] checkNumArray = dummy.checknum.split(";");
-                int[] allCheckNum = new int[checkNumArray.length];
-                int sumAllCheckNum = 0;
-                for (int i = 0; i < checkNumArray.length; i++) {
-                    allCheckNum[i] = Integer.parseInt(checkNumArray[i]);
-                    sumAllCheckNum += allCheckNum[i];
+                } else
+                {
+                    Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
                 }
-                int groupPeriod = dummy.period;
-
-                int thisCheckNum = allCheckNum[groupUserNames.indexOf(thisUserName)];
-                Log.e("안에거만?", "" + groupUserNames.indexOf(thisUserName));
-                Log.e("출석 몇번?", "" + thisCheckNum);
-                int leng = checkNumArray.length;
-                tv_subGoals.setText("" + groupPeriod);
-
-                drawBarChart(sumAllCheckNum, thisCheckNum, groupPeriod, leng);
             }
-        }
+            @Override
+            public void onFailure(Call<TeamInfo> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
+            }
+        });
+        call1.enqueue(new Callback<Calculate>() {
+            @Override
+            public void onResponse(Call<Calculate> call, Response<Calculate> response) {
+                if(response.isSuccessful()){
+                    Calculate dummy = response.body();
+                }
+            }
 
-        @Override
-        public void onFailure(Call call, Throwable t) {
-            Toast.makeText(TeamPage.this, "팀 아이디로 못불러왔나봄", Toast.LENGTH_SHORT).show();
-        }
-    };
+            @Override
+            public void onFailure(Call<Calculate> call, Throwable t) {
 
-    private void drawBarChart(float sumAllCheckNum, float thisCheckNum, float groupPeriod, float len) {
-        Log.e("들어온 값들이?", "" + sumAllCheckNum + "" + thisCheckNum + "" + groupPeriod + "" + len);
-
-        BarChart barChart = (BarChart) findViewById(R.id.chart);
-        float solo_출석 = (thisCheckNum / groupPeriod) * 100;
-        float team_출석 = ((sumAllCheckNum / len) / groupPeriod) * 100;
-
-        ArrayList<String> labelList = new ArrayList<>();
-        labelList.add("개인출석률");
-        Log.e("그래서 개인  얼마?", "" + solo_출석);
-        labelList.add("팀출석률");
-        Log.e("그래서 팀  얼마?", "" + team_출석);
-        labelList.add("개인달성률");
-        labelList.add("팀달성률");
-
-        ArrayList<Integer> valList = new ArrayList<>();
-        valList.add((int)solo_출석);
-        valList.add((int)team_출석);
-        valList.add(25);
-        valList.add(25);
-
-        ArrayList<BarEntry> entries = new ArrayList<>();
-
-        for (int i = 0; i < valList.size(); i++) {
-            entries.add(new BarEntry((Integer) valList.get(i), i));
-        }
-
-        BarDataSet depenses = new BarDataSet(entries, "달성률");
-        depenses.setAxisDependency(YAxis.AxisDependency.LEFT);
-
-        ArrayList<String> labels = new ArrayList<>();
-        for (int i = 0; i < labelList.size(); i++) {
-            labels.add((String) labelList.get(i));
-        }
-        BarData data = new BarData(labels, depenses);
-        depenses.setColors(ColorTemplate.COLORFUL_COLORS);
-
-        barChart.getAxisLeft().setStartAtZero(true);
-        barChart.setData(data);
-        barChart.animateXY(1000, 1000);
-        barChart.invalidate();
+            }
+        });
+        admit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AdmitPage.class);
+                startActivity(intent);
+            }
+        });
     }
 
+    public byte[] string2Bin(String str){
+        byte[] result = new byte[str.length()];
+        for(int i = 0; i<str.length(); i++){
+            result[i] = (byte)Character.codePointAt(str, i);
+        }
+        return result;
+    }
+
+    public void writeToFile(String filename, byte[] pData) {
+        if(pData == null){
+            return;
+        }
+        int lByteArraySize = pData.length;
+
+        try{
+            File lOutFile = new File(getApplicationContext().getFilesDir().toString()+"/"+filename);
+            FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
+            lFileOutputStream.flush();
+            lFileOutputStream.write(pData);
+            lFileOutputStream.close();
+        }catch(Throwable e){
+            e.printStackTrace(System.out);
+        }
+    }
 }

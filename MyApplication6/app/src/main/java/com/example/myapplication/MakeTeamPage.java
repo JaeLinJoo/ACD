@@ -12,6 +12,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -24,6 +25,7 @@ import android.widget.ImageView;
 
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,7 +69,7 @@ public class MakeTeamPage extends AppCompatActivity {
     RadioButton yes, no;
     ImageView imageView;
     ListView listView;
-
+    ScrollView scrollView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +91,7 @@ public class MakeTeamPage extends AppCompatActivity {
         yes = (RadioButton) findViewById(R.id.radioButton_mento_yes);
         no = (RadioButton) findViewById(R.id.radioButton_mento_no);
         imageView = (ImageView) findViewById(R.id.imageView);
+        scrollView = (ScrollView) findViewById(R.id.scrollView);
 
         final Spinner spin_count = (Spinner) findViewById(R.id.spinner_count);
         countspin = ArrayAdapter.createFromResource(getApplicationContext(),R.array.spinner_count,android.R.layout.simple_spinner_dropdown_item);
@@ -97,6 +100,13 @@ public class MakeTeamPage extends AppCompatActivity {
         num = 0;
         adapter = new ListAdapter();
         listView.setAdapter(adapter);
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
 
         spin_count.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -252,7 +262,6 @@ public class MakeTeamPage extends AppCompatActivity {
             //버튼 클릭시 이벤트입니다.
             @Override
             public void onClick(View view) {
-
                 Toast.makeText(getApplicationContext(), choice_do + "=" + choice_se, Toast.LENGTH_SHORT).show();
                 //선택된 대분류 와 소분류를 Toast로 화면에 보여줍니다.
             }
@@ -274,86 +283,93 @@ public class MakeTeamPage extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Log.e("정보",Integer.toString(member_count));
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(BASE)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-                if(yes.isChecked()){
-                    mentor = "1";
+                if(can.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(),"캔을 입력해 주세요.",Toast.LENGTH_LONG).show();
                 }
-                if(no.isChecked()){
-                    mentor = "0";
+                else if(Integer.parseInt(can.getText().toString())>Integer.parseInt(SharedPreference.getAttribute(getApplicationContext(),"can"))){
+                    Toast.makeText(getApplicationContext(),"캔이 부족합니다!",Toast.LENGTH_LONG).show();
                 }
-                String text1 = teamname.getText().toString();
-                String text2 = objective.getText().toString();
-                String text4 = admit.getText().toString();
-                String text5 = pay.getText().toString();
-                String text6 = time.getText().toString();
-                String text7 = intro.getText().toString();
-                String text8 = Integer.toString(member_count);
-                String text9 = can.getText().toString();
-
-                ArrayList<String> s = new ArrayList<String>();
-                for(int i=0;i<listViewItemList.size();i++){
-                    s.add(listViewItemList.get(i).getName());
-                }
-                String text3="";
-                for (int i=0;i<s.size();i++){
-                    if(s.get(i)==""){
-                        continue;
+                else{
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(BASE)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+                    if(yes.isChecked()){
+                        mentor = "1";
                     }
-                    if(i==0){
-                        text3 = text3 + s.get(i);
+                    if(no.isChecked()){
+                        mentor = "0";
                     }
-                    else{
-                        text3 = text3+";"+s.get(i);
+                    String text1 = teamname.getText().toString();
+                    String text2 = objective.getText().toString();
+                    String text4 = admit.getText().toString();
+                    String text5 = pay.getText().toString();
+                    String text6 = time.getText().toString();
+                    String text7 = intro.getText().toString();
+                    String text8 = Integer.toString(member_count);
+                    String text9 = can.getText().toString();
+
+                    ArrayList<String> s = new ArrayList<String>();
+                    for(int i=0;i<listViewItemList.size();i++){
+                        s.add(listViewItemList.get(i).getName());
                     }
-                }
-
-                File imageBytes = new File(getApplicationContext().getCacheDir().toString()+"/teamtemp.jpg");
-                GetService retrofitInterface = retrofit.create(GetService.class);
-                RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes);
-                MultipartBody.Part body = MultipartBody.Part.createFormData("image", "common.jpg", requestFile);
-
-                String id = SharedPreference.getAttribute(getApplicationContext(),"id");
-                RequestBody fullName = RequestBody.create(MediaType.parse("multipart/form-data"), id);
-                RequestBody tn = RequestBody.create(MediaType.parse("multipart/form-data"), text1);
-                RequestBody ob = RequestBody.create(MediaType.parse("multipart/form-data"), text2);
-                RequestBody obs = RequestBody.create(MediaType.parse("multipart/form-data"), text3);
-                RequestBody ad = RequestBody.create(MediaType.parse("multipart/form-data"), text4);
-                RequestBody pa = RequestBody.create(MediaType.parse("multipart/form-data"), text5);
-                RequestBody ti = RequestBody.create(MediaType.parse("multipart/form-data"), text6);
-                RequestBody it = RequestBody.create(MediaType.parse("multipart/form-data"), text7);
-                RequestBody st = RequestBody.create(MediaType.parse("multipart/form-data"), start);
-                RequestBody ed = RequestBody.create(MediaType.parse("multipart/form-data"), end);
-                RequestBody mt = RequestBody.create(MediaType.parse("multipart/form-data"), mentor);
-                RequestBody mc = RequestBody.create(MediaType.parse("multipart/form-data"), text8);
-                RequestBody cg1 = RequestBody.create(MediaType.parse("multipart/form-data"), choice_do);
-                RequestBody cg2 = RequestBody.create(MediaType.parse("multipart/form-data"), choice_se);
-                RequestBody can1 = RequestBody.create(MediaType.parse("multipart/form-data"), text9);
-
-                Call<Dummy> call = retrofitInterface.postteam(body, fullName, tn, ob, obs, ad, pa, ti, it, st, ed, mt, mc, cg1, cg2, can1);
-
-                call.enqueue(new Callback<Dummy>() {
-                    @Override
-                    public void onResponse(Call<Dummy> call, retrofit2.Response<Dummy> response) {
-                        Dummy dummy = response.body();
-                        if(dummy.isCheck()){
-                            Toast.makeText(getApplicationContext(), "소모임 만들기 성공!", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getApplicationContext(), MainPage.class);
-                            startActivity(intent);
+                    String text3="";
+                    for (int i=0;i<s.size();i++){
+                        if(s.get(i)==""){
+                            continue;
+                        }
+                        if(i==0){
+                            text3 = text3 + s.get(i);
                         }
                         else{
-                            Toast.makeText(getApplicationContext(), "이미 존재하는 소모임 이름입니다!", Toast.LENGTH_LONG).show();
+                            text3 = text3+";"+s.get(i);
                         }
                     }
 
-                    @Override
-                    public void onFailure(Call<Dummy> call, Throwable t) {
+                    File imageBytes = new File(getApplicationContext().getCacheDir().toString()+"/teamtemp.jpg");
+                    GetService retrofitInterface = retrofit.create(GetService.class);
+                    RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes);
+                    MultipartBody.Part body = MultipartBody.Part.createFormData("image", "common.jpg", requestFile);
 
-                    }
-                });
+                    String id = SharedPreference.getAttribute(getApplicationContext(),"id");
+                    RequestBody fullName = RequestBody.create(MediaType.parse("multipart/form-data"), id);
+                    RequestBody tn = RequestBody.create(MediaType.parse("multipart/form-data"), text1);
+                    RequestBody ob = RequestBody.create(MediaType.parse("multipart/form-data"), text2);
+                    RequestBody obs = RequestBody.create(MediaType.parse("multipart/form-data"), text3);
+                    RequestBody ad = RequestBody.create(MediaType.parse("multipart/form-data"), text4);
+                    RequestBody pa = RequestBody.create(MediaType.parse("multipart/form-data"), text5);
+                    RequestBody ti = RequestBody.create(MediaType.parse("multipart/form-data"), text6);
+                    RequestBody it = RequestBody.create(MediaType.parse("multipart/form-data"), text7);
+                    RequestBody st = RequestBody.create(MediaType.parse("multipart/form-data"), start);
+                    RequestBody ed = RequestBody.create(MediaType.parse("multipart/form-data"), end);
+                    RequestBody mt = RequestBody.create(MediaType.parse("multipart/form-data"), mentor);
+                    RequestBody mc = RequestBody.create(MediaType.parse("multipart/form-data"), text8);
+                    RequestBody cg1 = RequestBody.create(MediaType.parse("multipart/form-data"), choice_do);
+                    RequestBody cg2 = RequestBody.create(MediaType.parse("multipart/form-data"), choice_se);
+                    RequestBody can1 = RequestBody.create(MediaType.parse("multipart/form-data"), text9);
+
+                    Call<Dummy> call = retrofitInterface.postteam(body, fullName, tn, ob, obs, ad, pa, ti, it, st, ed, mt, mc, cg1, cg2, can1);
+
+                    call.enqueue(new Callback<Dummy>() {
+                        @Override
+                        public void onResponse(Call<Dummy> call, retrofit2.Response<Dummy> response) {
+                            Dummy dummy = response.body();
+                            if(dummy.isCheck()){
+                                Toast.makeText(getApplicationContext(), "소모임 만들기 성공!", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                                startActivity(intent);
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(), "이미 존재하는 소모임 이름입니다!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Dummy> call, Throwable t) {
+
+                        }
+                    });
+                }
             }
 
         });

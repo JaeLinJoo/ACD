@@ -6,8 +6,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ public class ChallengeTeam extends AppCompatActivity {
     private TextView category1, category2,teamName_up,teamName , period, member_count, time, obj, admit,intro;
     private ListView objlist,admitImglist,attendImglist;
     private ImageView teamImg;
+    private ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,7 @@ public class ChallengeTeam extends AppCompatActivity {
         admitImglist = (ListView)findViewById(R.id.listView_admit);
         //출석 이미지 리스트뷰
         attendImglist=(ListView)findViewById(R.id.listView_attend);
+        scrollView=(ScrollView)findViewById(R.id.scrollView);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)
@@ -149,6 +154,13 @@ public class ChallengeTeam extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<AdmitList>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
+            }
+        });
+        admitImglist.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
             }
         });
     }

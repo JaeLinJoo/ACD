@@ -67,7 +67,6 @@
                     android:layout_width="315dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:text="'" />
             </LinearLayout>
 
@@ -144,8 +143,7 @@
                     android:id="@+id/isadmit"
                     android:layout_width="278dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center" />
+                    android:layout_weight="1" />
             </LinearLayout>
 
         </LinearLayout>

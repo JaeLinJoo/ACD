@@ -122,36 +122,44 @@ public class JoinTeam extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 String can1 = can.getText().toString();
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(BASE)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-                GetService service = retrofit.create(GetService.class);
+                if(can1.equals("")){
+                    Toast.makeText(getApplicationContext(),"캔을 입력해 주세요.",Toast.LENGTH_LONG).show();
+                }
+                else if(Integer.parseInt(can1)>Integer.parseInt(SharedPreference.getAttribute(getApplicationContext(),"can"))){
+                    Toast.makeText(getApplicationContext(),"캔이 부족합니다!",Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(BASE)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+                    GetService service = retrofit.create(GetService.class);
 
-                Call<Dummy> call = service.submitTeam(SharedPreference.getAttribute(getApplicationContext(),"teamname"),SharedPreference.getAttribute(getApplicationContext(),"id"), Integer.parseInt(can1), mentor_submit);
-                call.enqueue(new Callback<Dummy>(){
-                    @Override
-                    public void onResponse(Call<Dummy> call, Response<Dummy> response) {
-                        if (response.isSuccessful()) {
-                            Dummy dummy = response.body();
-                            if(dummy.isCheck()){
-                                Toast.makeText(getApplicationContext(),"신청이 완료되었습니다!", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(getApplicationContext(), MainPage.class);
-                                startActivity(intent);
+                    Call<DummyMessage> call = service.submitTeam(SharedPreference.getAttribute(getApplicationContext(),"teamname"),SharedPreference.getAttribute(getApplicationContext(),"id"), Integer.parseInt(can1), mentor_submit);
+                    call.enqueue(new Callback<DummyMessage>(){
+                        @Override
+                        public void onResponse(Call<DummyMessage> call, Response<DummyMessage> response) {
+                            if (response.isSuccessful()) {
+                                DummyMessage dummy = response.body();
+                                if(dummy.check){
+                                    Toast.makeText(getApplicationContext(),"신청이 완료되었습니다!", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                                    startActivity(intent);
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(), dummy.message, Toast.LENGTH_LONG).show();
+                                }
+                            } else
+                            {
+                                Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
                             }
-                            else{
-                                Toast.makeText(getApplicationContext(),"신청 실패!", Toast.LENGTH_LONG).show();
-                            }
-                        } else
-                        {
-                            Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
                         }
-                    }
-                    @Override
-                    public void onFailure(Call<Dummy> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<DummyMessage> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
         });
 

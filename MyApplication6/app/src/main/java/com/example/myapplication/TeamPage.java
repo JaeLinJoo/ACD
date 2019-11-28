@@ -6,17 +6,22 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TeamPage extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
-
+    int objval1, objval2;
     ImageView imageView;
     TextView teamname, category, can;
     Button manage, admit;
@@ -42,6 +47,7 @@ public class TeamPage extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView4);
         manage = (Button) findViewById(R.id.button);
         admit = (Button) findViewById(R.id.button2);
+        final BarChart barChart = (BarChart) findViewById(R.id.chart);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)
@@ -92,6 +98,38 @@ public class TeamPage extends AppCompatActivity {
             public void onResponse(Call<Calculate> call, Response<Calculate> response) {
                 if(response.isSuccessful()){
                     Calculate dummy = response.body();
+                    objval1 = dummy.individual;
+                    objval2 = dummy.group;
+                    ArrayList<String> labelList=new ArrayList<>();
+                    labelList.add("개인 출석률");
+                    labelList.add("팀 출석률");
+                    labelList.add("개인 달성률");
+                    labelList.add("팀 달성률");
+
+                    ArrayList<Integer> valList=new ArrayList<>();
+                    valList.add(50);
+                    valList.add(50);
+                    valList.add(objval1);
+                    valList.add(objval2);
+
+                    ArrayList<BarEntry> entries = new ArrayList<>();
+                    for (int i = 0; i < valList.size();i++){
+                        entries.add(new BarEntry((Integer) valList.get(i),i));
+                    }
+
+                    BarDataSet depenses=new BarDataSet(entries,"달성률인가");
+                    depenses.setAxisDependency(YAxis.AxisDependency.LEFT);
+
+                    ArrayList<String>labels=new ArrayList<>();
+                    for(int i =0;i<labelList.size();i++){
+                        labels.add((String)labelList.get(i));
+                    }
+                    BarData data=new BarData(labels,depenses);
+                    depenses.setColors(ColorTemplate.COLORFUL_COLORS);
+
+                    barChart.setData(data);
+                    barChart.animateXY(1000,1000);
+                    barChart.invalidate();
                 }
             }
 
@@ -107,6 +145,7 @@ public class TeamPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     public byte[] string2Bin(String str){

@@ -173,7 +173,7 @@ app.post('/postteam',multer({storage: storage}).single('image'),function(req, re
     var count = parseInt(req.body.member_count);
     var can = parseInt(req.body.can);
     var ss = req.body.objectives.split(';');
-    connection.query('SELECT * from team where name = ?',[req.body.teamtheme],function(err, rows){
+    connection.query('SELECT * from team where name = ?',[req.body.teamName],function(err, rows){
         if(!err){
             if(!rows[0]){
                 connection.query('Insert into team(name, objective, objectives, admit, pay, time, intro, start, end, mentor, member_count, category1, category2, img, leader, user, state, current) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',[req.body.teamName, req.body.objective, req.body.objectives, req.body.admit, pay, req.body.time, req.body.intro, req.body.start, req.body.end, req.body.mentor, count, req.body.category1, req.body.category2, req.file.filename, id, id, '1', 1]);
@@ -181,6 +181,11 @@ app.post('/postteam',multer({storage: storage}).single('image'),function(req, re
                 for(var i = 0; i < ss.length; i++){
                     connection.query('Insert into teamObjective(id, name, objective, isadmit, img) values(?, ?, ?, ?, ?)',[id, req.body.teamName, ss[i], '인증 필요', 'null']);
                 }
+                connection.query('SELECT * from tb where name=?',[id],function(err, rows){
+                    if(!err){
+                        connection.query('UPDATE tb SET can = ? where name = ?',[rows[0].can - can, id]);
+                    }
+                })
                 result = {check: true};
             }
             else{
@@ -237,6 +242,7 @@ app.get('/showTeamList/:position',function(req, res){
                 var category1 = rows[i].category1;
                 var category2 = rows[i].category2;
                 var user = rows[i].user;
+                var mentor = rows[i].pay.toString();
                 if(rows[i].state=='1'){
                     state = '모집중';
                 }
@@ -250,7 +256,7 @@ app.get('/showTeamList/:position',function(req, res){
                 data = fs.readFileSync(__dirname +"\\uploads\\" + rows[i].img);
                 str = bin2String(data);
                 
-                result.push({name: name, content: content, mainimg: str, category1: category1, category2: category2, state: state, count: count, user: user});
+                result.push({name: name, content: content, mainimg: str, category1: category1, category2: category2, state: state, count: count, user: user, mentor_pay: mentor, mentor: rows[i].mentor});
             }
             res.json(result);
         }
@@ -294,8 +300,19 @@ app.post('/submit',function(req, res){
 
     connection.query('SELECT * from team where name = ?',[req.body.teamname], function(err, rows){
         if(!err){
+            var lock = 0;
+            var n = rows[0].user.split(';');
+            for(var i = 0;i<n.length;i++){
+                if(n[i]==id){
+                    lock = 1;
+                }
+            }
             if(rows[0].mentor == '0' && req.body.isMentor==true){//멘토가 필요없으면 false
-                result = {check: false};
+                result = {check: false, message: '멘토가 필요없는 소모임 입니다!'};
+                res.json(result);
+            }
+            else if(lock == 1){//이미 팀에 속하면 false
+                result = {check: false, message: '이미 소모임에 가입 하셨습니다!' };
                 res.json(result);
             }
             else{
@@ -332,12 +349,18 @@ app.post('/submit',function(req, res){
                     for(var i =0; i<objs.length; i++){
                         connection.query('INSERT into teamObjective(id, name, objective, isadmit, img) values (?, ?, ?, ?, ?)',[id, req.body.teamname, objs[i], '인증 필요', 'null']);
                     }
+
+                    connection.query('SELECT * from tb where name=?',[id],function(err, rows){//캔 차감
+                        if(!err){
+                            connection.query('UPDATE tb SET can = ? where name = ?',[rows[0].can - req.body.can, id]);
+                        }
+                    })
                     
                     result = {check: true};
                     res.json(result);
                 }
                 else{//팀 인원이 꽉찼을 경우
-                    result = {check: false};
+                    result = {check: false, message: '소모임 인원이 꽉찼습니다.'};
                     res.json(result);
                 }
             }
@@ -426,6 +449,16 @@ app.post('/calculateObjective',function(req, res){
     })
 })
 
+app.get('/getcan/:id',function(req, res){
+    var id = req.params.id;
+    var result;
+    connection.query('SELECT * from tb where name=?',[id],function(err, rows){
+        if(!err){
+            result={can: rows[0].can}
+            res.json(result);
+        }
+    })
+})
  
 app.listen(3002, function() {
         console.log('Example app listend on port 3002!');

@@ -43,7 +43,7 @@ public interface GetService {
 
     @FormUrlEncoded
     @POST("/submit")
-    Call<Dummy> submitTeam(@Field("teamname") String teamname ,@Field("id") String id, @Field("can") int can, @Field("isMentor") boolean isMentor);
+    Call<DummyMessage> submitTeam(@Field("teamname") String teamname ,@Field("id") String id, @Field("can") int can, @Field("isMentor") boolean isMentor);
 
     @FormUrlEncoded
     @POST("/getGroupId")
@@ -64,4 +64,7 @@ public interface GetService {
     @FormUrlEncoded
     @POST("/calculateObjective")
     Call<Calculate> calculateObjective(@Field("id") String id, @Field("teamname") String teamname);
+
+    @GET("/getcan/{id}")
+    Call<MainPage.Getcan> getcan(@Path("id") String id);
 }

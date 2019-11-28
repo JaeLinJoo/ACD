@@ -6,11 +6,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -23,23 +21,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CategoryList extends AppCompatActivity {
+public class MentorPage extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
-    TextView cg;
-    ListView listView1, listView2;
+    ListView mentorlist ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_list);
+        setContentView(R.layout.activity_mentor_page);
 
-        listView1 = (ListView) findViewById(R.id.list1);
-        listView2 = (ListView) findViewById(R.id.list2);
-        cg = (TextView) findViewById(R.id.category);
+        mentorlist = (ListView)findViewById(R.id.mentorlist);
 
-        cg.setText(SharedPreference.getAttribute(getApplicationContext(),"category1"));
-        dataSetting();
-    }
-    private void dataSetting(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -52,13 +43,12 @@ public class CategoryList extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<TeamList>> call, Response<List<TeamList>> response) {
                 Bitmap bitmap;
-                final MyAdapter mMyAdapter = new MyAdapter();
-                final MyAdapter mMyAdapter1 = new MyAdapter();
+                final MyMentorAdapter mMyAdapter = new MyMentorAdapter();
                 if (response.isSuccessful()) {
                     List<TeamList> dummy = response.body();
 
                     for(TeamList d:dummy){
-                        if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1")) && d.getState().equals("모집중")){
+                        if(d.getState().equals("모집중") && d.getMentor().equals("1")){
                             byte[] a = string2Bin(d.getMainimg());
                             writeToFile("teamprofile.jpg", a);
 
@@ -67,38 +57,17 @@ public class CategoryList extends AppCompatActivity {
                             if(file.exists()){
                                 String filepath = file.getPath();
                                 bitmap = BitmapFactory.decodeFile(filepath);
-                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
-                            }
-                        }
-                        if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1")) && d.getState().equals("진행중")){
-                            byte[] a = string2Bin(d.getMainimg());
-                            writeToFile("teamprofile.jpg", a);
-
-                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
-
-                            if(file.exists()){
-                                String filepath = file.getPath();
-                                bitmap = BitmapFactory.decodeFile(filepath);
-                                mMyAdapter1.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent(), d.getMentor_pay(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
                             }
                         }
                     }
                     /* 리스트뷰에 어댑터 등록 */
-                    listView1.setAdapter(mMyAdapter);
-                    listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    mentorlist.setAdapter(mMyAdapter);
+                    mentorlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            SharedPreference.setAttribute(getApplicationContext(), "teamname", mMyAdapter1.getItem(i).getName());
+                            SharedPreference.setAttribute(getApplicationContext(), "teamname", mMyAdapter.getItem(i).getName());
                             Intent intent = new Intent(getApplicationContext(), JoinTeam.class);
-                            startActivity(intent);
-                        }
-                    });
-                    listView2.setAdapter(mMyAdapter1);
-                    listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            SharedPreference.setAttribute(getApplicationContext(), "teamname", mMyAdapter1.getItem(i).getName());
-                            Intent intent = new Intent(getApplicationContext(), ChallengeTeam.class);
                             startActivity(intent);
                         }
                     });
@@ -113,7 +82,6 @@ public class CategoryList extends AppCompatActivity {
             }
         });
     }
-
     public byte[] string2Bin(String str){
         byte[] result = new byte[str.length()];
         for(int i = 0; i<str.length(); i++){
@@ -127,7 +95,7 @@ public class CategoryList extends AppCompatActivity {
             return;
         }
         int lByteArraySize = pData.length;
-        //Log.e("asdvggg",getApplicationContext().getFilesDir().toString()+"/"+filename);
+
         try{
             File lOutFile = new File(getApplicationContext().getFilesDir().toString()+"/"+filename);
             FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);

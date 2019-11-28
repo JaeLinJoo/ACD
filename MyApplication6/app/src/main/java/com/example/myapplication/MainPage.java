@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -25,6 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainPage extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
 
+    ScrollView scrollView;
     Button ret, maketeam, mentor, mypage, sport, music, lang, human, craft, etc;
     ListView listView;
 
@@ -44,6 +48,7 @@ public class MainPage extends AppCompatActivity {
         human = (Button) findViewById(R.id.human);
         craft = (Button) findViewById(R.id.craft);
         etc = (Button) findViewById(R.id.etc);
+        scrollView = (ScrollView) findViewById(R.id.scrollView3);
 
         dataSetting();
 
@@ -124,6 +129,45 @@ public class MainPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mentor.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MentorPage.class);
+                startActivity(intent);
+            }
+        });
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        GetService service = retrofit.create(GetService.class);
+
+        Call<Getcan> call = service.getcan(SharedPreference.getAttribute(getApplicationContext(),"id"));
+        call.enqueue(new Callback<Getcan>(){
+            @Override
+            public void onResponse(Call<Getcan> call, Response<Getcan> response) {
+                if (response.isSuccessful()) {
+                    Getcan dummy = response.body();
+                    SharedPreference.setAttribute(getApplicationContext(),"can", Integer.toString(dummy.can));
+                    Log.e("정보",Integer.toString(dummy.can));
+                } else
+                {
+                    Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<Getcan> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void dataSetting(){
@@ -144,15 +188,17 @@ public class MainPage extends AppCompatActivity {
                     List<TeamList> dummy = response.body();
 
                     for(TeamList d:dummy){
-                        byte[] a = string2Bin(d.getMainimg());
-                        writeToFile("teamprofile.jpg", a);
+                        if(d.getState().equals("모집중")){
+                            byte[] a = string2Bin(d.getMainimg());
+                            writeToFile("teamprofile.jpg", a);
 
-                        File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
+                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
 
-                        if(file.exists()){
-                            String filepath = file.getPath();
-                            bitmap = BitmapFactory.decodeFile(filepath);
-                            mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(), d.getCategory1()+" / "+d.getCategory2());
+                            if(file.exists()){
+                                String filepath = file.getPath();
+                                bitmap = BitmapFactory.decodeFile(filepath);
+                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(), d.getCategory1()+" / "+d.getCategory2());
+                            }
                         }
                     }
                     /* 리스트뷰에 어댑터 등록 */
@@ -202,4 +248,10 @@ public class MainPage extends AppCompatActivity {
             e.printStackTrace(System.out);
         }
     }
+
+    public class Getcan{
+        int can;
+    }
 }
+
+

@@ -9,6 +9,8 @@ public class TeamList {
     private String state;
     private String count;
     private String user;
+    private String mentor_pay;
+    private String mentor;
 
     public String getName() {
         return name;
@@ -42,4 +44,11 @@ public class TeamList {
         return user;
     }
 
+    public String getMentor_pay() {
+        return mentor_pay;
+    }
+
+    public String getMentor() {
+        return mentor;
+    }
 }

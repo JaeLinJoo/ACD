@@ -1,7 +1,5 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -72,17 +72,12 @@ public class AdmitPage extends AppCompatActivity {
                             objective.setText(SharedPreference.getAttribute(getApplicationContext(),"objective"));
                             isadmit.setText(dummy.isadmit);
                             if(dummy.img != null){
-                                String buffer = dummy.img;
+                                byte[] b = new byte[dummy.img.length];
 
-                                byte[] a = string2Bin(buffer);
-                                writeToFile("profile.jpg", a);
-
-                                File file = new File(getApplicationContext().getFilesDir().toString()+"/profile.jpg");
-                                if(file.exists()){
-                                    String filepath = file.getPath();
-                                    Bitmap bitmap = BitmapFactory.decodeFile(filepath);
-                                    imageView.setImageBitmap(bitmap);
+                                for(int i =0;i<dummy.img.length;i++){
+                                    b[i] = (byte)dummy.img[i];
                                 }
+                                imageView.setImageBitmap(BitmapFactory.decodeByteArray(b, 0, b.length));
                             }
                             else{
                                 imageView.setImageResource(0);
@@ -188,29 +183,5 @@ public class AdmitPage extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
             }
         });
-    }
-    public byte[] string2Bin(String str){
-        byte[] result = new byte[str.length()];
-        for(int i = 0; i<str.length(); i++){
-            result[i] = (byte)Character.codePointAt(str, i);
-        }
-        return result;
-    }
-
-    public void writeToFile(String filename, byte[] pData) {
-        if(pData == null){
-            return;
-        }
-        int lByteArraySize = pData.length;
-
-        try{
-            File lOutFile = new File(getApplicationContext().getFilesDir().toString()+"/"+filename);
-            FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
-            lFileOutputStream.flush();
-            lFileOutputStream.write(pData);
-            lFileOutputStream.close();
-        }catch(Throwable e){
-            e.printStackTrace(System.out);
-        }
     }
 }

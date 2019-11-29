@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
 
     EditText position, password;
-    Button getButton, register;
+    Button getButton, register, test;
     TextView info;
     String text,text1;
     @Override
@@ -33,11 +33,19 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         getButton = (Button) findViewById(R.id.login);
         register = (Button) findViewById(R.id.register);
+        test = (Button)findViewById(R.id.button5);
 
         register.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(getApplicationContext(), register.class);
+                startActivity(intent);
+            }
+        });
+        test.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), TestPage.class);
                 startActivity(intent);
             }
         });

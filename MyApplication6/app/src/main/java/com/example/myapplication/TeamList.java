@@ -3,7 +3,7 @@ package com.example.myapplication;
 public class TeamList {
     private String name;
     private String content;
-    private String mainimg;
+    private int[] mainimg;
     private String category1;
     private String category2;
     private String state;
@@ -20,7 +20,7 @@ public class TeamList {
         return content;
     }
 
-    public String getMainimg() {
+    public int[] getMainimg() {
         return mainimg;
     }
 

@@ -4,5 +4,5 @@ public class TeamInfo {
     String category;
     int can;
     String objectives;
-    String img;
+    int[] img;
 }

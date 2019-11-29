@@ -1,11 +1,8 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,8 +11,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -98,17 +95,12 @@ public class ChallengeTeam extends AppCompatActivity {
                     }
                     objlist.setAdapter(mMyAdapter);
                     if(dummy.img != null){
-                        String buffer = dummy.img;
+                        byte[] b = new byte[dummy.img.length];
 
-                        byte[] a = string2Bin(buffer);
-                        writeToFile("profile.jpg", a);
-
-                        File file = new File(getApplicationContext().getFilesDir().toString()+"/profile.jpg");
-                        if(file.exists()){
-                            String filepath = file.getPath();
-                            Bitmap bitmap = BitmapFactory.decodeFile(filepath);
-                            teamImg.setImageBitmap(bitmap);
+                        for(int i =0;i<dummy.img.length;i++){
+                            b[i] = (byte)dummy.img[i];
                         }
+                        teamImg.setImageBitmap(BitmapFactory.decodeByteArray(b, 0, b.length));
                     }
                 } else
                 {
@@ -132,17 +124,14 @@ public class ChallengeTeam extends AppCompatActivity {
 
                     for(int i =0;i<dummy.size();i++){
                         if(dummy.get(i).img !=null){
-                            Log.e("정보",dummy.get(i).img);
-                            byte[] a = string2Bin(dummy.get(i).img);
-                            writeToFile("teamprofile.jpg", a);
+                            byte[] b = new byte[dummy.get(i).img.length];
 
-                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
-
-                            if(file.exists()){
-                                String filepath = file.getPath();
-                                bitmap = BitmapFactory.decodeFile(filepath);
-                                mMyAdapter.addItem(bitmap, dummy.get(i).id, dummy.get(i).objective);
+                            for(int x =0;x<b.length;x++){
+                                b[x] = (byte)dummy.get(i).img[x];
                             }
+
+                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), dummy.get(i).id, dummy.get(i).objective);
+
                         }
                     }
                     admitImglist.setAdapter(mMyAdapter);
@@ -163,29 +152,5 @@ public class ChallengeTeam extends AppCompatActivity {
                 return false;
             }
         });
-    }
-    public byte[] string2Bin(String str){
-        byte[] result = new byte[str.length()];
-        for(int i = 0; i<str.length(); i++){
-            result[i] = (byte)Character.codePointAt(str, i);
-        }
-        return result;
-    }
-
-    public void writeToFile(String filename, byte[] pData) {
-        if(pData == null){
-            return;
-        }
-        int lByteArraySize = pData.length;
-
-        try{
-            File lOutFile = new File(getApplicationContext().getFilesDir().toString()+"/"+filename);
-            FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
-            lFileOutputStream.flush();
-            lFileOutputStream.write(pData);
-            lFileOutputStream.close();
-        }catch(Throwable e){
-            e.printStackTrace(System.out);
-        }
     }
 }

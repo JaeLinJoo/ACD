@@ -1,20 +1,17 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -59,28 +56,24 @@ public class CategoryList extends AppCompatActivity {
 
                     for(TeamList d:dummy){
                         if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1")) && d.getState().equals("모집중")){
-                            byte[] a = string2Bin(d.getMainimg());
-                            writeToFile("teamprofile.jpg", a);
+                            byte[] b = new byte[d.getMainimg().length];
 
-                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
-
-                            if(file.exists()){
-                                String filepath = file.getPath();
-                                bitmap = BitmapFactory.decodeFile(filepath);
-                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            for(int i =0;i < b.length;i++){
+                                b[i] = (byte)d.getMainimg()[i];
                             }
+
+                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+
                         }
                         if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1")) && d.getState().equals("진행중")){
-                            byte[] a = string2Bin(d.getMainimg());
-                            writeToFile("teamprofile.jpg", a);
+                            byte[] b = new byte[d.getMainimg().length];
 
-                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
-
-                            if(file.exists()){
-                                String filepath = file.getPath();
-                                bitmap = BitmapFactory.decodeFile(filepath);
-                                mMyAdapter1.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            for(int i =0;i < b.length;i++){
+                                b[i] = (byte)d.getMainimg()[i];
                             }
+
+                            mMyAdapter1.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+
                         }
                     }
                     /* 리스트뷰에 어댑터 등록 */
@@ -112,30 +105,5 @@ public class CategoryList extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    public byte[] string2Bin(String str){
-        byte[] result = new byte[str.length()];
-        for(int i = 0; i<str.length(); i++){
-            result[i] = (byte)Character.codePointAt(str, i);
-        }
-        return result;
-    }
-
-    public void writeToFile(String filename, byte[] pData) {
-        if(pData == null){
-            return;
-        }
-        int lByteArraySize = pData.length;
-        //Log.e("asdvggg",getApplicationContext().getFilesDir().toString()+"/"+filename);
-        try{
-            File lOutFile = new File(getApplicationContext().getFilesDir().toString()+"/"+filename);
-            FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
-            lFileOutputStream.flush();
-            lFileOutputStream.write(pData);
-            lFileOutputStream.close();
-        }catch(Throwable e){
-            e.printStackTrace(System.out);
-        }
     }
 }

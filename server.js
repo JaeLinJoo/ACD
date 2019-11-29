@@ -7,6 +7,13 @@ var storage;
 var path = require('path');
 var crypto = require('crypto');
 var fs = require('fs');
+let Duplex = require('stream').Duplex;
+function bufferToStream(buffer){
+    let stream = new Duplex();
+    stream.push(buffer);
+    stream.push(null);
+    return stream;
+}
 
 storage = multer.diskStorage({
     destination: './uploads/',
@@ -128,9 +135,6 @@ app.post('/images/upload',multer({storage: storage}).single('image'),function(re
     var result;
     var id = req.body.id;
 
-    console.log(req.file.filename);
-    var img = fs.readFileSync(__dirname + "/uploads/" + req.file.filename);
-
     connection.query('UPDATE tb SET img=? WHERE name=?',[req.file.filename, id],function(err, rows){
         if(!err){
             result = {check: true};
@@ -150,8 +154,8 @@ app.get('/myinfo/:position',function(req,res){
                 if(!err){
                     var name = rows[0].realname;
                     var can = rows[0].can;
-                    str = bin2String(data);
-                    result = {name: name, path: str, can: can};
+                    
+                    result = {name: name, path: data.toJSON().data, can: can};
                     res.json(result);
                 }
                 else{
@@ -221,7 +225,7 @@ app.post('/showAdmit',function(req,res){
             }
             else{
                 data = fs.readFileSync(__dirname +"\\uploads\\" + rows[0].img);
-                str = bin2String(data);
+                data.toJSON().data;
             }
             result = {img: str, isadmit: rows[0].isadmit};
             res.json(result);
@@ -254,7 +258,7 @@ app.get('/showTeamList/:position',function(req, res){
                 var str, data;
                 
                 data = fs.readFileSync(__dirname +"\\uploads\\" + rows[i].img);
-                str = bin2String(data);
+                str = data.toJSON().data;
                 
                 result.push({name: name, content: content, mainimg: str, category1: category1, category2: category2, state: state, count: count, user: user, mentor_pay: mentor, mentor: rows[i].mentor});
             }
@@ -273,7 +277,7 @@ app.get('/join/:position',function(req, res){
             var s = rows[0].user.split(';');
             var count = s.length.toString() + ' / ' + rows[0].member_count.toString();
             data = fs.readFileSync(__dirname +"\\uploads\\" + rows[0].img);
-            str = bin2String(data);
+            str = data.toJSON().data;
             result = {teamname: rows[0].name,
                     member_count: count,
                     category1: rows[0].category1,
@@ -382,7 +386,7 @@ app.post('/getGroupId',function(req,res){
             var group=rows[0];
             var category = group.category1 + ' / ' + group.category2;
             data = fs.readFileSync(__dirname +"\\uploads\\" + rows[0].img);
-            str = bin2String(data);
+            str = data.toJSON().data;
             result={
                 category: category,
                 can: can,
@@ -405,7 +409,7 @@ app.post('/admitlist',function(req, res){
             }
             else{
                 data = fs.readFileSync(__dirname +"\\uploads\\" + rows[i].img);
-                str = bin2String(data);
+                str = data.toJSON().data;
             }
             result.push({img: str, id: rows[i].id, objective: rows[i].objective})
         }
@@ -459,11 +463,14 @@ app.get('/getcan/:id',function(req, res){
         }
     })
 })
+
+app.get('/testimg/:id',function(req, res){
+    var data = fs.readFileSync(__dirname +"\\uploads\\" + 'asdf.jpg');
+    
+    var result = {type: 'String', data: data.toJSON().data};
+    res.json(result);
+})
  
 app.listen(3002, function() {
         console.log('Example app listend on port 3002!');
 });
-
-function bin2String(array) {
-    return String.fromCharCode.apply(String, array);
-}

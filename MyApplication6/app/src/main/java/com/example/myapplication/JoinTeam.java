@@ -1,12 +1,8 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import androidx.appcompat.app.AppCompatActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -94,19 +89,13 @@ public class JoinTeam extends AppCompatActivity {
                     objlist.setAdapter(mMyAdapter);
 
                     if(dummy.img != null){
-                        String buffer = dummy.img;
+                        byte[] b = new byte[dummy.img.length];
 
-                        byte[] a = string2Bin(buffer);
-                        writeToFile("profile.jpg", a);
-
-                        File file = new File(getApplicationContext().getFilesDir().toString()+"/profile.jpg");
-                        if(file.exists()){
-                            String filepath = file.getPath();
-                            Bitmap bitmap = BitmapFactory.decodeFile(filepath);
-                            imageView.setImageBitmap(bitmap);
+                        for(int i =0;i<dummy.img.length;i++){
+                            b[i] = (byte)dummy.img[i];
                         }
+                        imageView.setImageBitmap(BitmapFactory.decodeByteArray(b, 0, b.length));
                     }
-
 
                 } else
                 {
@@ -176,29 +165,5 @@ public class JoinTeam extends AppCompatActivity {
             }
         });
 
-    }
-    public byte[] string2Bin(String str){
-        byte[] result = new byte[str.length()];
-        for(int i = 0; i<str.length(); i++){
-            result[i] = (byte)Character.codePointAt(str, i);
-        }
-        return result;
-    }
-
-    public void writeToFile(String filename, byte[] pData) {
-        if(pData == null){
-            return;
-        }
-        int lByteArraySize = pData.length;
-
-        try{
-            File lOutFile = new File(getApplicationContext().getFilesDir().toString()+"/"+filename);
-            FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
-            lFileOutputStream.flush();
-            lFileOutputStream.write(pData);
-            lFileOutputStream.close();
-        }catch(Throwable e){
-            e.printStackTrace(System.out);
-        }
     }
 }

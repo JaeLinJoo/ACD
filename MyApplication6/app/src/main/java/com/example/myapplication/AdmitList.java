@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
 public class AdmitList {
-    String img;
+    int[] img;
     String id;
     String objective;
 }

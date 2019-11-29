@@ -67,4 +67,7 @@ public interface GetService {
 
     @GET("/getcan/{id}")
     Call<MainPage.Getcan> getcan(@Path("id") String id);
+
+    @GET("/testimg/{id}")
+    Call<TestClass> test(@Path("id") String id);
 }

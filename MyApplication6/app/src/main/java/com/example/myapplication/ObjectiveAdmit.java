@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
 public class ObjectiveAdmit {
-    String img;
+    int[] img;
     String isadmit;
 }

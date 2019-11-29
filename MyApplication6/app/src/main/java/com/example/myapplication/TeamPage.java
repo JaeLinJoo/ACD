@@ -1,9 +1,6 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -19,8 +18,6 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -66,17 +63,12 @@ public class TeamPage extends AppCompatActivity {
                     category.setText(dummy.category);
                     can.setText(Integer.toString(dummy.can));
 
-                    String buffer = dummy.img;
+                    byte[] b = new byte[dummy.img.length];
 
-                    byte[] a = string2Bin(buffer);
-                    writeToFile("profile.jpg", a);
-
-                    File file = new File(getApplicationContext().getFilesDir().toString()+"/profile.jpg");
-                    if(file.exists()){
-                        String filepath = file.getPath();
-                        Bitmap bitmap = BitmapFactory.decodeFile(filepath);
-                        imageView.setImageBitmap(bitmap);
+                    for(int i =0;i<dummy.img.length;i++){
+                        b[i] = (byte)dummy.img[i];
                     }
+                    imageView.setImageBitmap(BitmapFactory.decodeByteArray(b, 0, b.length));
 
                     SharedPreference.setAttribute(getApplicationContext(),"objs", dummy.objectives);
 
@@ -145,31 +137,5 @@ public class TeamPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-    }
-
-    public byte[] string2Bin(String str){
-        byte[] result = new byte[str.length()];
-        for(int i = 0; i<str.length(); i++){
-            result[i] = (byte)Character.codePointAt(str, i);
-        }
-        return result;
-    }
-
-    public void writeToFile(String filename, byte[] pData) {
-        if(pData == null){
-            return;
-        }
-        int lByteArraySize = pData.length;
-
-        try{
-            File lOutFile = new File(getApplicationContext().getFilesDir().toString()+"/"+filename);
-            FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
-            lFileOutputStream.flush();
-            lFileOutputStream.write(pData);
-            lFileOutputStream.close();
-        }catch(Throwable e){
-            e.printStackTrace(System.out);
-        }
     }
 }

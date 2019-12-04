@@ -29,9 +29,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#FFE082"
+                    android:background="#FDD835"
                     android:gravity="center_vertical"
                     android:text="    멘토구인 소모임 리스트"
+                    android:textColor="#FFFFFF"
                     android:textSize="24sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -39,17 +40,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFCDD2"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:text="   일석이조의 멘토활동 "
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
                 <TextView
                     android:id="@+id/textView71"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="   모집중인 소모임"
-                    android:textColor="#FB070707"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:text="   나의 재능도 쑥쑥!  쏠쏠한 용돈벌이까지! "
+                    android:textColor="#FB828181"
+                    android:textSize="15dp" />
             </LinearLayout>
 
             <ListView

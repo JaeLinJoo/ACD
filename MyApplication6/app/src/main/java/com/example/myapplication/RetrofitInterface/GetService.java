@@ -1,4 +1,19 @@
-package com.example.myapplication;
+package com.example.myapplication.RetrofitInterface;
+
+import com.example.myapplication.AdmitList;
+import com.example.myapplication.Calculate;
+import com.example.myapplication.Date;
+import com.example.myapplication.Dummy;
+import com.example.myapplication.DummyMessage;
+import com.example.myapplication.GetDateAttend;
+import com.example.myapplication.Getusers;
+import com.example.myapplication.JoinList;
+import com.example.myapplication.MainPage;
+import com.example.myapplication.MyInfo;
+import com.example.myapplication.ObjectiveAdmit;
+import com.example.myapplication.TeamInfo;
+import com.example.myapplication.TeamList;
+import com.example.myapplication.TestClass;
 
 import java.util.List;
 
@@ -15,10 +30,7 @@ import retrofit2.http.Path;
 
 public interface GetService {
     @GET("/test/{position},{position1},{position2},{position3},{position4}")
-    Call<Dummy> listDummies(@Path("position") String position,@Path("position1") String position1,@Path("position2") String position2, @Path("position3") String position3,@Path("position4") String position4);
-
-    @GET("/id/{position}")
-    Call<LogInfo> listLogInfo(@Path("position") String position);
+    Call<Dummy> listDummies(@Path("position") String position, @Path("position1") String position1, @Path("position2") String position2, @Path("position3") String position3, @Path("position4") String position4);
 
     @FormUrlEncoded
     @POST("/task")
@@ -43,7 +55,7 @@ public interface GetService {
 
     @FormUrlEncoded
     @POST("/submit")
-    Call<DummyMessage> submitTeam(@Field("teamname") String teamname ,@Field("id") String id, @Field("can") int can, @Field("isMentor") boolean isMentor);
+    Call<DummyMessage> submitTeam(@Field("teamname") String teamname , @Field("id") String id, @Field("can") int can, @Field("isMentor") boolean isMentor);
 
     @FormUrlEncoded
     @POST("/getGroupId")
@@ -70,4 +82,32 @@ public interface GetService {
 
     @GET("/testimg/{id}")
     Call<TestClass> test(@Path("id") String id);
+
+    @FormUrlEncoded
+    @POST("/addday")
+    Call<DummyMessage> addday(@Field("name") String name, @Field("date") String date, @Field("time") String time);
+
+    @FormUrlEncoded
+    @POST("/showdate")
+    Call<List<Date>> showdate(@Field("name") String name);
+
+    @FormUrlEncoded
+    @POST("/getusers")
+    Call<Getusers> getusers(@Field("name") String name);
+
+    @FormUrlEncoded
+    @POST("/getattend")
+    Call<GetDateAttend> getattend(@Field("name") String name, @Field("date") String date);
+
+    @Multipart
+    @POST("/uploadAttendImg")
+    Call<DummyMessage> uploadAttendImg(@Part MultipartBody.Part image, @Part("name") RequestBody name, @Part("date") RequestBody date);
+
+    @FormUrlEncoded
+    @POST("/updateattend")
+    Call<DummyMessage> updateattend(@Field("name") String name, @Field("date") String date, @Field("user") String user);
+
+    @FormUrlEncoded
+    @POST("/calculateAttend")
+    Call<Calculate> calculateAttend(@Field("id") String id, @Field("name") String name);
 }

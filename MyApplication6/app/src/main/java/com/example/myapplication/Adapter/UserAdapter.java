@@ -1,17 +1,18 @@
-package com.example.myapplication;
+package com.example.myapplication.Adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.myapplication.MyItem;
+import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class MyObjectiveAdapter extends BaseAdapter {
+public class UserAdapter extends BaseAdapter {
     private ArrayList<MyItem> mItems = new ArrayList<>();
 
     @Override
@@ -36,11 +37,11 @@ public class MyObjectiveAdapter extends BaseAdapter {
         /* 'listview_custom' Layout을 inflate하여 convertView 참조 획득 */
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.showobjective_custom, parent, false);
+            convertView = inflater.inflate(R.layout.user_custom, parent, false);
         }
 
         /* 'listview_custom'에 정의된 위젯에 대한 참조 획득 */
-        TextView tv_name = (TextView) convertView.findViewById(R.id.tv_name) ;
+        TextView tv_name = (TextView) convertView.findViewById(R.id.textView51) ;
 
         /* 각 리스트에 뿌려줄 아이템을 받아오는데 mMyItem 재활용 */
         MyItem myItem = getItem(position);

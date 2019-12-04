@@ -6,102 +6,71 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="123dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
-        android:background="#FFD54F">
+        android:background="#FFFFFF">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
 
-        <TextView
+        <ImageView
+            android:id="@+id/imageView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="아"
-            android:textSize="70dp"
-            android:textStyle="bold"
-            android:textColor="#070707"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="주"
-            android:textSize="40dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:text="캔"
-            android:textColor="#303F9F"
-            android:textSize="75dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="두"
-            android:textSize="70dp"
-            android:textStyle="bold"
-            android:textColor="#070707"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="잇"
-            android:textSize="40dp"
-            android:textStyle="bold" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            app:srcCompat="@drawable/upupupup" />
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
+        android:background="#FFEB3B"
         android:orientation="vertical">
 
         <!-- bottom navigation var-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/mypage"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="마이페이지" />
 
             <Button
                 android:id="@+id/maketeam"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
+                android:background="#FFEB3B"
+                android:drawableTop="@drawable/add"
                 android:text="소모임 만들기" />
 
             <Button
                 android:id="@+id/mentor"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:text="멘토 구인 소모임" />
+                android:background="#FFEB3B"
+                android:drawableTop="@drawable/mento"
+                android:text="멘토 구인" />
+
+            <Button
+                android:id="@+id/mypage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="#FFEB3B"
+                android:drawableTop="@drawable/person"
+                android:text="마이" />
 
             <Button
                 android:id="@+id/ret"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
+                android:background="#FFEB3B"
+                android:drawableTop="@drawable/logout"
                 android:text="로그아웃" />
 
 
@@ -119,64 +88,34 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
+            <!-- 광고-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:background="#368890"
+                android:layout_height="164dp"
+                android:background="@drawable/ad"
                 android:gravity="center">
 
-                <!-- 광고-->
                 <Space
                     android:layout_width="30dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="같이 하자. 같이 받자."
-                        android:textColor="#FFFDFD"
-                        android:textSize="30dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="너도 아주 잘 할 수있다!"
-                        android:textColor="#FFFDFD"
-                        android:textSize="30dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="75dp"
-                        android:layout_height="match_parent"
-                        app:srcCompat="@drawable/acd_icon" />
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="30dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="160dp"
                     android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="117dp"
+                android:layout_height="10dp"
+                android:background="#FCD0CECE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
                 android:orientation="vertical">
 
                 <!-- 카테고리 버튼-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -185,7 +124,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="카테고리로 소모임 찾기"
+                        android:text="   카테고리별 소모임 찾기"
                         android:textColor="#070707"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -193,65 +132,154 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/layout_border"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/sport"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="65dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="스포츠" />
+                        android:background="@drawable/layout_border"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/music"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="악기" />
+                        <Button
+                            android:id="@+id/sport"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/soccer" />
 
-                    <Button
-                        android:id="@+id/lang"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="언어" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="스포츠" />
 
-                    <Button
-                        android:id="@+id/human"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="인문학" />
+                    </LinearLayout>
 
-                    <Button
-                        android:id="@+id/craft"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="65dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="공예" />
+                        android:background="@drawable/layout_border"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/etc"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/music"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/music" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="악기" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="65dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="기타" />
+                        android:background="@drawable/layout_border"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/lang"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/worlwide" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="언어" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/layout_border"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/human"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/book" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="인문학" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/layout_border"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/craft"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/paint" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="공예" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/layout_border"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/etc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/information" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="기타" />
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FFFFFF" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="10dp"
+                android:background="#FC505050" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
                 android:orientation="vertical">
 
                 <!-- 모든 소모임리스트-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="41dp"
+                    android:layout_height="35dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -260,20 +288,24 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="전체 모집중인 소모임"
+                        android:text="   전체 모집중인 소모임"
                         android:textColor="#080808"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <ListView
-                    android:id="@+id/listview3"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:id="@+id/listview3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
 
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 

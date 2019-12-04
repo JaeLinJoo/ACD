@@ -32,7 +32,9 @@ leader char(15),
 user char(200),
 state char(2),
 current int(4),
-mentorname char(20)
+mentorname char(20),
+date char(100),
+time1 char(100)
 );
 
 create table teamUserInfo(
@@ -47,4 +49,14 @@ name char(20),
 objective char(30),
 isadmit char(10),
 img char(50)
+);
+
+create table teamAttend(
+name char(20),
+time char(20),
+date char(15),
+state char(10),
+user char(150),
+img char(50),
+value int(4)
 );

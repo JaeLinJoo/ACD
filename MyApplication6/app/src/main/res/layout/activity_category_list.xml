@@ -29,44 +29,59 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#FFE082"
+                    android:background="#FDD835"
                     android:gravity="center_vertical"
                     android:text="   카테고리별 소모임"
+                    android:textColor="#FFFFFF"
                     android:textSize="24sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/category"
-                    android:layout_width="189dp"
+                    android:layout_width="140dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/button_border"
                     android:gravity="center"
                     android:text="TextView"
+                    android:textColor="#1E1D1D"
                     android:textSize="24sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFCDD2"
+                android:layout_height="10dp"
+                android:background="#FC505050" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:background="#FFEBEE"
+                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView14"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="   모집중인 소모임"
-                    android:textColor="#FB070707"
-                    android:textSize="24sp"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="    함께 하자. 함께 받자. 함께 도전해보세요!"
+                    android:textColor="#FB484848"
+                    android:textSize="15dp" />
             </LinearLayout>
 
             <ListView
@@ -77,19 +92,31 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="28dp"
-                android:background="#B2DFDB"
-                android:orientation="horizontal">
+                android:layout_height="10dp"
+                android:background="#FC505050" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:background="#E3F2FD"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/진행중인소모임"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="   진행중인 소모임"
-                    android:textColor="#FB070707"
-                    android:textSize="24sp"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="     아주 잘 하고있는지 확인해주세요!"
+                    android:textColor="#FB484848"
+                    android:textSize="15dp" />
             </LinearLayout>
 
             <ListView

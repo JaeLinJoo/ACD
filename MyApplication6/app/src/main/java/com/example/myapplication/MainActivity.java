@@ -1,7 +1,5 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.RetrofitInterface.GetIP;
+import com.example.myapplication.RetrofitInterface.LoginInterface;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
 
     EditText position, password;
-    Button getButton, register, test;
+    Button getButton, register;
     TextView info;
     String text,text1;
     @Override
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         getButton = (Button) findViewById(R.id.login);
         register = (Button) findViewById(R.id.register);
-        test = (Button)findViewById(R.id.button5);
+        //test = (Button)findViewById(R.id.button5);
 
         register.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -42,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        test.setOnClickListener(new View.OnClickListener(){
+        /*test.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(getApplicationContext(), TestPage.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
         getButton.setOnClickListener(new View.OnClickListener() {

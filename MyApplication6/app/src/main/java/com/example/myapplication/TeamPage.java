@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Adapter.DateAdapter;
+import com.example.myapplication.RetrofitInterface.GetIP;
+import com.example.myapplication.RetrofitInterface.GetService;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -19,6 +23,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +36,9 @@ public class TeamPage extends AppCompatActivity {
     int objval1, objval2;
     ImageView imageView;
     TextView teamname, category, can;
+    ListView listView;
     Button manage, admit;
+    int atin, atgr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +47,7 @@ public class TeamPage extends AppCompatActivity {
         String team = SharedPreference.getAttribute(getApplicationContext(),"teamname");
         teamname = (TextView) findViewById(R.id.teamname);
         category = (TextView) findViewById(R.id.category);
+        listView = (ListView) findViewById(R.id.list6);
         can = (TextView) findViewById(R.id.can);
         imageView = (ImageView) findViewById(R.id.imageView4);
         manage = (Button) findViewById(R.id.button);
@@ -50,9 +58,12 @@ public class TeamPage extends AppCompatActivity {
                 .baseUrl(BASE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        GetService service = retrofit.create(GetService.class);
+
+        final GetService service = retrofit.create(GetService.class);
         Call<TeamInfo> call = service.getGroupinfo(team, id);
         Call<Calculate> call1 = service.calculateObjective(id, team);
+        Call<List<Date>> call2 = service.showdate(team);
+        //Call<Calculate> call3 = service.calculateAttend(SharedPreference.getAttribute(getApplicationContext(),"id"), SharedPreference.getAttribute(getApplicationContext(), "teamname"));
         call.enqueue(new Callback<TeamInfo>(){
             @Override
             public void onResponse(Call<TeamInfo> call, Response<TeamInfo> response) {
@@ -92,6 +103,8 @@ public class TeamPage extends AppCompatActivity {
                     Calculate dummy = response.body();
                     objval1 = dummy.individual;
                     objval2 = dummy.group;
+                    atin = dummy.aindividual;
+                    atgr = dummy.agroup;
                     ArrayList<String> labelList=new ArrayList<>();
                     labelList.add("개인 출석률");
                     labelList.add("팀 출석률");
@@ -99,8 +112,8 @@ public class TeamPage extends AppCompatActivity {
                     labelList.add("팀 달성률");
 
                     ArrayList<Integer> valList=new ArrayList<>();
-                    valList.add(50);
-                    valList.add(50);
+                    valList.add(atin);
+                    valList.add(atgr);
                     valList.add(objval1);
                     valList.add(objval2);
 
@@ -118,7 +131,9 @@ public class TeamPage extends AppCompatActivity {
                     }
                     BarData data=new BarData(labels,depenses);
                     depenses.setColors(ColorTemplate.COLORFUL_COLORS);
-
+                    YAxis y = barChart.getAxisLeft();
+                    y.setAxisMaxValue(100);
+                    y.setAxisMinValue(0);
                     barChart.setData(data);
                     barChart.animateXY(1000,1000);
                     barChart.invalidate();
@@ -130,10 +145,55 @@ public class TeamPage extends AppCompatActivity {
 
             }
         });
+        call2.enqueue(new Callback<List<Date>>(){
+            @Override
+            public void onResponse(Call<List<Date>> call, Response<List<Date>> response) {
+
+                if (response.isSuccessful()) {
+                    final DateAdapter mMyAdapter = new DateAdapter();
+                    List<Date> dummy = response.body();
+                    for(Date d: dummy){
+                        mMyAdapter.addItem(d.date, d.time,d.user,d.state);
+                    }
+                    listView.setAdapter(mMyAdapter);
+
+                } else
+                {
+                    Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Date>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
+            }
+        });
+        /*call3.enqueue(new Callback<Calculate>() {
+            @Override
+            public void onResponse(Call<Calculate> call, Response<Calculate> response) {
+                if(response.isSuccessful()){
+                    Calculate dummy = response.body();
+                    atin = dummy.individual;
+                    atgr = dummy.group;
+                    lock = 1;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Calculate> call, Throwable t) {
+
+            }
+        });*/
         admit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AdmitPage.class);
+                startActivity(intent);
+            }
+        });
+        manage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AttendPage.class);
                 startActivity(intent);
             }
         });

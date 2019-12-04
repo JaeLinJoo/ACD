@@ -109,21 +109,6 @@ app.get('/login/:position', function(req, res){
     });
 });
 
-app.get('/id/:position',function(req, res){
-    var id = req.params.position;
-    var telenumber;
-    var result;
-
-    connection.query('SELECT * from tb where name=?',[id],function(err, rows){
-        if(!err){
-            user = rows[0];
-            result = {telenumber: user.telenumber};
-            console.log(result);
-            res.json(result);
-        }
-    })
-})
-
 app.post('/task',function(req, res){
     var result = req.body.task;
     result = {check: true};
@@ -444,11 +429,33 @@ app.post('/calculateObjective',function(req, res){
                     nogr++;
                 }
             }
-            var individual = yesin*100 / (yesin+noin);
-            var group = yesgr*100 / (yesgr+nogr);
-            result = {individual: parseInt(individual), group: parseInt(group)};
-            console.log(result);
-            res.json(result);
+            var individual = parseInt(yesin*100 / (yesin+noin));
+            var group = parseInt(yesgr*100 / (yesgr+nogr));
+            connection.query('SELECT * from teamAttend where name = ? AND state = ?',[name, '마감'],function(err, rows){
+                if(!err){
+                    if(rows.length==0){
+                        result = {individual: individual, group: group, aindividual: 0, agroup: 0};
+                        res.json(result);
+                    }
+                    else{
+                        var date = 0;
+                        var indi, grou;
+                        var gr = 0;
+                        for(var i = 0; i < rows.length; i++){
+                            if(rows[i].user.match(id)==id){
+                                date++;
+                            }
+                            gr = gr + rows[i].value;
+                        }
+                        indi = parseInt(date*100/rows.length);
+                        grou = parseInt(gr / rows.length);
+                        result = {individual: individual, group: group, aindividual: indi, agroup: grou};
+                        res.json(result);
+                    }
+                }
+            })
+
+            //result = {individual: parseInt(individual), group: parseInt(group)};
         }
     })
 })
@@ -466,11 +473,162 @@ app.get('/getcan/:id',function(req, res){
 
 app.get('/testimg/:id',function(req, res){
     var data = fs.readFileSync(__dirname +"\\uploads\\" + 'asdf.jpg');
-    
-    var result = {type: 'String', data: data.toJSON().data};
+    console.log(data.buffer);
+    var result = {type: 'String', data: data.buffer};
     res.json(result);
 })
+
+app.post('/addday',function(req, res){
+    var name = req.body.name;
+    var date = req.body.date;
+    var time = req.body.time;
+
+    connection.query('SELECT * from team where name = ?',[name],function(err, rows){
+        if(!err){
+            var d = rows[0].date;
+            var t = rows[0].time1;
+            if(d==null){
+                d = date;
+                t = time;
+            }
+            else{
+                d = d+';'+date;
+                t = t+';'+time;
+            }
+            connection.query('UPDATE team SET date = ?, time1 = ? where name = ?',[d, t, name]);
+        }
+    })
+    connection.query('INSERT into teamAttend(name, date, state, time) values (?, ?, ?, ?)',[name, date, '예정', time]);
+    res.json({check: true, message: '일정 추가'});
+})
  
+app.post('/showdate',function(req, res){
+    var name = req.body.name;
+    var result = [];
+
+    connection.query('SELECT * from teamAttend where name = ?',[name],function(err, rows){
+        if(!err){
+            for(var i = 0; i<rows.length; i++){
+                var str;
+                if(rows[i].img==null){
+                    str = null;
+                }
+                else{
+                    data = fs.readFileSync(__dirname +"\\uploads\\" + rows[i].img);
+                    str = data.toJSON().data;
+                }
+                result.push({img: str,
+                            date: rows[i].date,
+                            time: rows[i].time,
+                            user: rows[i].user,
+                            state: rows[i].state})
+            }
+            res.json(result);
+        }
+    })
+})
+
+app.post('/getusers',function(req, res){
+    var name = req.body.name;
+    var result;
+
+    connection.query('SELECT * from team where name = ?',[name],function(err, rows){
+        if(!err){
+            result = {users: rows[0].user};
+        }
+        res.json(result);
+    })
+});
+
+app.post('/getattend', function(req, res){
+    var name = req.body.name;
+    var date = req.body.date;
+    var result;
+
+    connection.query('SELECT * from teamAttend where name = ? AND date = ?',[name, date],function(err, rows){
+        if(!err){
+            var str;
+            if(rows[0].img==null){
+                str = null;
+            }
+            else{
+                data = fs.readFileSync(__dirname +"\\uploads\\" + rows[0].img);
+                str = data.toJSON().data;
+            }
+
+            result = {img: str, user: rows[0].user};
+            res.json(result);
+        }
+    })
+})
+
+app.post('/uploadAttendImg',multer({storage: storage}).single('image'),function(req, res){
+    var img = req.file.filename;
+    var name = req.body.name;
+    var date = req.body.date;
+    var result;
+
+    connection.query('UPDATE teamAttend SET img = ?, state = ? where name = ? AND date = ?',[img, '마감', name, date]);
+    result = {check: true, message: '업로드 성공'};
+    res.json(result);
+})
+
+app.post('/updateattend',function(req, res){
+    var name = req.body.name;
+    var date = req.body.date;
+    var user = req.body.user;
+    
+    connection.query('UPDATE teamAttend SET user = ? where name = ? AND date = ?', [user, name, date]);
+    connection.query('SELECT * from team where name = ?', [name], function(err, rows){
+        if(!err){
+            var value;
+            var n = 0;
+            var users = rows[0].user.split(';');
+
+            for(var i = 0; i < users.length; i++){
+                if(user.match(users[i])==users[i]){
+                    n++;
+                }
+            }
+            value = parseInt(n*100 / users.length);
+            
+            connection.query('UPDATE teamAttend SET value = ? where name = ? AND date = ?', [value, name, date]);
+        }
+    })
+    result = {check: true, message: '수정 성공'};
+    res.json(result);
+})
+
+app.post('/calculateAttend',function(req, res){
+    var id = req.body.id;
+    var name = req.body.name;
+    var result;
+
+    connection.query('SELECT * from teamAttend where name = ? AND state = ?',[name, '마감'],function(err, rows){
+        if(!err){
+            if(rows.length==0){
+                result = {individual: 0, group: 0};
+                res.json(result);
+            }
+            else{
+                var date = 0;
+                var indi, group;
+                var gr = 0;
+                for(var i = 0; i < rows.length; i++){
+                    if(rows[i].user.match(id)==id){
+                        date++;
+                    }
+                    gr = gr + rows[i].value;
+                }
+                indi = parseInt(date*100/rows.length);
+                group = parseInt(gr / rows.length);
+                result = {individual: indi, group: group};
+                res.json(result);
+            }
+        }
+    })
+})
+
 app.listen(3002, function() {
         console.log('Example app listend on port 3002!');
 });

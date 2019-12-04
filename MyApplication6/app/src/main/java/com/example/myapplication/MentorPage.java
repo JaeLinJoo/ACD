@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Adapter.MyMentorAdapter;
+import com.example.myapplication.RetrofitInterface.GetIP;
+import com.example.myapplication.RetrofitInterface.GetService;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -53,7 +57,7 @@ public class MentorPage extends AppCompatActivity {
                                 b[i] = (byte)d.getMainimg()[i];
                             }
 
-                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getMentor_pay(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
 
                         }
                     }

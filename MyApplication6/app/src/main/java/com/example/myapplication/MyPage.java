@@ -16,6 +16,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Adapter.MyAdapter;
+import com.example.myapplication.RetrofitInterface.GetIP;
+import com.example.myapplication.RetrofitInterface.GetService;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -57,6 +61,7 @@ public class MyPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         imageView = (ImageView) findViewById(R.id.imageView2);
         name = (TextView) findViewById(R.id.name);
         can = (TextView) findViewById(R.id.can);

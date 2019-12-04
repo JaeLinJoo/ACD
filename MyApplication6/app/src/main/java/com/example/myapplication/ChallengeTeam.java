@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -13,6 +15,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Adapter.AdmitAdapter;
+import com.example.myapplication.Adapter.MyObjectiveAdapter;
+import com.example.myapplication.RetrofitInterface.GetService;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 import retrofit2.Call;
@@ -21,7 +30,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.example.myapplication.GetIP.BASE;
+import static com.example.myapplication.RetrofitInterface.GetIP.BASE;
 
 public class ChallengeTeam extends AppCompatActivity {
 
@@ -119,8 +128,7 @@ public class ChallengeTeam extends AppCompatActivity {
             public void onResponse(Call<List<AdmitList>> call, Response<List<AdmitList>> response) {
                 if (response.isSuccessful()) {
                     List<AdmitList> dummy = response.body();
-                    AdmitAdapter mMyAdapter = new AdmitAdapter();
-                    Bitmap bitmap;
+                    final AdmitAdapter mMyAdapter = new AdmitAdapter();
 
                     for(int i =0;i<dummy.size();i++){
                         if(dummy.get(i).img !=null){
@@ -135,6 +143,29 @@ public class ChallengeTeam extends AppCompatActivity {
                         }
                     }
                     admitImglist.setAdapter(mMyAdapter);
+                    admitImglist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            // img 파일로 받아서 경로를 넘겨주기
+                            Bitmap admitbit;
+                            admitbit = mMyAdapter.getItem(i).getIcon();
+
+                            int len = admitbit.getByteCount();
+                            byte[] b_img= new byte[len];
+
+                            b_img = bitmapToByteArray(admitbit);
+
+                            writeToFile("admitimg",b_img);
+                            String filepath = getApplicationContext().getFilesDir().toString()+"/admitimg";
+
+                            //Toast.makeText(getApplicationContext(),filepath,Toast.LENGTH_LONG).show();
+                            SharedPreference.setAttribute(getApplicationContext(), "id", mMyAdapter.getItem(i).getName());
+
+                            Intent intent = new Intent(getApplicationContext(),Singo.class);
+                            startActivity(intent);
+
+                        }
+                    });
                 } else
                 {
                     Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
@@ -152,5 +183,26 @@ public class ChallengeTeam extends AppCompatActivity {
                 return false;
             }
         });
+    }
+    public void writeToFile(String filename, byte[] pData) {
+        if(pData == null){
+            return;
+        }
+        try{
+            File lOutFile = new File(getApplicationContext().getFilesDir().toString()+"/"+filename);
+            FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
+            lFileOutputStream.flush();
+            lFileOutputStream.write(pData);
+            lFileOutputStream.close();
+        }catch(Throwable e){
+            e.printStackTrace(System.out);
+        }
+    }
+
+    public byte[] bitmapToByteArray( Bitmap $bitmap ) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream() ;
+        $bitmap.compress( Bitmap.CompressFormat.JPEG, 100, stream) ;
+        byte[] byteArray = stream.toByteArray() ;
+        return byteArray ;
     }
 }

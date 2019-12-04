@@ -4,7 +4,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FDD835"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ret"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="#FDD835"
+            android:drawableLeft="@drawable/back"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="   My Page"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -22,35 +52,27 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="#FFE082"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/ret"
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#FFE082"
-                    android:text="←"
-                    android:textSize="30dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="206dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="   My Page"
-                    android:textSize="24sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="219dp"
+                android:background="@drawable/layout_p"
                 android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/imgbt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_weight="1"
+                        android:background="#132589"
+                        android:gravity="center"
+                        android:text="프로필 수정"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -60,25 +82,12 @@
                     android:layout_weight="1"
                     tools:srcCompat="@tools:sample/avatars" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/imgbt"
-                        android:layout_width="147dp"
-                        android:layout_height="37dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="프로필 사진 수정" />
-                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="126dp"
+                android:background="@drawable/layout_g"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -95,12 +104,13 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="홍길동"
-                        android:textSize="24sp"
+                        android:textColor="#000000"
+                        android:textSize="25dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="300dp"
+                    android:layout_width="250dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/mypagecan"
@@ -108,19 +118,20 @@
 
                     <ImageView
                         android:id="@+id/ImageView28"
-                        android:layout_width="60dp"
+                        android:layout_width="70dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/acd_icon" />
 
                     <TextView
                         android:id="@+id/can"
-                        android:layout_width="200dp"
+                        android:layout_width="170dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="TextView"
-                        android:textSize="24sp" />
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/textView18"
@@ -129,58 +140,84 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="CAN"
-                        android:textSize="24sp"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="10dp"
+                android:background="#FCD0CECE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="38dp"
-                    android:background="#B2DFDB"
-                    android:orientation="horizontal">
+                    android:layout_height="58dp"
+                    android:background="#BFDFF6"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView29"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:id="@+id/진행중인소모임"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:text="   진행중인 소모임"
-                        android:textColor="#FB070707"
-                        android:textSize="24sp" />
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="     꾸준한 참여가 중요합니다!"
+                        android:textColor="#FB484848"
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <ListView
                     android:id="@+id/listviewJ"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:layout_margin="5dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="10dp"
+                android:background="#FCD0CECE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="43dp"
-                    android:background="#FFCDD2"
-                    android:orientation="horizontal">
+                    android:layout_height="58dp"
+                    android:background="#F4C1C8"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView30"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:text="   모집중인 소모임"
-                        android:textColor="#FB070707"
-                        android:textSize="24sp" />
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="    인원이 모두 모였는지 확인해보세요!"
+                        android:textColor="#FB484848"
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <ListView

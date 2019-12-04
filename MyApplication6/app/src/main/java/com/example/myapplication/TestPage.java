@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -9,13 +10,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.RetrofitInterface.GetService;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.example.myapplication.GetIP.BASE;
+import static com.example.myapplication.RetrofitInterface.GetIP.BASE;
 
 public class TestPage extends AppCompatActivity {
     Button button;
@@ -44,11 +47,8 @@ public class TestPage extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             TestClass dummy = response.body();
 
-                            byte[] b = new byte[dummy.data.length];
-
-                            for(int i =0;i<dummy.data.length;i++){
-                                b[i] = (byte)dummy.data[i];
-                            }
+                            byte[] b = dummy.data.toByteArray();
+                            Log.e("정보",Byte.toString(b[1]));
                             imageView.setImageBitmap(BitmapFactory.decodeByteArray(b, 0, b.length));
                             /*writeToFile("profile.jpg", b);
 

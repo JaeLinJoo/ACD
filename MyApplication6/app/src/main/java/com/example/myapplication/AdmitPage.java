@@ -14,6 +14,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Adapter.MyObjectiveAdapter;
+import com.example.myapplication.RetrofitInterface.GetIP;
+import com.example.myapplication.RetrofitInterface.GetService;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -97,7 +101,7 @@ public class AdmitPage extends AppCompatActivity {
         imagebt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if(objective.getText().toString().equals("'")){
+                if(objective.getText().toString().equals("인증할 목표를 선택해주세요.")){
                     Toast.makeText(getApplicationContext(),"목표를 먼저 선택하세요.",Toast.LENGTH_LONG).show();
                 }
                 else{

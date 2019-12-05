@@ -15,13 +15,13 @@
 
         <Button
             android:id="@+id/ret"
-            android:layout_width="20dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_weight="1"
             android:background="#FDD835"
-            android:drawableLeft="@drawable/back"
-            android:textStyle="bold" />
+            android:text="◀"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/textView24"

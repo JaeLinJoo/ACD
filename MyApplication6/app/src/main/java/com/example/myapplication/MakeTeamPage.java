@@ -65,7 +65,7 @@ public class MakeTeamPage extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener callbackMethod_start;
     private DatePickerDialog.OnDateSetListener callbackMethod_finish;
     String mentor;
-    Button postimg, post, add;
+    Button postimg, post, add,ret;
     EditText teamname, objective, admit, pay, time, intro, can;
     RadioButton yes, no;
     ImageView imageView;
@@ -93,6 +93,16 @@ public class MakeTeamPage extends AppCompatActivity {
         no = (RadioButton) findViewById(R.id.radioButton_mento_no);
         imageView = (ImageView) findViewById(R.id.imageView);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
+
+        ret = (Button)findViewById(R.id.ret);
+
+        ret.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                startActivity(intent);
+            }
+        });
 
         final Spinner spin_count = (Spinner) findViewById(R.id.spinner_count);
         countspin = ArrayAdapter.createFromResource(getApplicationContext(),R.array.spinner_count,android.R.layout.simple_spinner_dropdown_item);

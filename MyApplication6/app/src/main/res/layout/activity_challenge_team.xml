@@ -13,17 +13,26 @@
         android:background="#FDD835"
         android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/ret"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="#FDD835"
+            android:text="◀"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
         <TextView
             android:id="@+id/textView49"
             android:layout_width="7dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            app:fontFamily="@font/binggraemelona"
             android:gravity="center_vertical"
             android:text="진행중/"
             android:textColor="#FFFFFF"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            app:fontFamily="@font/binggraemelona" />
 
         <TextView
             android:id="@+id/teamname"

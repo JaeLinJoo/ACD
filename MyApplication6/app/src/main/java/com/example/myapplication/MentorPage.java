@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -26,12 +27,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MentorPage extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
     ListView mentorlist ;
+    Button ret;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mentor_page);
 
+        ret = (Button)findViewById(R.id.ret);
         mentorlist = (ListView)findViewById(R.id.mentorlist);
+
+        ret.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                startActivity(intent);
+            }
+        });
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)

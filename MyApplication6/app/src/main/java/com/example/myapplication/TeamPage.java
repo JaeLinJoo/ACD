@@ -37,7 +37,7 @@ public class TeamPage extends AppCompatActivity {
     ImageView imageView;
     TextView teamname, category, can;
     ListView listView;
-    Button manage, admit;
+    Button manage, admit,ret;
     int atin, atgr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,17 @@ public class TeamPage extends AppCompatActivity {
         manage = (Button) findViewById(R.id.button);
         admit = (Button) findViewById(R.id.button2);
         final BarChart barChart = (BarChart) findViewById(R.id.chart);
+
+        ret = (Button)findViewById(R.id.ret);
+
+        ret.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MyPage.class);
+                startActivity(intent);
+            }
+        });
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)

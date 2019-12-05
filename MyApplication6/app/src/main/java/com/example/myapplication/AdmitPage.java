@@ -36,7 +36,7 @@ public class AdmitPage extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
     ListView listView;
     TextView objective, isadmit;
-    Button imagebt;
+    Button imagebt,ret;
     ImageView imageView;
 
     @Override
@@ -49,6 +49,16 @@ public class AdmitPage extends AppCompatActivity {
         isadmit = (TextView) findViewById(R.id.isadmit);
         imagebt = (Button) findViewById(R.id.button4);
         imageView = (ImageView) findViewById(R.id.imageView3);
+        ret = (Button)findViewById(R.id.ret);
+
+        ret.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), TeamPage.class);
+                startActivity(intent);
+            }
+        });
+
 
         String[] obj = SharedPreference.getAttribute(getApplicationContext(),"objs").split(";");
 

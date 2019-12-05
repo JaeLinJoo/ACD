@@ -48,7 +48,7 @@ public class AttendPage extends AppCompatActivity {
     ScrollView scrollView;
     TextView date, date1, attendlist;
     EditText time;
-    Button datebt, timebt, imgbt, change;
+    Button datebt, timebt, imgbt, change,ret;
     ListView listView, userlist;
     RadioButton yes, no;
     ImageView imageView;
@@ -77,6 +77,7 @@ public class AttendPage extends AppCompatActivity {
         timebt = (Button) findViewById(R.id.timebt);
         imgbt = (Button) findViewById(R.id.button8);
         change = (Button) findViewById(R.id.change);
+        ret = (Button)findViewById(R.id.ret);
         imageView = (ImageView) findViewById(R.id.imageView9);
         listView = (ListView) findViewById(R.id.list7);
         userlist = (ListView) findViewById(R.id.userlist);
@@ -90,6 +91,14 @@ public class AttendPage extends AppCompatActivity {
                 start += year+"."+(monthOfYear+1)+"."+dayOfMonth;
             }
         };
+
+        ret.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), TeamPage.class);
+                startActivity(intent);
+            }
+        });
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override

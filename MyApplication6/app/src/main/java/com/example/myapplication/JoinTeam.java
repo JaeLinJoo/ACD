@@ -30,7 +30,7 @@ public class JoinTeam extends AppCompatActivity {
     TextView teamname, member_count, category1, category2, teamname1, intro, peroid, obj, admit, mentor_pay, time, mentor_state;
     ImageView imageView;
     ListView objlist;
-    Button mentorbt, submit;
+    Button mentorbt, submit,ret;
     EditText can;
 
     @Override
@@ -58,6 +58,16 @@ public class JoinTeam extends AppCompatActivity {
         submit = (Button) findViewById(R.id.submit);
         can = (EditText) findViewById(R.id.can);
 
+        ret = (Button)findViewById(R.id.ret);
+
+        ret.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                startActivity(intent);
+            }
+        });
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -74,8 +84,8 @@ public class JoinTeam extends AppCompatActivity {
                     JoinList dummy = response.body();
                     teamname.setText(dummy.teamname);
                     member_count.setText(dummy.member_count);
-                    category1.setText(dummy.category1);
-                    category2.setText(dummy.category2);
+                    category1.setText("#"+dummy.category1);
+                    category2.setText("#"+dummy.category2);
                     teamname1.setText(dummy.teamname1);
                     intro.setText(dummy.intro);
                     peroid.setText(dummy.peroid);
@@ -181,7 +191,7 @@ public class JoinTeam extends AppCompatActivity {
                 String mentor_submit_s = SharedPreference.getAttribute(getApplicationContext(), "mentor_submit");
 
                 if (mentor_submit_s == "true") {
-                    //mentor_state.setVisibility(View.INVISIBLE);
+                    //mentor_state.setText("멘토가 지원된 상태입니다.");
                     mentor_submit = true;
                 }
 

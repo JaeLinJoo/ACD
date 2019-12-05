@@ -10,7 +10,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="#FDD835"
         android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ret"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="#FDD835"
+            android:text="◀"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -19,10 +30,10 @@
             android:background="#FDD835"
             android:gravity="center_vertical"
             android:text="   인증관리"
-            app:fontFamily="@font/binggraemelona"
             android:textColor="#FFFFFF"
             android:textSize="24dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
     </LinearLayout>
 
     <ScrollView

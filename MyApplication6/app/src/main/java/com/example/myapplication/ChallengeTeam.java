@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -38,6 +39,7 @@ public class ChallengeTeam extends AppCompatActivity {
     private ListView objlist,admitImglist,attendImglist;
     private ImageView teamImg;
     private ScrollView scrollView;
+    Button ret;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,16 @@ public class ChallengeTeam extends AppCompatActivity {
         //출석 이미지 리스트뷰
         attendImglist=(ListView)findViewById(R.id.listView_attend);
         scrollView=(ScrollView)findViewById(R.id.scrollView);
+
+        ret = (Button)findViewById(R.id.ret);
+
+        ret.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                startActivity(intent);
+            }
+        });
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)

@@ -23,7 +23,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:background="#FDD835"
                 android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/ret"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="#FDD835"
+                    android:text="◀"
+                    android:textColor="#ffffff"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:id="@+id/textView70"

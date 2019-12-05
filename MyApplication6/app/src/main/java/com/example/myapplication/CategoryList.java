@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,8 @@ public class CategoryList extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
     TextView cg;
     ListView listView1, listView2;
+    Button ret;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,15 @@ public class CategoryList extends AppCompatActivity {
         listView1 = (ListView) findViewById(R.id.list1);
         listView2 = (ListView) findViewById(R.id.list2);
         cg = (TextView) findViewById(R.id.category);
+        ret = (Button)findViewById(R.id.ret);
+
+        ret.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                startActivity(intent);
+            }
+        });
 
         cg.setText("#"+SharedPreference.getAttribute(getApplicationContext(),"category1"));
         dataSetting();

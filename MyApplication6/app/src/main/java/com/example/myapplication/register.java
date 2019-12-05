@@ -83,10 +83,12 @@ public class register extends AppCompatActivity {
                 //Log.i(this.getClass().getName(), dummy.isCheck());
                 if(dummy.isCheck()){
                     Toast.makeText(getApplicationContext(), "가입성공!", Toast.LENGTH_LONG).show();
+                    //회원가입을 하고 로그인 했을 경우 로그아웃하고 다시 회원가입 페이지로 가지 않도록
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "이미 가입된 학번입니다!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "이미 가입된 아이디입니다!", Toast.LENGTH_LONG).show();
                 }
             } else
             {

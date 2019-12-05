@@ -16,7 +16,7 @@ function bufferToStream(buffer){
 }
 
 storage = multer.diskStorage({
-    destination: './uploads/',
+    destination: __dirname+'/uploads/',
     filename: function(req, file, cb) {
       return crypto.pseudoRandomBytes(16, function(err, raw) {
         if (err) {

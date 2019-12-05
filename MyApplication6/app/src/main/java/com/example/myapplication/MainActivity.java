@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "아이디와 비밀번호가 일치하지 않습니다!", Toast.LENGTH_LONG).show();
                 }
             } else
             {

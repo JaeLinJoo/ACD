@@ -19,6 +19,7 @@
             android:background="#E53935"
             android:gravity="center"
             android:text="인증무효신고"
+            app:fontFamily="@font/binggraemelona"
             android:textColor="#fff"
             android:textSize="20sp" />
     </LinearLayout>
@@ -32,19 +33,26 @@
         android:padding="24dp">
 
 
-        <RadioButton
-            android:id="@+id/radioButton"
+        <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="해당 인증샷만 신고합니다."
-            android:textColor="#000000" />
+            android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="다른 인증샷을 같이 봐주세요."
-            android:textColor="#000000" />
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="해당 인증샷만 신고합니다."
+                app:fontFamily="@font/binggraemelona"
+                android:textColor="#000000" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="다른 인증샷을 같이 봐주세요."
+                app:fontFamily="@font/binggraemelona"
+                android:textColor="#000000" />
+        </RadioGroup>
 
         <EditText
             android:id="@+id/reason"
@@ -54,6 +62,7 @@
             android:background="@drawable/singo_reason"
             android:ems="10"
             android:gravity="start|top"
+            app:fontFamily="@font/binggraemelona"
             android:hint="구체적인 사유를 적어주세요.\n(허위 신고시 불이익이 있을 수 있습니다.)"
             android:inputType="textMultiLine"
             android:textSize="15dp" />
@@ -74,6 +83,7 @@
             android:gravity="center"
             android:onClick="mOnClose"
             android:padding="16dp"
+            app:fontFamily="@font/binggraemelona"
             android:text="신고 제출"
             android:textColor="#E53935"
             android:textSize="15sp" />
@@ -87,6 +97,7 @@
             android:onClick="mOnClose_x"
             android:padding="16dp"
             android:text="취소"
+            app:fontFamily="@font/binggraemelona"
             android:textColor="#E53935"
             android:textSize="15sp" />
     </LinearLayout>

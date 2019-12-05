@@ -4,7 +4,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FFFFD54F"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#FDD835"
+            android:text="◀"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FDD835"
+            android:gravity="center_vertical"
+            android:text="   출석 및 일정관리"
+            app:fontFamily="@font/binggraemelona"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -24,28 +54,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="222dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="출석및 일정관리"
-                    android:textSize="24sp" />
-
-                <Button
-                    android:id="@+id/button11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="뒤로가기" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#3949AB"
                 android:orientation="horizontal">
 
                 <TextView
@@ -55,12 +65,16 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="일정 추가하기"
-                    android:textSize="18sp" />
+                    app:fontFamily="@font/binggraemelona"
+                    android:textColor="#FDD835"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:background="@drawable/layout_g"
                 android:orientation="horizontal">
 
                 <TextView
@@ -68,26 +82,35 @@
                     android:layout_width="16dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:gravity="center"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="날짜:" />
 
                 <TextView
                     android:id="@+id/date"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <Button
                     android:id="@+id/datebt"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_margin="8dp"
                     android:layout_weight="1"
+                    android:background="@drawable/attend_button"
                     android:onClick="OnClickHandler1"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="날짜 입력" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:background="@drawable/layout_g"
                 android:orientation="horizontal">
 
                 <TextView
@@ -95,19 +118,28 @@
                     android:layout_width="16dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:gravity="center"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="시간:" />
 
                 <EditText
                     android:id="@+id/time"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:hint="(예시) 3:00-5:00pm"
+                    app:fontFamily="@font/binggraemelona"
+                    android:inputType="textNoSuggestions"
+                    android:textSize="13dp" />
 
                 <Button
                     android:id="@+id/timebt"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_margin="8dp"
                     android:layout_weight="1"
+                    android:background="@drawable/attend_button"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="일정 추가" />
             </LinearLayout>
 
@@ -115,9 +147,13 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#3949AB"
                 android:gravity="center"
+                app:fontFamily="@font/binggraemelona"
                 android:text="출석하기"
-                android:textSize="18sp" />
+                android:textColor="#FDD835"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <ListView
                 android:id="@+id/list7"
@@ -127,141 +163,192 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
+                android:background="@drawable/layout_g"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView52"
-                    android:layout_width="wrap_content"
+                    android:layout_width="37dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="날짜:" />
+                    android:background="#FFCA28"
+                    android:gravity="center"
+                    app:fontFamily="@font/binggraemelona"
+                    android:text="날짜"
+                    android:textColor="#2B2B2B" />
 
                 <TextView
                     android:id="@+id/date1"
                     android:layout_width="267dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:textColor="#2B2B2B"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="127dp"
+                android:background="@drawable/layout_g"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView46"
-                    android:layout_width="10dp"
+                    android:layout_width="37dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="#FFCA28"
                     android:gravity="center"
-                    android:text="사진인증" />
+                    app:fontFamily="@font/binggraemelona"
+                    android:text="사진인증"
+                    android:textColor="#2B2B2B" />
 
                 <ImageView
                     android:id="@+id/imageView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <LinearLayout
-                    android:layout_width="141dp"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="37dp" />
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
 
                     <Button
                         android:id="@+id/button8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        app:fontFamily="@font/binggraemelona"
+                        android:background="@drawable/attend_button"
                         android:text="이미지 가져오기" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="28dp"
+                android:layout_height="130dp"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView47"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_g"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView47"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:background="#FFCA28"
+                        android:gravity="center"
+                        android:text="유저리스트"
+                        android:textColor="#2B2B2B"
+                        app:fontFamily="@font/binggraemelona" />
+
+                    <ListView
+                        android:id="@+id/userlist"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="200dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="유저리스트" />
+                    android:background="@drawable/layout_g"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView48"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="출석" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/textView48"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFCA28"
+                        android:gravity="center"
+                        android:text="출석"
+                        android:textColor="#2B2B2B"
+                        app:fontFamily="@font/binggraemelona" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="92dp"
-                android:orientation="horizontal">
-
-                <ListView
-                    android:id="@+id/userlist"
-                    android:layout_width="222dp"
-                    android:layout_height="90dp" />
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/radioButton"
-                        android:layout_width="wrap_content"
+                    <RadioGroup
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="출석" />
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/radioButton3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="90dp"
-                        android:layout_weight="1"
-                        android:text="미출석" />
+                        <RadioButton
+                            android:id="@+id/radioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="출석"
+                            app:fontFamily="@font/binggraemelona" />
 
-                </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/radioButton3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="미출석"
+                            app:fontFamily="@font/binggraemelona" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/layout_g"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView53"
-                    android:layout_width="19dp"
+                    android:layout_width="37dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="#FFCA28"
                     android:gravity="center"
-                    android:text="출석명단" />
+                    app:fontFamily="@font/binggraemelona"
+                    android:text="출석명단"
+                    android:textColor="#2B2B2B" />
 
                 <TextView
                     android:id="@+id/attendlist"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="#2B2B2B"
+                    android:textSize="15dp" />
 
                 <Button
                     android:id="@+id/change"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:text="출석 수정" />
+                    app:fontFamily="@font/binggraemelona"
+                    android:background="@drawable/attend_button"
+                    android:text="출석 인증" />
 
             </LinearLayout>
 

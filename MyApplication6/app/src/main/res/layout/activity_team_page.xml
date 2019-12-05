@@ -18,6 +18,7 @@
             android:background="#FDD835"
             android:gravity="center_vertical"
             android:text="   소모임 페이지"
+            app:fontFamily="@font/binggraemelona"
             android:textColor="#FFFFFF"
             android:textSize="24dp"
             android:textStyle="bold" />
@@ -62,6 +63,7 @@
                     android:text="TextView"
                     android:textColor="#FFD600"
                     android:textSize="30dp"
+                    app:fontFamily="@font/binggraemelona"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -92,6 +94,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_weight="1"
+                        app:fontFamily="@font/binggraemelona"
                         android:gravity="right|center_vertical"
                         android:text="TextView" />
 
@@ -107,6 +110,7 @@
                             android:layout_weight="1"
                             android:gravity="right|center_vertical"
                             android:text="챌린지 캔:"
+                            app:fontFamily="@font/binggraemelona"
                             android:textColor="#000000" />
 
                         <TextView
@@ -118,6 +122,7 @@
                             android:gravity="right|center_vertical"
                             android:text="TextView"
                             android:textColor="#000000"
+                            app:fontFamily="@font/binggraemelona"
                             android:textSize="20dp" />
 
                         <TextView
@@ -126,6 +131,7 @@
                             android:layout_weight="1"
                             android:gravity="right|center_vertical"
                             android:text="CAN"
+                            app:fontFamily="@font/binggraemelona"
                             android:textColor="#000000" />
 
                     </LinearLayout>
@@ -148,6 +154,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="달성률"
                 android:textColor="#000000"
+                app:fontFamily="@font/binggraemelona"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -175,7 +182,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="105dp"
+                android:layout_height="150dp"
                 android:orientation="horizontal">
 
                 <ListView
@@ -200,15 +207,25 @@
                     android:id="@+id/button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:fontFamily="@font/binggraemelona"
                     android:layout_weight="1"
-                    android:text="일정 및 출석관리" />
+                    android:background="@drawable/teamname_border"
+                    android:text="일정 및 출석관리"
+                    android:textColor="#FFF59D"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:text="목표 인증" />
+                    app:fontFamily="@font/binggraemelona"
+                    android:background="@drawable/teamname_border"
+                    android:text="목표 인증"
+                    android:textColor="#FFF59D"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
         </LinearLayout>

@@ -3,7 +3,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -32,6 +33,7 @@
                     android:background="#FDD835"
                     android:gravity="center_vertical"
                     android:text="    멘토구인 소모임 리스트"
+                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -46,6 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="   일석이조의 멘토활동 "
                     android:textColor="#000000"
                     android:textSize="18dp" />
@@ -53,6 +56,7 @@
                     android:id="@+id/textView71"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="   나의 재능도 쑥쑥!  쏠쏠한 용돈벌이까지! "
                     android:textColor="#FB828181"
                     android:textSize="15dp" />

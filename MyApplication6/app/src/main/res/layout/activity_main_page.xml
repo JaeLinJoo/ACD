@@ -41,6 +41,7 @@
                 android:layout_weight="1"
                 android:background="#FFEB3B"
                 android:drawableTop="@drawable/add"
+                app:fontFamily="@font/binggraemelona"
                 android:text="소모임 만들기" />
 
             <Button
@@ -51,6 +52,7 @@
                 android:layout_weight="1"
                 android:background="#FFEB3B"
                 android:drawableTop="@drawable/mento"
+                app:fontFamily="@font/binggraemelona"
                 android:text="멘토 구인" />
 
             <Button
@@ -61,6 +63,7 @@
                 android:layout_weight="1"
                 android:background="#FFEB3B"
                 android:drawableTop="@drawable/person"
+                app:fontFamily="@font/binggraemelona"
                 android:text="마이" />
 
             <Button
@@ -71,6 +74,7 @@
                 android:layout_weight="1"
                 android:background="#FFEB3B"
                 android:drawableTop="@drawable/logout"
+                app:fontFamily="@font/binggraemelona"
                 android:text="로그아웃" />
 
 
@@ -93,7 +97,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="164dp"
-                android:background="@drawable/ad"
+                android:background="@drawable/ad2"
                 android:gravity="center">
 
                 <Space
@@ -127,7 +131,8 @@
                         android:text="   카테고리별 소모임 찾기"
                         android:textColor="#070707"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -153,7 +158,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="스포츠" />
+                            android:text="스포츠"
+                            app:fontFamily="@font/binggraemelona" />
 
                     </LinearLayout>
 
@@ -174,7 +180,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="악기" />
+                            android:text="악기"
+                            app:fontFamily="@font/binggraemelona" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -194,7 +201,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="언어" />
+                            android:text="언어"
+                            app:fontFamily="@font/binggraemelona" />
 
                     </LinearLayout>
 
@@ -215,7 +223,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="인문학" />
+                            android:text="인문학"
+                            app:fontFamily="@font/binggraemelona" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -235,7 +244,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="공예" />
+                            android:text="공예"
+                            app:fontFamily="@font/binggraemelona" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -255,7 +265,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="기타" />
+                            android:text="기타"
+                            app:fontFamily="@font/binggraemelona" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -291,7 +302,8 @@
                         android:text="   전체 모집중인 소모임"
                         android:textColor="#080808"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
                 <LinearLayout

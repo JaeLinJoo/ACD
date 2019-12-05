@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -29,6 +31,7 @@
                 <TextView
                     android:id="@+id/tv_name"
                     android:layout_width="match_parent"
+                    app:fontFamily="@font/binggraemelona"
                     android:layout_height="35dp"
                     android:gravity="center_vertical"
                     android:text="TextView"
@@ -46,6 +49,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
+                        app:fontFamily="@font/binggraemelona"
                         android:text="TextView" />
                 </LinearLayout>
             </LinearLayout>
@@ -67,6 +71,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/layout_p"
                     android:gravity="center"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="TextView" />
 
                 <TextView
@@ -76,6 +81,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/layout_g"
                     android:gravity="center"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="TextView" />
 
             </LinearLayout>

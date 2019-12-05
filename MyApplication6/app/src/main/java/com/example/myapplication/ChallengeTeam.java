@@ -87,8 +87,8 @@ public class ChallengeTeam extends AppCompatActivity {
                     JoinList dummy = response.body();
                     MyObjectiveAdapter mMyAdapter = new MyObjectiveAdapter();
 
-                    category1.setText(dummy.category1);
-                    category2.setText(dummy.category2);
+                    category1.setText("#"+dummy.category1);
+                    category2.setText("#"+dummy.category2);
                     teamName_up.setText(SharedPreference.getAttribute(getApplicationContext(), "teamname"));
                     teamName.setText(SharedPreference.getAttribute(getApplicationContext(), "teamname"));
                     period.setText(dummy.peroid);

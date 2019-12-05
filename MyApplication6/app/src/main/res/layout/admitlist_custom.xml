@@ -37,6 +37,7 @@
                     android:layout_height="60dp"
                     android:layout_weight="1"
                     android:gravity="center"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="id:" />
 
                 <TextView
@@ -45,6 +46,7 @@
                     android:layout_height="94dp"
                     android:layout_weight="1"
                     android:gravity="center"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="목표:" />
             </LinearLayout>
 
@@ -58,6 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
                     android:gravity="center"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="TextView" />
 
                 <TextView
@@ -65,6 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="67dp"
                     android:gravity="center"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="TextView" />
             </LinearLayout>
         </LinearLayout>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -31,6 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
+                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#000000"
                     android:textSize="20dp" />
 
@@ -39,6 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="TextView" />
 
             </LinearLayout>
@@ -60,6 +64,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/layout_g"
                     android:gravity="center"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="멘토지원비" />
 
                 <TextView
@@ -68,6 +73,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/layout_g"
                     android:gravity="center"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="TextView" />
 
             </LinearLayout>

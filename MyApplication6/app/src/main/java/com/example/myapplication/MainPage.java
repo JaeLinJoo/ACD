@@ -28,6 +28,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainPage extends AppCompatActivity {
+
     private static final String BASE = GetIP.BASE;
 
     ScrollView scrollView;
@@ -66,6 +67,7 @@ public class MainPage extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                //로그아웃시 정말 로그아웃이 되도록.
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

@@ -20,6 +20,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="   챌린지 소모임 신청하기"
+            app:fontFamily="@font/binggraemelona"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -52,6 +53,7 @@
                     android:id="@+id/post"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="가져오기" />
 
                 <ImageView
@@ -75,18 +77,21 @@
                     android:layout_width="90dp"
                     android:layout_height="40dp"
                     android:text="  카테고리"
+                    app:fontFamily="@font/binggraemelona"
                     android:textSize="20sp" />
 
                 <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="120dp"
                     android:layout_height="40dp"
+                    app:fontFamily="@font/binggraemelona"
                     android:layout_weight="0.21" />
 
                 <Spinner
                     android:id="@+id/spinner2"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
+                    app:fontFamily="@font/binggraemelona"
                     android:layout_weight="0.21" />
 
                 <Button
@@ -94,6 +99,7 @@
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.21"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="설정" />
 
             </LinearLayout>
@@ -110,6 +116,7 @@
                     android:layout_width="120dp"
                     android:layout_height="40dp"
                     android:text="  소모임 이름"
+                    app:fontFamily="@font/binggraemelona"
                     android:textSize="20sp" />
 
                 <EditText
@@ -118,6 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    app:fontFamily="@font/binggraemelona"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -134,11 +142,13 @@
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:text="  인원"
+                    app:fontFamily="@font/binggraemelona"
                     android:textSize="20sp" />
 
                 <Spinner
                     android:id="@+id/spinner_count"
                     android:layout_width="100dp"
+                    app:fontFamily="@font/binggraemelona"
                     android:layout_height="40dp"
                     android:layout_weight="0.21" />
 
@@ -149,6 +159,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="챌린지 캔:"
+                    app:fontFamily="@font/binggraemelona"
                     android:textSize="20sp" />
 
                 <EditText
@@ -157,6 +168,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    app:fontFamily="@font/binggraemelona"
                     android:inputType="numberDecimal" />
 
 
@@ -178,6 +190,7 @@
                     <TextView
                         android:layout_width="120dp"
                         android:layout_height="40dp"
+                        app:fontFamily="@font/binggraemelona"
                         android:text="  소모임 기간"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -202,6 +215,7 @@
                             android:layout_width="100dp"
                             android:layout_height="40dp"
                             android:onClick="OnClickHandler_start"
+                            app:fontFamily="@font/binggraemelona"
                             android:text="시작일" />
 
                         <TextView
@@ -209,6 +223,7 @@
                             android:layout_width="200dp"
                             android:layout_height="40dp"
                             android:gravity="center"
+                            app:fontFamily="@font/binggraemelona"
                             android:text="YYYY.MM.DD"
                             android:textSize="20sp" />
                     </LinearLayout>
@@ -225,6 +240,7 @@
                             android:layout_width="100dp"
                             android:layout_height="40dp"
                             android:onClick="OnClickHandler_finish"
+                            app:fontFamily="@font/binggraemelona"
                             android:text="마감일" />
 
                         <TextView
@@ -233,6 +249,7 @@
                             android:layout_height="40dp"
                             android:gravity="center"
                             android:text="YYYY.MM.DD"
+                            app:fontFamily="@font/binggraemelona"
                             android:textSize="20sp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -256,6 +273,7 @@
                         android:layout_width="120dp"
                         android:layout_height="40dp"
                         android:text="  소모임 목표"
+                        app:fontFamily="@font/binggraemelona"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -272,6 +290,7 @@
                         android:layout_height="65dp"
                         android:layout_weight="1"
                         android:ems="10"
+                        app:fontFamily="@font/binggraemelona"
                         android:gravity="start|top"
                         android:inputType="textMultiLine" />
                 </LinearLayout>
@@ -294,6 +313,7 @@
                         android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:text="  소모임 중간목표(상세목표)"
+                        app:fontFamily="@font/binggraemelona"
                         android:textSize="20sp" />
 
                     <Button
@@ -301,6 +321,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        app:fontFamily="@font/binggraemelona"
                         android:text="추가" />
                 </LinearLayout>
 
@@ -335,6 +356,7 @@
                         android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:text="  인증방식"
+                        app:fontFamily="@font/binggraemelona"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -347,6 +369,7 @@
 
                     <EditText
                         android:id="@+id/editText_인증"
+                        app:fontFamily="@font/binggraemelona"
                         android:layout_width="wrap_content"
                         android:layout_height="122dp"
                         android:layout_weight="1"
@@ -373,6 +396,7 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="40dp"
+                        app:fontFamily="@font/binggraemelona"
                         android:text="  멘토 필요여부"
                         android:textSize="20sp" />
 
@@ -387,12 +411,14 @@
                             android:id="@+id/radioButton_mento_yes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            app:fontFamily="@font/binggraemelona"
                             android:layout_weight="1"
                             android:text="필요" />
 
                         <RadioButton
                             android:id="@+id/radioButton_mento_no"
                             android:layout_width="wrap_content"
+                            app:fontFamily="@font/binggraemelona"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="불필요" />
@@ -417,6 +443,7 @@
                         android:layout_width="250dp"
                         android:layout_height="40dp"
                         android:text="  멘토 지원비 (1인당)"
+                        app:fontFamily="@font/binggraemelona"
                         android:textSize="20sp" />
 
                     <EditText
@@ -425,6 +452,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
+                        app:fontFamily="@font/binggraemelona"
                         android:inputType="numberDecimal" />
                 </LinearLayout>
             </LinearLayout>
@@ -445,6 +473,7 @@
                     <TextView
                         android:layout_width="400dp"
                         android:layout_height="40dp"
+                        app:fontFamily="@font/binggraemelona"
                         android:text="  모임가능시간 (요일, 시간대)"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -458,6 +487,7 @@
 
                     <EditText
                         android:id="@+id/editText_모임시간"
+                        app:fontFamily="@font/binggraemelona"
                         android:layout_width="wrap_content"
                         android:layout_height="55dp"
                         android:layout_weight="1"
@@ -483,6 +513,7 @@
                     <TextView
                         android:layout_width="300dp"
                         android:layout_height="40dp"
+                        app:fontFamily="@font/binggraemelona"
                         android:text="  소모임 소개 (공지)"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -500,6 +531,7 @@
                         android:layout_height="100dp"
                         android:layout_weight="1"
                         android:ems="10"
+                        app:fontFamily="@font/binggraemelona"
                         android:gravity="start|top"
                         android:inputType="textMultiLine" />
 
@@ -519,9 +551,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
-                    android:background="@drawable/mypagecan"
-                    android:text="신    청"
-                    android:textSize="25dp" />
+                    android:background="#4DB6AC"
+                    android:text="신청하기"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25dp"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
         </LinearLayout>

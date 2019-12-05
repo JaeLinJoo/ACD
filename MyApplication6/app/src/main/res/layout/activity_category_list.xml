@@ -3,7 +3,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -32,6 +33,7 @@
                     android:background="#FDD835"
                     android:gravity="center_vertical"
                     android:text="   카테고리별 소모임"
+                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -39,18 +41,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="45dp"
                 android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/category"
-                    android:layout_width="140dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/button_border"
                     android:gravity="center"
                     android:text="TextView"
+                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#1E1D1D"
                     android:textSize="24sp" />
             </LinearLayout>
@@ -71,6 +74,7 @@
                     android:id="@+id/textView14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="   모집중인 소모임"
                     android:textColor="#000000"
                     android:textSize="20dp"
@@ -79,6 +83,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:fontFamily="@font/binggraemelona"
                     android:text="    함께 하자. 함께 받자. 함께 도전해보세요!"
                     android:textColor="#FB484848"
                     android:textSize="15dp" />
@@ -107,6 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="   진행중인 소모임"
+                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#000000"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -115,6 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="     아주 잘 하고있는지 확인해주세요!"
+                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#FB484848"
                     android:textSize="15dp" />
             </LinearLayout>

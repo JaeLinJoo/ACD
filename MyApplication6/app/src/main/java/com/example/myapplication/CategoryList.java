@@ -37,7 +37,7 @@ public class CategoryList extends AppCompatActivity {
         listView2 = (ListView) findViewById(R.id.list2);
         cg = (TextView) findViewById(R.id.category);
 
-        cg.setText(SharedPreference.getAttribute(getApplicationContext(),"category1"));
+        cg.setText("#"+SharedPreference.getAttribute(getApplicationContext(),"category1"));
         dataSetting();
     }
     private void dataSetting(){

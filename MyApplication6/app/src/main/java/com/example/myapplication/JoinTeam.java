@@ -27,7 +27,7 @@ public class JoinTeam extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
     boolean ismentor = false;
     boolean mentor_submit = false;
-    TextView teamname, member_count, category1, category2, teamname1, intro, peroid, obj, admit, mentor_pay, time;
+    TextView teamname, member_count, category1, category2, teamname1, intro, peroid, obj, admit, mentor_pay, time, mentor_state;
     ImageView imageView;
     ListView objlist;
     Button mentorbt, submit;
@@ -49,6 +49,7 @@ public class JoinTeam extends AppCompatActivity {
         admit = (TextView) findViewById(R.id.admit);
         mentor_pay = (TextView) findViewById(R.id.mentor_pay);
         time = (TextView) findViewById(R.id.time);
+        mentor_state = (TextView)findViewById(R.id.mentor_submit_state);
 
         imageView = (ImageView) findViewById(R.id.imageView5);
         objlist = (ListView) findViewById(R.id.objlist);
@@ -163,11 +164,29 @@ public class JoinTeam extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"이미 멘토가 지원 되었거나 멘토가 필요없는 소모임 입니다!",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Toast.makeText(getApplicationContext(),"멘토로 지원 되었습니다!",Toast.LENGTH_LONG).show();
-                    mentor_submit = true;
+                    Intent intent = new Intent(getApplicationContext(),MentorPopup.class);
+                    startActivityForResult(intent,1);
                 }
             }
         });
 
     }
-}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                //데이터 받기
+                String mentor_submit_s = SharedPreference.getAttribute(getApplicationContext(), "mentor_submit");
+
+                if (mentor_submit_s == "true") {
+                    //mentor_state.setVisibility(View.INVISIBLE);
+                    mentor_submit = true;
+                }
+
+            }
+        }
+    }
+
+    }

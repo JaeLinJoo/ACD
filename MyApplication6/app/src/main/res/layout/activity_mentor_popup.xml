@@ -38,7 +38,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#EF9A9A"
+            android:background="@drawable/submit_button"
             android:gravity="center"
             android:text="★멘토가 될 시 꼭 지켜주세요!★"
             android:textColor="#000000"
@@ -54,6 +54,7 @@
             android:paddingRight="5dp"
             android:text="\n1. 멘토의 챌린지 캔은 팀의 달성률에 비례하여 환급됩니다.\n2. 멘토 지원비는 소모임 현장에서 팀장으로부터 지급됩니다.\n3. 책임감을 가지고 임해주세요.\n4. 소모임을 위해 최선을 다해주세요!\n"
             android:textColor="#000000"
+            android:textSize="13sp"
             app:fontFamily="@font/binggraemelona" />
 
         <TextView

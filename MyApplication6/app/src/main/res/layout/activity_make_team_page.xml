@@ -53,33 +53,52 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="138dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/layout_g"
-                android:orientation="horizontal"
-                android:weightSum="1">
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/post"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    app:fontFamily="@font/binggraemelona"
-                    android:text="가져오기" />
-
-                <ImageView
-                    android:id="@+id/imageView"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:fontFamily="@font/binggraemelona"
+                    android:text="소모임 대표사진"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="138dp"
+                    android:layout_gravity="center_horizontal"
+                    android:weightSum="1">
+
+                    <Button
+                        android:id="@+id/post"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:text="가져오기"
+                        app:fontFamily="@font/binggraemelona" />
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        tools:srcCompat="@tools:sample/avatars" />
+                </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/layout_g"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
@@ -87,106 +106,180 @@
                     android:layout_width="90dp"
                     android:layout_height="40dp"
                     android:text="  카테고리"
+                    android:textColor="#000000"
                     android:textSize="13sp"
+                    android:textStyle="bold"
                     app:fontFamily="@font/binggraemelona" />
 
                 <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="120dp"
                     android:layout_height="40dp"
-                    app:fontFamily="@font/binggraemelona"
-                    android:layout_weight="0.21" />
+                    android:layout_weight="0.21"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <Spinner
                     android:id="@+id/spinner2"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
-                    app:fontFamily="@font/binggraemelona"
-                    android:layout_weight="0.21" />
+                    android:layout_weight="0.21"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <Button
                     android:id="@+id/btn_refresh"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="0.21"
-                    app:fontFamily="@font/binggraemelona"
-                    android:text="설정" />
+                    android:text="설정"
+                    app:fontFamily="@font/binggraemelona" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/layout_g"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:text="  소모임 이름"
+                    android:textColor="#000000"
                     android:textSize="13sp"
+                    android:textStyle="bold"
                     app:fontFamily="@font/binggraemelona" />
 
                 <EditText
                     android:id="@+id/editText_name"
-                    android:layout_width="100dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/red_border"
                     android:ems="10"
-                    app:fontFamily="@font/binggraemelona"
-                    android:inputType="textPersonName" />
+                    android:inputType="textNoSuggestions|textPersonName"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:background="@drawable/layout_g"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:text="  인원"
+                    android:textColor="#000000"
                     android:textSize="13sp"
+                    android:textStyle="bold"
                     app:fontFamily="@font/binggraemelona" />
 
                 <Spinner
                     android:id="@+id/spinner_count"
                     android:layout_width="100dp"
-                    app:fontFamily="@font/binggraemelona"
                     android:layout_height="40dp"
-                    android:layout_weight="0.21" />
+                    android:layout_weight="1"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <TextView
-                    android:id="@+id/textView32"
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:fontFamily="@font/binggraemelona"
                     android:gravity="center"
-                    android:text="챌린지 캔:"
-                    android:textSize="13sp"
-                    app:fontFamily="@font/binggraemelona" />
-
-                <EditText
-                    android:id="@+id/editText"
-                    android:layout_width="141dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    app:fontFamily="@font/binggraemelona"
-                    android:inputType="numberDecimal" />
+                    android:text="명"
+                    android:textColor="#424242"
+                    android:textSize="13sp" />
 
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/textView32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="  챌린지 캔"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/red_border"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="textNoSuggestions|numberDecimal"
+                        app:fontFamily="@font/binggraemelona" />
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/binggraemelona"
+                        android:gravity="center"
+                        android:text="CAN"
+                        android:textColor="#424242"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:background="@drawable/layout_g"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -199,8 +292,11 @@
                     <TextView
                         android:layout_width="120dp"
                         android:layout_height="40dp"
-                        android:text="  소모임 기간"
+                        android:gravity="center_vertical"
+                        android:text=" 소모임 기간"
+                        android:textColor="#000000"
                         android:textSize="13sp"
+                        android:textStyle="bold"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
@@ -213,7 +309,7 @@
                     android:weightSum="1">
 
                     <LinearLayout
-                        android:layout_width="213dp"
+                        android:layout_width="173dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         tools:layout_editor_absoluteX="8dp"
@@ -223,15 +319,16 @@
                             android:id="@+id/button_period_start"
                             android:layout_width="100dp"
                             android:layout_height="40dp"
+                            android:layout_gravity="center_horizontal"
                             android:onClick="OnClickHandler_start"
-                            app:fontFamily="@font/binggraemelona"
-                            android:text="시작일" />
+                            android:text="시작일"
+                            app:fontFamily="@font/binggraemelona" />
 
                         <TextView
                             android:id="@+id/textView_startDate"
-                            android:layout_width="200dp"
+                            android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:gravity="center"
+                            android:gravity="center_horizontal|center_vertical"
                             android:text="YYYY.MM.DD"
                             android:textSize="15sp"
                             app:fontFamily="@font/binggraemelona" />
@@ -245,7 +342,7 @@
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="53dp"
                             android:text="-"
                             android:textSize="50sp" />
                     </LinearLayout>
@@ -261,15 +358,17 @@
                             android:id="@+id/button_period_finish"
                             android:layout_width="100dp"
                             android:layout_height="40dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginRight="20dp"
                             android:onClick="OnClickHandler_finish"
-                            app:fontFamily="@font/binggraemelona"
-                            android:text="마감일" />
+                            android:text="마감일"
+                            app:fontFamily="@font/binggraemelona" />
 
                         <TextView
                             android:id="@+id/textView_finishDate"
                             android:layout_width="200dp"
                             android:layout_height="40dp"
-                            android:gravity="center"
+                            android:gravity="center_horizontal|center_vertical"
                             android:text="YYYY.MM.DD"
                             android:textSize="15sp"
                             app:fontFamily="@font/binggraemelona" />
@@ -277,6 +376,11 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -295,7 +399,9 @@
                         android:layout_width="120dp"
                         android:layout_height="40dp"
                         android:text="  소모임 목표"
+                        android:textColor="#000000"
                         android:textSize="13sp"
+                        android:textStyle="bold"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
@@ -311,17 +417,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="65dp"
                         android:layout_weight="1"
+                        android:background="@drawable/red_border"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
                         android:ems="10"
-                        app:fontFamily="@font/binggraemelona"
                         android:gravity="start|top"
-                        android:inputType="textMultiLine" />
+                        android:inputType="textMultiLine"
+                        app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/layout_g"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -335,7 +447,9 @@
                         android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:text="  소모임 중간목표(상세목표)"
+                        android:textColor="#000000"
                         android:textSize="13sp"
+                        android:textStyle="bold"
                         app:fontFamily="@font/binggraemelona" />
 
                     <Button
@@ -364,8 +478,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:background="@drawable/layout_g"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -380,6 +497,8 @@
                         android:layout_height="40dp"
                         android:text="  인증방식"
                         android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
@@ -392,20 +511,25 @@
 
                     <EditText
                         android:id="@+id/editText_인증"
-                        app:fontFamily="@font/binggraemelona"
                         android:layout_width="wrap_content"
                         android:layout_height="122dp"
+                        android:layout_margin="10dp"
                         android:layout_weight="1"
+                        android:background="@drawable/red_border"
                         android:ems="10"
                         android:gravity="start|top"
-                        android:inputType="textMultiLine" />
+                        android:hint="객관적인 방식으로 적어주세요."
+                        android:inputType="textMultiLine|textNoSuggestions"
+                        app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
             </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:background="@drawable/layout_g"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -420,6 +544,8 @@
                         android:layout_width="200dp"
                         android:layout_height="40dp"
                         android:text="  멘토 필요여부"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
                         android:textSize="13sp"
                         app:fontFamily="@font/binggraemelona" />
 
@@ -434,25 +560,27 @@
                             android:id="@+id/radioButton_mento_yes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:fontFamily="@font/binggraemelona"
                             android:layout_weight="1"
-                            android:text="필요" />
+                            android:text="필요"
+                            app:fontFamily="@font/binggraemelona" />
 
                         <RadioButton
                             android:id="@+id/radioButton_mento_no"
                             android:layout_width="wrap_content"
-                            app:fontFamily="@font/binggraemelona"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="불필요" />
+                            android:text="불필요"
+                            app:fontFamily="@font/binggraemelona" />
                     </RadioGroup>
                 </LinearLayout>
             </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
-                android:background="@drawable/layout_g"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -463,27 +591,48 @@
                     android:weightSum="1">
 
                     <TextView
-                        android:layout_width="250dp"
+                        android:layout_width="200dp"
                         android:layout_height="40dp"
                         android:text="  멘토 지원비 (1인당)"
+                        android:textColor="#000000"
                         android:textSize="13sp"
+                        android:textStyle="bold"
                         app:fontFamily="@font/binggraemelona" />
 
-                    <EditText
-                        android:id="@+id/editText_mento_pay"
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        app:fontFamily="@font/binggraemelona"
-                        android:inputType="numberDecimal" />
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/red_border"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText_mento_pay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:inputType="textNoSuggestions|numberDecimal"
+                            app:fontFamily="@font/binggraemelona" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="원"
+                            android:textColor="#000000"
+                            android:textSize="13sp" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="107dp"
-                android:background="@drawable/layout_g"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -495,9 +644,11 @@
 
                     <TextView
                         android:layout_width="400dp"
-                        android:layout_height="40dp"
+                        android:layout_height="30dp"
                         android:text="  모임가능시간 (요일, 시간대)"
+                        android:textColor="#000000"
                         android:textSize="13sp"
+                        android:textStyle="bold"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
@@ -510,20 +661,27 @@
 
                     <EditText
                         android:id="@+id/editText_모임시간"
-                        app:fontFamily="@font/binggraemelona"
                         android:layout_width="wrap_content"
-                        android:layout_height="55dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
                         android:layout_weight="1"
+                        android:background="@drawable/red_border"
                         android:ems="10"
                         android:gravity="start|top"
-                        android:inputType="textMultiLine" />
+                        android:hint="(예시) 일요일, 3:00-5:00pm"
+                        android:inputType="textMultiLine"
+                        app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="179dp"
-                android:background="@drawable/layout_g"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -537,13 +695,15 @@
                         android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:text="  소모임 소개 (공지)"
+                        android:textColor="#000000"
                         android:textSize="13sp"
+                        android:textStyle="bold"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="78dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:orientation="horizontal"
                     android:weightSum="1">
@@ -552,21 +712,28 @@
                         android:id="@+id/editText_intro"
                         android:layout_width="wrap_content"
                         android:layout_height="100dp"
+                        android:layout_margin="10dp"
                         android:layout_weight="1"
+                        android:background="@drawable/red_border"
                         android:ems="10"
                         android:gravity="start|top"
                         android:hint="소모임 특징을 간단하게 소개해주세요!"
-                        android:inputType="textMultiLine"
+                        android:inputType="textMultiLine|textNoSuggestions"
                         android:textSize="15sp"
                         app:fontFamily="@font/binggraemelona" />
 
                 </LinearLayout>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
@@ -577,7 +744,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="7dp"
                     android:layout_weight="1"
-                    android:background="#4DB6AC"
+                    android:background="@drawable/sinchungbutton"
                     android:text="신청하기"
                     android:textColor="#FFFFFF"
                     android:textSize="25dp"

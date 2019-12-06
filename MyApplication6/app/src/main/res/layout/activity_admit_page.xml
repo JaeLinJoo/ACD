@@ -94,7 +94,9 @@
             <ListView
                 android:id="@+id/listview3"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="200dp"
+                android:dividerHeight="5dp"
+                android:divider="#E8EAF6"/>
 
             <TextView
                 android:id="@+id/textView19"
@@ -111,7 +113,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@drawable/layout_g"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -121,16 +122,21 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#C5CAE9"
-                    app:fontFamily="@font/binggraemelona"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="인증할 목표를 선택해주세요."
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="126dp"
+                android:layout_margin="10dp"
                 android:background="@drawable/layout_g"
                 android:orientation="horizontal">
 
@@ -174,8 +180,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            app:fontFamily="@font/binggraemelona"
-                            android:text="인증하기" />
+                            android:text="인증하기"
+                            app:fontFamily="@font/binggraemelona" />
 
                         <Space
                             android:layout_width="wrap_content"
@@ -185,11 +191,14 @@
 
                 </LinearLayout>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@drawable/layout_g"
                 android:orientation="horizontal">
 
                 <TextView
@@ -199,8 +208,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="인증여부"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:id="@+id/isadmit"
@@ -210,9 +219,13 @@
                     android:background="#F8BBD0"
                     android:gravity="center|center_vertical"
                     android:text="ㅡ"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
 
         </LinearLayout>
     </ScrollView>

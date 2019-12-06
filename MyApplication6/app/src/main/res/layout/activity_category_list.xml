@@ -100,11 +100,12 @@
                     app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
-            <ListView
+            <GridView
                 android:id="@+id/list1"
                 android:layout_width="match_parent"
-                android:layout_height="248dp"
-                android:layout_margin="5dp" />
+                android:layout_height="400dp"
+                android:layout_margin="5dp"
+                android:numColumns="2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -137,11 +138,12 @@
                     app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
-            <ListView
+            <GridView
                 android:id="@+id/list2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:numColumns="2" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

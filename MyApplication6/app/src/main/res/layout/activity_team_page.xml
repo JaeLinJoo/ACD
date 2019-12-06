@@ -66,15 +66,15 @@
                     android:id="@+id/teamname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="7dp"
+                    android:layout_margin="12dp"
                     android:layout_weight="1"
                     android:background="@drawable/teamname_border"
                     android:gravity="center"
                     android:text="TextView"
                     android:textColor="#FFD600"
                     android:textSize="30dp"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
 
             </LinearLayout>
 
@@ -89,6 +89,7 @@
                     android:id="@+id/imageView4"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     tools:srcCompat="@tools:sample/avatars" />
 
@@ -109,41 +110,42 @@
                         android:text="TextView" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:layout_width="230dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/mypagecan"
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/textView23"
-                            android:layout_width="wrap_content"
+                        <ImageView
+                            android:id="@+id/ImageView28"
+                            android:layout_width="70dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:gravity="right|center_vertical"
-                            android:text="챌린지 캔:"
-                            app:fontFamily="@font/binggraemelona"
-                            android:textColor="#000000" />
+                            app:srcCompat="@drawable/acd_icon" />
 
                         <TextView
                             android:id="@+id/can"
-                            android:layout_width="wrap_content"
+                            android:layout_width="170dp"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="5dp"
                             android:layout_weight="1"
-                            android:gravity="right|center_vertical"
+                            android:gravity="center"
                             android:text="TextView"
                             android:textColor="#000000"
-                            app:fontFamily="@font/binggraemelona"
-                            android:textSize="20dp" />
+                            android:textSize="20dp"
+                            app:fontFamily="@font/binggraemelona" />
 
                         <TextView
-                            android:layout_width="50dp"
+                            android:id="@+id/textView18"
+                            android:layout_width="80dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:gravity="right|center_vertical"
+                            android:gravity="center_vertical"
                             android:text="CAN"
-                            app:fontFamily="@font/binggraemelona"
-                            android:textColor="#000000" />
-
+                            android:textColor="#000000"
+                            android:textSize="17dp"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/binggraemelona" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -164,14 +166,14 @@
                 android:layout_marginLeft="5dp"
                 android:text="달성률"
                 android:textColor="#000000"
-                app:fontFamily="@font/binggraemelona"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textSize="17dp"
+                android:textStyle="bold"
+                app:fontFamily="@font/binggraemelona" />
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart"
                 android:layout_width="match_parent"
-                android:layout_height="171dp" />
+                android:layout_height="320dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -187,12 +189,12 @@
                 android:layout_marginLeft="5dp"
                 android:text="일정"
                 android:textColor="#000000"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:orientation="horizontal">
 
                 <ListView

@@ -8,37 +8,42 @@
 
     <LinearLayout
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="260dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/layout_border"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            tools:srcCompat="@tools:sample/avatars" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iv_img"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                tools:srcCompat="@tools:sample/avatars" />
+            android:layout_height="match_parent"
+            android:background="#FFFDE7"
+            android:orientation="vertical"
+            android:paddingTop="5dp">
 
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:gravity="left|center_vertical"
                 android:text="TextView"
                 android:textColor="#000000"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 app:fontFamily="@font/binggraemelona" />
 
             <TextView
                 android:id="@+id/category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:gravity="start|center_vertical"
                 android:text="TextView"
                 android:textSize="10sp"
@@ -46,7 +51,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -64,28 +70,29 @@
                     app:fontFamily="@font/binggraemelona" />
 
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_contents"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="38dp"
-                    android:gravity="start|center_vertical"
-                    android:text="TextView"
-                    android:textSize="10sp"
-                    app:fontFamily="@font/binggraemelona" />
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/tv_contents"
+                        android:layout_width="match_parent"
+                        android:layout_height="38dp"
+                        android:gravity="start|center_vertical"
+                        android:text="TextView"
+                        android:textSize="10sp"
+                        app:fontFamily="@font/binggraemelona" />
+
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 

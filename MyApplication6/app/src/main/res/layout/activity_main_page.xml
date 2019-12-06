@@ -111,7 +111,7 @@
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
-        android:layout_height="607dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -313,7 +313,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="400dp"
                 android:orientation="vertical">
 
                 <!-- 모든 소모임리스트-->
@@ -342,7 +342,7 @@
                     <GridView
                         android:id="@+id/listview3"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:numColumns="2" />
                 </LinearLayout>

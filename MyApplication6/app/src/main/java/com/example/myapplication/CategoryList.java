@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CategoryList extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
     TextView cg;
-    ListView listView1, listView2;
+    GridView listView1, listView2;
     Button ret;
 
     @Override
@@ -36,8 +37,8 @@ public class CategoryList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_list);
 
-        listView1 = (ListView) findViewById(R.id.list1);
-        listView2 = (ListView) findViewById(R.id.list2);
+        listView1 = (GridView) findViewById(R.id.list1);
+        listView2 = (GridView) findViewById(R.id.list2);
         cg = (TextView) findViewById(R.id.category);
         ret = (Button)findViewById(R.id.ret);
 

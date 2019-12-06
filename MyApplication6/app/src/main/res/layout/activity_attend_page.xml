@@ -143,6 +143,11 @@
                     android:text="일정 추가" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
@@ -162,6 +167,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="53dp"
                 android:background="@drawable/layout_g"
                 android:orientation="horizontal">
@@ -171,11 +181,11 @@
                     android:layout_width="37dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#FFCA28"
                     android:gravity="center"
-                    app:fontFamily="@font/binggraemelona"
                     android:text="날짜"
-                    android:textColor="#2B2B2B" />
+                    android:textColor="#2B2B2B"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:id="@+id/date1"
@@ -190,6 +200,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="127dp"
                 android:background="@drawable/layout_g"
                 android:orientation="horizontal">
@@ -199,11 +214,11 @@
                     android:layout_width="37dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#FFCA28"
                     android:gravity="center"
-                    app:fontFamily="@font/binggraemelona"
                     android:text="사진인증"
-                    android:textColor="#2B2B2B" />
+                    android:textColor="#2B2B2B"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <ImageView
                     android:id="@+id/imageView9"
@@ -239,7 +254,10 @@
                 </LinearLayout>
 
             </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
@@ -248,7 +266,7 @@
 
                 <LinearLayout
                     android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="@drawable/layout_g"
                     android:orientation="vertical">
 
@@ -258,7 +276,7 @@
                         android:layout_height="20dp"
                         android:background="#FFCA28"
                         android:gravity="center"
-                        android:text="유저리스트"
+                        android:text="멤버 리스트"
                         android:textColor="#2B2B2B"
                         app:fontFamily="@font/binggraemelona" />
 
@@ -313,7 +331,10 @@
                 </LinearLayout>
 
             </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

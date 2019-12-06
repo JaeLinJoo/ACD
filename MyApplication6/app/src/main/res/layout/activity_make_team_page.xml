@@ -126,8 +126,8 @@
                     android:layout_width="120dp"
                     android:layout_height="40dp"
                     android:text="  소모임 이름"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textSize="20sp" />
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <EditText
                     android:id="@+id/editText_name"
@@ -148,12 +148,11 @@
                 android:weightSum="1">
 
                 <TextView
-                    android:layout_width="70dp"
+                    android:layout_width="50dp"
                     android:layout_height="40dp"
-                    android:gravity="center"
                     android:text="  인원"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textSize="20sp" />
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <Spinner
                     android:id="@+id/spinner_count"
@@ -169,8 +168,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="챌린지 캔:"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textSize="20sp" />
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <EditText
                     android:id="@+id/editText"
@@ -200,9 +199,9 @@
                     <TextView
                         android:layout_width="120dp"
                         android:layout_height="40dp"
-                        app:fontFamily="@font/binggraemelona"
                         android:text="  소모임 기간"
-                        android:textSize="20sp" />
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -233,9 +232,22 @@
                             android:layout_width="200dp"
                             android:layout_height="40dp"
                             android:gravity="center"
-                            app:fontFamily="@font/binggraemelona"
                             android:text="YYYY.MM.DD"
-                            android:textSize="20sp" />
+                            android:textSize="15sp"
+                            app:fontFamily="@font/binggraemelona" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textSize="50sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -259,8 +271,8 @@
                             android:layout_height="40dp"
                             android:gravity="center"
                             android:text="YYYY.MM.DD"
-                            app:fontFamily="@font/binggraemelona"
-                            android:textSize="20sp" />
+                            android:textSize="15sp"
+                            app:fontFamily="@font/binggraemelona" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -283,8 +295,8 @@
                         android:layout_width="120dp"
                         android:layout_height="40dp"
                         android:text="  소모임 목표"
-                        app:fontFamily="@font/binggraemelona"
-                        android:textSize="20sp" />
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -323,16 +335,17 @@
                         android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:text="  소모임 중간목표(상세목표)"
-                        app:fontFamily="@font/binggraemelona"
-                        android:textSize="20sp" />
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
 
                     <Button
                         android:id="@+id/add"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:fontFamily="@font/binggraemelona"
-                        android:text="추가" />
+                        android:text="추가"
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -366,8 +379,8 @@
                         android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:text="  인증방식"
-                        app:fontFamily="@font/binggraemelona"
-                        android:textSize="20sp" />
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -406,9 +419,9 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="40dp"
-                        app:fontFamily="@font/binggraemelona"
                         android:text="  멘토 필요여부"
-                        android:textSize="20sp" />
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
 
                     <RadioGroup
                         android:id="@+id/radioGroup_mento"
@@ -453,8 +466,8 @@
                         android:layout_width="250dp"
                         android:layout_height="40dp"
                         android:text="  멘토 지원비 (1인당)"
-                        app:fontFamily="@font/binggraemelona"
-                        android:textSize="20sp" />
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
 
                     <EditText
                         android:id="@+id/editText_mento_pay"
@@ -483,9 +496,9 @@
                     <TextView
                         android:layout_width="400dp"
                         android:layout_height="40dp"
-                        app:fontFamily="@font/binggraemelona"
                         android:text="  모임가능시간 (요일, 시간대)"
-                        android:textSize="20sp" />
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -523,9 +536,9 @@
                     <TextView
                         android:layout_width="300dp"
                         android:layout_height="40dp"
-                        app:fontFamily="@font/binggraemelona"
                         android:text="  소모임 소개 (공지)"
-                        android:textSize="20sp" />
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -541,9 +554,11 @@
                         android:layout_height="100dp"
                         android:layout_weight="1"
                         android:ems="10"
-                        app:fontFamily="@font/binggraemelona"
                         android:gravity="start|top"
-                        android:inputType="textMultiLine" />
+                        android:hint="소모임 특징을 간단하게 소개해주세요!"
+                        android:inputType="textMultiLine"
+                        android:textSize="15sp"
+                        app:fontFamily="@font/binggraemelona" />
 
                 </LinearLayout>
             </LinearLayout>

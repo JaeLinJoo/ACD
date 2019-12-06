@@ -41,8 +41,9 @@
                 android:layout_weight="1"
                 android:background="#FFEB3B"
                 android:drawableTop="@drawable/add"
-                app:fontFamily="@font/binggraemelona"
-                android:text="소모임 만들기" />
+                android:text="소모임 만들기"
+                android:textSize="10sp"
+                app:fontFamily="@font/binggraemelona" />
 
             <Button
                 android:id="@+id/mentor"
@@ -52,19 +53,9 @@
                 android:layout_weight="1"
                 android:background="#FFEB3B"
                 android:drawableTop="@drawable/mento"
-                app:fontFamily="@font/binggraemelona"
-                android:text="멘토 구인" />
-
-            <Button
-                android:id="@+id/ret"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:background="#FFEB3B"
-                android:drawableTop="@drawable/logout"
-                app:fontFamily="@font/binggraemelona"
-                android:text="로그아웃" />
+                android:text="멘토 구인"
+                android:textSize="10sp"
+                app:fontFamily="@font/binggraemelona" />
 
             <Button
                 android:id="@+id/report"
@@ -73,9 +64,10 @@
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:background="#FFEB3B"
-                app:fontFamily="@font/binggraemelona"
-                android:drawableTop="@drawable/back"
-                android:text="신고" />
+                android:drawableTop="@drawable/gallary"
+                android:text="갤러리"
+                android:textSize="10sp"
+                app:fontFamily="@font/binggraemelona" />
 
             <Button
                 android:id="@+id/mypage"
@@ -85,8 +77,21 @@
                 android:layout_weight="1"
                 android:background="#FFEB3B"
                 android:drawableTop="@drawable/person"
-                app:fontFamily="@font/binggraemelona"
-                android:text="마이" />
+                android:text="마이"
+                android:textSize="10sp"
+                app:fontFamily="@font/binggraemelona" />
+
+            <Button
+                android:id="@+id/ret"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="#FFEB3B"
+                android:drawableTop="@drawable/logout"
+                android:text="로그아웃"
+                android:textSize="10sp"
+                app:fontFamily="@font/binggraemelona" />
 
 
         </LinearLayout>

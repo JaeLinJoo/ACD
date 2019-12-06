@@ -53,24 +53,26 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
-                    app:fontFamily="@font/binggraemelona"
                     android:text="   일석이조의 멘토활동 "
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    app:fontFamily="@font/binggraemelona" />
+
                 <TextView
                     android:id="@+id/textView71"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:fontFamily="@font/binggraemelona"
                     android:text="   나의 재능도 쑥쑥!  쏠쏠한 용돈벌이까지! "
                     android:textColor="#FB828181"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <GridView

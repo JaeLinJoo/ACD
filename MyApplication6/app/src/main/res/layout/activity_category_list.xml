@@ -64,20 +64,20 @@
                     android:background="@drawable/button_border"
                     android:gravity="center"
                     android:text="TextView"
-                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#1E1D1D"
-                    android:textSize="24sp" />
+                    android:textSize="20sp"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:background="#FC505050" />
+                android:background="#FCE0DEDE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
-                android:background="#FFEBEE"
+                android:background="#50FFEBEE"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -85,19 +85,19 @@
                     android:id="@+id/textView14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:fontFamily="@font/binggraemelona"
                     android:text="   모집중인 소모임"
                     android:textColor="#000000"
                     android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:fontFamily="@font/binggraemelona"
                     android:text="    함께 하자. 함께 받자. 함께 도전해보세요!"
                     android:textColor="#FB484848"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <ListView
@@ -109,12 +109,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:background="#FC505050" />
+                android:background="#FCE0DEDE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
-                android:background="#E3F2FD"
+                android:background="#4CE3F2FD"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -123,18 +123,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="   진행중인 소모임"
-                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#000000"
                     android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="     아주 잘 하고있는지 확인해주세요!"
-                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#FB484848"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <ListView

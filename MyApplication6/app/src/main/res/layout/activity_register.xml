@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/layout"
@@ -30,10 +32,10 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="   회원가입"
-            app:fontFamily="@font/binggraemelona"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
     </LinearLayout>
 
     <LinearLayout
@@ -117,8 +119,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="아이디"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <EditText
                     android:id="@+id/id"
@@ -158,8 +160,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="비밀번호"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <EditText
                     android:id="@+id/password"
@@ -199,8 +201,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="비밀번호 확인"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <EditText
                     android:id="@+id/pwc"
@@ -240,8 +242,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="전화번호"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <EditText
                     android:id="@+id/telenumber"
@@ -281,8 +283,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="이메일"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -290,7 +293,7 @@
 
                     <EditText
                         android:id="@+id/email"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
                         android:layout_marginEnd="1dp"
@@ -303,8 +306,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        app:fontFamily="@font/binggraemelona"
-                        android:text="@ajou.ac.kr" />
+                        android:text="@ajou.ac.kr"
+                        app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -334,10 +337,10 @@
                     android:id="@+id/register1"
                     android:layout_width="270dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/mypagecan"
+                    android:background="@drawable/register_button"
                     android:text="회원가입"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textColor="#000000" />
+                    android:textColor="#ffffff"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <Space

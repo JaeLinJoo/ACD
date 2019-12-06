@@ -24,29 +24,37 @@
 
     <EditText
         android:id="@+id/password"
-        app:fontFamily="@font/binggraemelona"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/textbox_border"
         android:ems="10"
         android:gravity="center"
         android:hint="PASSWORD"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/position"
+        app:fontFamily="@font/binggraemelona"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/position" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="240dp"
         android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/login_button"
         android:text="LOG IN"
         app:fontFamily="@font/binggraemelona"
-        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button

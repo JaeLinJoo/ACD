@@ -143,7 +143,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="1">
@@ -162,12 +162,13 @@
                 <EditText
                     android:id="@+id/editText_name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/red_border"
                     android:ems="10"
                     android:inputType="textNoSuggestions|textPersonName"
+                    android:textSize="15sp"
                     app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
@@ -220,7 +221,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:orientation="horizontal"
                 android:weightSum="1">
@@ -243,7 +244,7 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:layout_gravity="right|center_vertical"
                     android:layout_margin="10dp"
                     android:background="@drawable/red_border"
@@ -254,8 +255,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:background="#ffffff"
                         android:ems="10"
-                        android:inputType="textNoSuggestions|numberDecimal"
+                        android:inputType="numberDecimal|textNoSuggestions"
+                        android:textSize="15sp"
                         app:fontFamily="@font/binggraemelona" />
 
                     <TextView
@@ -398,6 +401,7 @@
                     <TextView
                         android:layout_width="120dp"
                         android:layout_height="40dp"
+                        android:gravity="center_vertical"
                         android:text="  소모임 목표"
                         android:textColor="#000000"
                         android:textSize="13sp"
@@ -416,13 +420,14 @@
                         android:id="@+id/editText_goal"
                         android:layout_width="wrap_content"
                         android:layout_height="65dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/red_border"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
                         android:ems="10"
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
+                        android:textSize="15sp"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
             </LinearLayout>
@@ -495,10 +500,11 @@
                     <TextView
                         android:layout_width="300dp"
                         android:layout_height="40dp"
+                        android:gravity="center_vertical"
                         android:text="  인증방식"
+                        android:textColor="#000000"
                         android:textSize="13sp"
                         android:textStyle="bold"
-                        android:textColor="#000000"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
@@ -520,6 +526,7 @@
                         android:gravity="start|top"
                         android:hint="객관적인 방식으로 적어주세요."
                         android:inputType="textMultiLine|textNoSuggestions"
+                        android:textSize="15sp"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
             </LinearLayout>
@@ -543,10 +550,11 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="40dp"
+                        android:gravity="center_vertical"
                         android:text="  멘토 필요여부"
-                        android:textStyle="bold"
                         android:textColor="#000000"
                         android:textSize="13sp"
+                        android:textStyle="bold"
                         app:fontFamily="@font/binggraemelona" />
 
                     <RadioGroup
@@ -593,6 +601,7 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="40dp"
+                        android:gravity="center_vertical"
                         android:text="  멘토 지원비 (1인당)"
                         android:textColor="#000000"
                         android:textSize="13sp"
@@ -601,7 +610,7 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
                         android:layout_margin="10dp"
                         android:background="@drawable/red_border"
                         android:orientation="horizontal">
@@ -611,8 +620,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:background="#ffffff"
                             android:ems="10"
-                            android:inputType="textNoSuggestions|numberDecimal"
+                            android:inputType="numberDecimal|textNoSuggestions"
+                            android:textSize="15sp"
                             app:fontFamily="@font/binggraemelona" />
 
                         <TextView
@@ -645,6 +656,7 @@
                     <TextView
                         android:layout_width="400dp"
                         android:layout_height="30dp"
+                        android:gravity="center_vertical"
                         android:text="  모임가능시간 (요일, 시간대)"
                         android:textColor="#000000"
                         android:textSize="13sp"
@@ -662,14 +674,15 @@
                     <EditText
                         android:id="@+id/editText_모임시간"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/red_border"
                         android:ems="10"
-                        android:gravity="start|top"
+                        android:gravity="start|center_vertical"
                         android:hint="(예시) 일요일, 3:00-5:00pm"
                         android:inputType="textMultiLine"
+                        android:textSize="15sp"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
             </LinearLayout>
@@ -694,6 +707,7 @@
                     <TextView
                         android:layout_width="300dp"
                         android:layout_height="40dp"
+                        android:gravity="center_vertical"
                         android:text="  소모임 소개 (공지)"
                         android:textColor="#000000"
                         android:textSize="13sp"

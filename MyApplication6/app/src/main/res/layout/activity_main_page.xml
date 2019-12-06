@@ -21,6 +21,18 @@
             app:srcCompat="@drawable/upupupup" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="164dp"
+        android:background="@drawable/ad2"
+        android:gravity="center">
+
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="160dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -108,17 +120,6 @@
 
 
             <!-- 광고-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="164dp"
-                android:background="@drawable/ad2"
-                android:gravity="center">
-
-                <Space
-                    android:layout_width="30dp"
-                    android:layout_height="160dp"
-                    android:layout_weight="1" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

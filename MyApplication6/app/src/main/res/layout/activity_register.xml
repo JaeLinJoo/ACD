@@ -89,6 +89,7 @@
                     android:layout_marginEnd="1dp"
                     android:layout_marginRight="1dp"
                     android:background="@drawable/textbox_border"
+                    app:fontFamily="@font/binggraemelona"
                     android:ems="13"
                     android:inputType="textPersonName|textNoSuggestions" />
             </LinearLayout>
@@ -129,6 +130,7 @@
                     android:layout_marginTop="3dp"
                     android:layout_marginEnd="1dp"
                     android:layout_marginRight="1dp"
+                    app:fontFamily="@font/binggraemelona"
                     android:background="@drawable/textbox_border"
                     android:ems="13"
                     android:inputType="textPersonName|textNoSuggestions" />
@@ -170,6 +172,7 @@
                     android:layout_marginTop="3dp"
                     android:layout_marginEnd="1dp"
                     android:layout_marginRight="1dp"
+                    app:fontFamily="@font/binggraemelona"
                     android:background="@drawable/textbox_border"
                     android:ems="13"
                     android:inputType="textPassword|textNoSuggestions" />
@@ -212,6 +215,7 @@
                     android:layout_marginEnd="1dp"
                     android:layout_marginRight="1dp"
                     android:background="@drawable/textbox_border"
+                    app:fontFamily="@font/binggraemelona"
                     android:ems="13"
                     android:inputType="textPassword|textNoSuggestions" />
             </LinearLayout>
@@ -252,6 +256,7 @@
                     android:layout_marginTop="3dp"
                     android:layout_marginEnd="1dp"
                     android:layout_marginRight="1dp"
+                    app:fontFamily="@font/binggraemelona"
                     android:background="@drawable/textbox_border"
                     android:ems="13"
                     android:inputType="numberDecimal|textNoSuggestions" />
@@ -293,14 +298,15 @@
 
                     <EditText
                         android:id="@+id/email"
-                        android:layout_width="wrap_content"
+                        android:layout_width="240dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
                         android:layout_marginEnd="1dp"
                         android:layout_marginRight="1dp"
                         android:background="@drawable/textbox_border"
                         android:ems="13"
-                        android:inputType="textPersonName|textNoSuggestions" />
+                        android:inputType="textPersonName|textNoSuggestions"
+                        app:fontFamily="@font/binggraemelona" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -335,8 +341,9 @@
 
                 <Button
                     android:id="@+id/register1"
-                    android:layout_width="270dp"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/register_button"
                     android:text="회원가입"
                     android:textColor="#ffffff"

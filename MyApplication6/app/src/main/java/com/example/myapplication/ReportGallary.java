@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ReportGallary extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
-    Button objective, attend;
+    Button objective, attend,ret;
     GridView listView;
 
     @Override
@@ -40,6 +40,15 @@ public class ReportGallary extends AppCompatActivity {
         objective = (Button) findViewById(R.id.button5);
         attend = (Button) findViewById(R.id.button6);
         listView = (GridView) findViewById(R.id.list);
+        ret = (Button)findViewById(R.id.ret);
+
+        ret.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                startActivity(intent);
+            }
+        });
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)

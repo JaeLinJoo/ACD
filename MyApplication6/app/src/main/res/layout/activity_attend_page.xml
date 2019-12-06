@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical">
 
     <LinearLayout
@@ -30,10 +31,10 @@
             android:background="#FDD835"
             android:gravity="center_vertical"
             android:text="   출석 및 일정관리"
-            app:fontFamily="@font/binggraemelona"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
     </LinearLayout>
 
     <ScrollView
@@ -65,10 +66,10 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="일정 추가하기"
-                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#FDD835"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <LinearLayout
@@ -83,8 +84,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    app:fontFamily="@font/binggraemelona"
-                    android:text="날짜:" />
+                    android:text="날짜:"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:id="@+id/date"
@@ -103,8 +104,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/attend_button"
                     android:onClick="OnClickHandler1"
-                    app:fontFamily="@font/binggraemelona"
-                    android:text="날짜 입력" />
+                    android:text="날짜 입력"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <LinearLayout
@@ -119,8 +120,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    app:fontFamily="@font/binggraemelona"
-                    android:text="시간:" />
+                    android:text="시간:"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <EditText
                     android:id="@+id/time"
@@ -128,9 +129,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:hint="(예시) 3:00-5:00pm"
-                    app:fontFamily="@font/binggraemelona"
                     android:inputType="textNoSuggestions"
-                    android:textSize="13dp" />
+                    android:textSize="13dp"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <Button
                     android:id="@+id/timebt"
@@ -139,8 +140,8 @@
                     android:layout_margin="8dp"
                     android:layout_weight="1"
                     android:background="@drawable/attend_button"
-                    app:fontFamily="@font/binggraemelona"
-                    android:text="일정 추가" />
+                    android:text="일정 추가"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <LinearLayout
@@ -154,11 +155,11 @@
                 android:layout_height="wrap_content"
                 android:background="#3949AB"
                 android:gravity="center"
-                app:fontFamily="@font/binggraemelona"
                 android:text="출석하기"
                 android:textColor="#FDD835"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:fontFamily="@font/binggraemelona" />
 
             <ListView
                 android:id="@+id/list7"
@@ -243,9 +244,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        app:fontFamily="@font/binggraemelona"
                         android:background="@drawable/attend_button"
-                        android:text="이미지 가져오기" />
+                        android:text="이미지 가져오기"
+                        app:fontFamily="@font/binggraemelona" />
 
                     <Space
                         android:layout_width="match_parent"
@@ -254,10 +255,12 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="#FCE0DEDE" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
@@ -331,10 +334,12 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="#FCE0DEDE" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -348,9 +353,9 @@
                     android:layout_weight="1"
                     android:background="#FFCA28"
                     android:gravity="center"
-                    app:fontFamily="@font/binggraemelona"
                     android:text="출석명단"
-                    android:textColor="#2B2B2B" />
+                    android:textColor="#2B2B2B"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:id="@+id/attendlist"
@@ -367,9 +372,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    app:fontFamily="@font/binggraemelona"
                     android:background="@drawable/attend_button"
-                    android:text="출석 인증" />
+                    android:text="출석 인증"
+                    app:fontFamily="@font/binggraemelona" />
 
             </LinearLayout>
 

@@ -60,6 +60,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#ffffff"
             android:orientation="vertical">
 
 
@@ -75,12 +76,12 @@
                     android:layout_height="match_parent"
                     android:layout_margin="3dp"
                     android:layout_weight="1"
-                    app:fontFamily="@font/binggraemelona"
                     android:background="@drawable/button_border"
                     android:gravity="center"
                     android:text="TextView"
                     android:textColor="#1E1D1D"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:id="@+id/category2"
@@ -88,12 +89,12 @@
                     android:layout_height="match_parent"
                     android:layout_margin="3dp"
                     android:layout_weight="1"
-                    app:fontFamily="@font/binggraemelona"
                     android:background="@drawable/button_border2"
                     android:gravity="center"
                     android:text="TextView"
                     android:textColor="#1E1D1D"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <LinearLayout
@@ -247,9 +248,9 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="TextView"
-                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#3A3A3A"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <LinearLayout
@@ -282,15 +283,16 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="TextView"
-                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#3A3A3A"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="#FCE0DEDE" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -344,11 +346,11 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    app:fontFamily="@font/binggraemelona"
                     android:gravity="center_vertical"
                     android:text="TextView"
                     android:textColor="#3A3A3A"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
             <LinearLayout
@@ -455,63 +457,64 @@
                 android:layout_height="10dp"
                 android:background="#FCE0DEDE" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="챌린지 캔"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                app:fontFamily="@font/binggraemelona" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="이 챌린지의 참가 캔은 최소 20CAN, 최대 100CAN 입니다."
-                android:textColor="#7E7A7A"
-                android:textSize="10sp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="7dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="7dp"
-                android:background="@drawable/red_border"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/can"
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="10"
-                    android:gravity="right"
-                    android:inputType="textNoSuggestions|numberDecimal"
+                    android:gravity="center"
+                    android:text="챌린지 캔"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
                     app:fontFamily="@font/binggraemelona" />
 
                 <TextView
-                    android:id="@+id/textView40"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="CAN"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    app:fontFamily="@font/binggraemelona" />
+                    android:text="이 챌린지의 참가 캔은 최소 20CAN, 최대 100CAN 입니다."
+                    android:textColor="#7E7A7A"
+                    android:textSize="10sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="@drawable/red_border"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/can"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="textNoSuggestions|numberDecimal"
+                        app:fontFamily="@font/binggraemelona" />
+
+                    <TextView
+                        android:id="@+id/textView40"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="CAN"
+                        android:textColor="#000000"
+                        android:textSize="15dp"
+                        app:fontFamily="@font/binggraemelona" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
@@ -530,9 +533,9 @@
                     android:layout_weight="1"
                     android:background="@drawable/submit_button"
                     android:text="소모임 신청하기"
-                    app:fontFamily="@font/binggraemelona"
                     android:textColor="#000000"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

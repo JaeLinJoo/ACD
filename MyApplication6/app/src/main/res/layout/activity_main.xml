@@ -9,15 +9,15 @@
 
     <EditText
         android:id="@+id/position"
-        app:fontFamily="@font/binggraemelona"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="400dp"
         android:background="@drawable/textbox_border"
         android:ems="10"
         android:gravity="center"
         android:hint="ID"
         android:inputType="textPersonName"
+        app:fontFamily="@font/binggraemelona"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,7 @@
     <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"

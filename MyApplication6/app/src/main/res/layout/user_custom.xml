@@ -9,8 +9,9 @@
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_weight="1"
+        android:background="#ffffff"
         android:gravity="center"
         android:text="TextView"
-        app:fontFamily="@font/binggraemelona"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        app:fontFamily="@font/binggraemelona" />
 </LinearLayout>

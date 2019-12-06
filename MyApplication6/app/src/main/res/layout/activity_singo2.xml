@@ -33,27 +33,6 @@
         android:padding="24dp">
 
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="해당 인증샷만 신고합니다."
-                app:fontFamily="@font/binggraemelona"
-                android:textColor="#000000" />
-
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="다른 인증샷을 같이 봐주세요."
-                app:fontFamily="@font/binggraemelona"
-                android:textColor="#000000" />
-        </RadioGroup>
-
         <EditText
             android:id="@+id/reason"
             android:layout_width="match_parent"

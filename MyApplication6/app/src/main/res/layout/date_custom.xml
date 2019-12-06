@@ -8,6 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="65dp"
+        android:layout_marginTop="7dp"
         android:background="@drawable/layout_border"
         android:orientation="horizontal">
 
@@ -26,26 +27,26 @@
                     android:id="@+id/textView16"
                     android:layout_width="70dp"
                     android:layout_height="match_parent"
-                    app:fontFamily="@font/binggraemelona"
                     android:gravity="center_vertical"
-                    android:text="일시:" />
+                    android:text="일시:"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    app:fontFamily="@font/binggraemelona"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:id="@+id/tv_contents"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
-                    app:fontFamily="@font/binggraemelona"
                     android:gravity="center_vertical"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    app:fontFamily="@font/binggraemelona" />
 
             </LinearLayout>
 
@@ -60,8 +61,8 @@
                     android:layout_width="70dp"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    app:fontFamily="@font/binggraemelona"
-                    android:text="출석자명단:" />
+                    android:text="출석자명단:"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:id="@+id/user"
@@ -69,9 +70,9 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
-                    app:fontFamily="@font/binggraemelona"
                     android:gravity="center_vertical"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
         </LinearLayout>

@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="200dp"
         android:layout_height="178dp"
+        android:layout_marginTop="7dp"
         android:background="@drawable/layout_border"
         android:orientation="horizontal">
 
@@ -21,12 +22,13 @@
                 android:id="@+id/iv_img"
                 android:layout_width="match_parent"
                 android:layout_height="132dp"
-                android:background="@drawable/layout_border"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/layout_border"
                 android:orientation="horizontal">
 
                 <TextView
@@ -34,15 +36,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="#B3E5FC"
                     android:gravity="center"
-                    android:text="목표: " />
+                    android:text="목표"
+                    android:textColor="#000000"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:id="@+id/objective"
                     android:layout_width="139dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
         </LinearLayout>
 

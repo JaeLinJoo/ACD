@@ -9,6 +9,8 @@
     <LinearLayout
         android:layout_width="200dp"
         android:layout_height="190dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/layout_border"
         android:orientation="horizontal">
 
@@ -21,7 +23,6 @@
                 android:id="@+id/iv_img"
                 android:layout_width="match_parent"
                 android:layout_height="132dp"
-                android:background="@drawable/layout_border"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <LinearLayout

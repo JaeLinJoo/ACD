@@ -87,8 +87,8 @@
                     android:layout_width="90dp"
                     android:layout_height="40dp"
                     android:text="  카테고리"
-                    app:fontFamily="@font/binggraemelona"
-                    android:textSize="20sp" />
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
 
                 <Spinner
                     android:id="@+id/spinner"

@@ -110,4 +110,21 @@ public interface GetService {
     @FormUrlEncoded
     @POST("/calculateAttend")
     Call<Calculate> calculateAttend(@Field("id") String id, @Field("name") String name);
+
+    @FormUrlEncoded
+    @POST("/showObjectiveList")
+    Call<List<AdmitList>> showObjectiveList(@Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("/showAttendList")
+    Call<List<AdmitList>> showAttendList(@Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("/reportObjective")
+    Call<DummyMessage> reportObjective(@Field("id") String id, @Field("name") String name, @Field("objective") String objective, @Field("message") String message);
+
+    @FormUrlEncoded
+    @POST("/reportAttend")
+    Call<DummyMessage> reportAttend(@Field("name") String name, @Field("date") String date, @Field("message") String message);
+
 }

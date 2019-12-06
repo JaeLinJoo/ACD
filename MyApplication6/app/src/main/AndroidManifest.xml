@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MentorPopup" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".ReportGallary"></activity>
+        <activity
+            android:name=".MentorPopup"
+            android:theme="@android:style/Theme.Dialog" />
         <activity
             android:name=".LoadingPage"
             android:theme="@android:style/Theme.NoTitleBar">

@@ -78,7 +78,7 @@ public class CategoryList extends AppCompatActivity {
                                 b[i] = (byte)d.getMainimg()[i];
                             }
 
-                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getCategory1()+" / "+d.getCategory2());
 
                         }
                         if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1")) && d.getState().equals("진행중")){
@@ -88,7 +88,7 @@ public class CategoryList extends AppCompatActivity {
                                 b[i] = (byte)d.getMainimg()[i];
                             }
 
-                            mMyAdapter1.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            mMyAdapter1.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getCategory1()+" / "+d.getCategory2());
 
                         }
                     }

@@ -509,15 +509,7 @@ app.post('/showdate',function(req, res){
     connection.query('SELECT * from teamAttend where name = ?',[name],function(err, rows){
         if(!err){
             for(var i = 0; i<rows.length; i++){
-                var str;
-                if(rows[i].img==null){
-                    str = null;
-                }
-                else{
-                    data = fs.readFileSync(__dirname +"\\uploads\\" + rows[i].img);
-                    str = data.toJSON().data;
-                }
-                result.push({img: str,
+                result.push({
                             date: rows[i].date,
                             time: rows[i].time,
                             user: rows[i].user,
@@ -627,6 +619,59 @@ app.post('/calculateAttend',function(req, res){
             }
         }
     })
+})
+
+app.post('/showObjectiveList',function(req, res){
+    var result = [];
+    connection.query('SELECT * from teamObjective', function(err, rows){
+        if(!err){
+            for(var i = 0; i < rows.length; i++){
+                if(rows[i].isadmit == '인증 됨'){
+                    data = fs.readFileSync(__dirname +"\\uploads\\" + rows[i].img);
+                    str = data.toJSON().data;
+                    result.push({img: str, id: rows[i].id, objective: rows[i].objective, key: rows[i].name})
+                }
+            }
+            //console.log(result);
+            res.json(result);
+        }
+    })
+})
+
+app.post('/showAttendList',function(req, res){
+    var result = [];
+    connection.query('SELECT * from teamAttend', function(err, rows){
+        if(!err){
+            for(var i = 0; i < rows.length; i++){
+                if(rows[i].state == '마감'){
+                    data = fs.readFileSync(__dirname +"\\uploads\\" + rows[i].img);
+                    str = data.toJSON().data;
+                    result.push({img: str, id: rows[i].date, objective: rows[i].user, key: rows[i].name})
+                }
+            }
+            //console.log(result);
+            res.json(result);
+        }
+    })
+})
+
+app.post('/reportObjective', function(req, res){
+    var id = req.body.id;
+    var name = req.body.name;
+    var objective = req.body.objective;
+    var message = req.body.message;
+
+    connection.query('UPDATE teamObjective SET isreported = ?, reportmessage = ? where id = ? AND name = ? AND objective = ?',['신고', message, id, name, objective]);
+    res.json({check: true, message: '신고 완료'});
+})
+
+app.post('/reportAttend', function(req, res){
+    var name = req.body.name;
+    var date = req.body.date;
+    var message = req.body.message;
+
+    connection.query('UPDATE teamAttend SET isreported = ?, reportmessage = ? where name = ? AND date = ?',['신고', message, name, date]);
+    res.json({check: true, message: '신고 완료'});
 })
 
 app.listen(3002, function() {

@@ -9,10 +9,26 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.myapplication.RetrofitInterface.GetService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.example.myapplication.RetrofitInterface.GetIP.BASE;
+
 public class Singo2 extends Activity {
 
     RadioButton one,all;
     EditText reason;
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(BASE)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+    GetService service = retrofit.create(GetService.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +37,12 @@ public class Singo2 extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_singo2);
 
-        one = (RadioButton)findViewById(R.id.radioButton);
-        all = (RadioButton)findViewById(R.id.radioButton2);
-        reason = (EditText)findViewById(R.id.reason);
+        one = (RadioButton) findViewById(R.id.radioButton);
+        all = (RadioButton) findViewById(R.id.radioButton2);
+        reason = (EditText) findViewById(R.id.reason);
     }
+
+
 
     //신고 버튼 클릭
     public void mOnClose(View v){
@@ -33,10 +51,54 @@ public class Singo2 extends Activity {
         //SharedPreference.setAttribute(getApplicationContext(),"result","신고");
         //setResult(RESULT_OK,intent);
 
+        if(!SharedPreference.getAttribute(getApplicationContext(), "idtemp").equals("x")){
+            String id = SharedPreference.getAttribute(getApplicationContext(),"idtemp");
+            String name = SharedPreference.getAttribute(getApplicationContext(), "teamnametemp");
+            String objective = SharedPreference.getAttribute(getApplicationContext(), "report");
+
+            Call<DummyMessage> call =  service.reportObjective(id, name, objective, reason.getText().toString());
+            call.enqueue(new Callback<DummyMessage>() {
+                @Override
+                public void onResponse(Call<DummyMessage> call, Response<DummyMessage> response) {
+                    if(response.isSuccessful()){
+                        DummyMessage dummy = response.body();
+                        Toast.makeText(getApplicationContext(), dummy.message, Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<DummyMessage> call, Throwable t) {
+
+                }
+            });
+        }
+        else{
+            String name = SharedPreference.getAttribute(getApplicationContext(), "teamnametemp");
+            String date = SharedPreference.getAttribute(getApplicationContext(), "datetemp");
+
+            Call<DummyMessage> call = service.reportAttend(name, date, reason.getText().toString());
+            call.enqueue(new Callback<DummyMessage>() {
+                @Override
+                public void onResponse(Call<DummyMessage> call, Response<DummyMessage> response) {
+                    if(response.isSuccessful()){
+                        DummyMessage dummy = response.body();
+                        Toast.makeText(getApplicationContext(), dummy.message, Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<DummyMessage> call, Throwable t) {
+
+                }
+            });
+        }
+
         Toast.makeText(getApplicationContext(),"인증무효신고 되었습니다.",Toast.LENGTH_LONG).show();
+
         //액티비티(팝업) 닫기
         finish();
     }
+
 
     //취소 버튼 클릭
     public void mOnClose_x(View v){

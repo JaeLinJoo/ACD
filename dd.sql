@@ -48,7 +48,9 @@ id char(20),
 name char(20),
 objective char(30),
 isadmit char(10),
-img char(50)
+img char(50),
+isreported char(10),
+reportmessage char(200)
 );
 
 create table teamAttend(
@@ -58,5 +60,7 @@ date char(15),
 state char(10),
 user char(150),
 img char(50),
-value int(4)
+value int(4),
+isreported char(10),
+reportmessage char(200)
 );

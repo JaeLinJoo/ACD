@@ -187,11 +187,12 @@
                         android:textSize="15dp" />
                 </LinearLayout>
 
-                <ListView
+                <GridView
                     android:id="@+id/listviewJ"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp" />
+                    android:layout_margin="5dp"
+                    android:numColumns="2"/>
             </LinearLayout>
 
             <LinearLayout
@@ -229,11 +230,12 @@
                         android:textSize="15dp" />
                 </LinearLayout>
 
-                <ListView
+                <GridView
                     android:id="@+id/listViewM"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp" />
+                    android:layout_margin="5dp"
+                    android:numColumns="2"/>
 
             </LinearLayout>
         </LinearLayout>

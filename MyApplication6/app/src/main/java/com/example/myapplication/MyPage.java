@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.GridView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,14 +43,14 @@ public class MyPage extends AppCompatActivity {
     Button imgbt, ret;
     ImageView imageView;
     TextView name, can;
-    ListView lv, lv1;
+    GridView lv, lv1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
         scrollView = (ScrollView) findViewById(R.id.scrollView2);
-        lv = (ListView) findViewById(R.id.listviewJ);
-        lv1 =(ListView) findViewById(R.id.listViewM);
+        lv = (GridView) findViewById(R.id.listviewJ);
+        lv1 =(GridView) findViewById(R.id.listViewM);
 
         imgbt = (Button) findViewById(R.id.imgbt);
         ret = (Button) findViewById(R.id.ret);
@@ -220,7 +220,7 @@ public class MyPage extends AppCompatActivity {
                                 b[i] = (byte)d.getMainimg()[i];
                             }
 
-                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getCategory1()+" / "+d.getCategory2());
 
                         }
                     }
@@ -269,7 +269,7 @@ public class MyPage extends AppCompatActivity {
                                 b[i] = (byte)d.getMainimg()[i];
                             }
 
-                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getCategory1()+" / "+d.getCategory2());
                         }
                     }
                     /* 리스트뷰에 어댑터 등록 */

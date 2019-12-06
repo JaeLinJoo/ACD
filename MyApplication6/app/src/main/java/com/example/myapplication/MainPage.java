@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.GridView;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -32,8 +32,8 @@ public class MainPage extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
 
     ScrollView scrollView;
-    Button ret, maketeam, mentor, mypage, sport, music, lang, human, craft, etc;
-    ListView listView;
+    Button ret, maketeam, mentor, mypage, sport, music, lang, human, craft, etc,report;
+    GridView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +46,13 @@ public class MainPage extends AppCompatActivity {
         maketeam = (Button) findViewById(R.id.maketeam);
         mentor = (Button) findViewById(R.id.mentor);
         mypage = (Button) findViewById(R.id.mypage);
-        listView = (ListView) findViewById(R.id.listview3);
+        listView = (GridView) findViewById(R.id.listview3);
         lang = (Button) findViewById(R.id.lang);
         human = (Button) findViewById(R.id.human);
         craft = (Button) findViewById(R.id.craft);
         etc = (Button) findViewById(R.id.etc);
         scrollView = (ScrollView) findViewById(R.id.scrollView3);
+        report = (Button) findViewById(R.id.report);
 
         dataSetting();
 
@@ -72,6 +73,14 @@ public class MainPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        report.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), ReportGallary.class);
+                startActivity(intent);
+            }
+            });
 
         maketeam.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -200,7 +209,7 @@ public class MainPage extends AppCompatActivity {
                                 b[i] = (byte)d.getMainimg()[i];
                             }
 
-                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getCategory1()+" / "+d.getCategory2());
 
                         }
                     }

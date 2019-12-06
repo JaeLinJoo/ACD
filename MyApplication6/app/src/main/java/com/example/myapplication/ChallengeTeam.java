@@ -171,7 +171,7 @@ public class ChallengeTeam extends AppCompatActivity {
                             String filepath = getApplicationContext().getFilesDir().toString()+"/admitimg";
 
                             //Toast.makeText(getApplicationContext(),filepath,Toast.LENGTH_LONG).show();
-                            SharedPreference.setAttribute(getApplicationContext(), "id", mMyAdapter.getItem(i).getName());
+                            SharedPreference.setAttribute(getApplicationContext(), "report", mMyAdapter.getItem(i).getName());
 
                             Intent intent = new Intent(getApplicationContext(),Singo.class);
                             startActivity(intent);

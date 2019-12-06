@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.GridView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MentorPage extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
-    ListView mentorlist ;
+    GridView mentorlist ;
     Button ret;
 
     @Override
@@ -35,7 +35,7 @@ public class MentorPage extends AppCompatActivity {
         setContentView(R.layout.activity_mentor_page);
 
         ret = (Button)findViewById(R.id.ret);
-        mentorlist = (ListView)findViewById(R.id.mentorlist);
+        mentorlist = (GridView)findViewById(R.id.mentorlist);
 
         ret.setOnClickListener(new View.OnClickListener(){
             @Override

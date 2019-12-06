@@ -14,8 +14,7 @@ import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends BaseAdapter {
-    /* 아이템을 세트로 담기 위한 어레이 */
+public class AttendReportAdapter extends BaseAdapter {
     private ArrayList<MyItem> mItems = new ArrayList<>();
 
     @Override
@@ -41,16 +40,12 @@ public class MyAdapter extends BaseAdapter {
         /* 'listview_custom' Layout을 inflate하여 convertView 참조 획득 */
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.listview_custom, parent, false);
+            convertView = inflater.inflate(R.layout.attendreport_custom, parent, false);
         }
 
         /* 'listview_custom'에 정의된 위젯에 대한 참조 획득 */
         ImageView iv_img = (ImageView) convertView.findViewById(R.id.iv_img) ;
-        TextView tv_name = (TextView) convertView.findViewById(R.id.tv_name) ;
-        TextView tv_contents = (TextView) convertView.findViewById(R.id.tv_contents) ;
-        TextView tv_count = (TextView) convertView.findViewById(R.id.count) ;
-        //TextView tv_state = (TextView) convertView.findViewById(R.id.state) ;
-        TextView tv_category = (TextView) convertView.findViewById(R.id.category) ;
+        TextView tv_name = (TextView) convertView.findViewById(R.id.objective) ;
 
         /* 각 리스트에 뿌려줄 아이템을 받아오는데 mMyItem 재활용 */
         MyItem myItem = getItem(position);
@@ -58,10 +53,6 @@ public class MyAdapter extends BaseAdapter {
         /* 각 위젯에 세팅된 아이템을 뿌려준다 */
         iv_img.setImageBitmap(myItem.getIcon());
         tv_name.setText(myItem.getName());
-        tv_contents.setText(myItem.getContents());
-        tv_count.setText(myItem.getCount());
-        //tv_state.setText(myItem.getState());
-        tv_category.setText(myItem.getCategory());
 
         /* (위젯에 대한 이벤트리스너를 지정하고 싶다면 여기에 작성하면된다..)  */
 
@@ -70,17 +61,15 @@ public class MyAdapter extends BaseAdapter {
     }
 
     /* 아이템 데이터 추가를 위한 함수. 자신이 원하는대로 작성 */
-    public void addItem(Bitmap img, String name, String contents, String count, String category) {
+    public void addItem(Bitmap img, String name, String state, String content) {
 
         MyItem mItem = new MyItem();
 
         /* MyItem에 아이템을 setting한다. */
         mItem.setIcon(img);
         mItem.setName(name);
-        mItem.setContents(contents);
-        mItem.setCount(count);
-        //mItem.setState(state);
-        mItem.setCategory(category);
+        mItem.setContents(content);
+        mItem.setState(state);
 
         /* mItems에 MyItem을 추가한다. */
         mItems.add(mItem);

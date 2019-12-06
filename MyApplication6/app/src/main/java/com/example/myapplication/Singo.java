@@ -29,7 +29,7 @@ public class Singo extends Activity {
 
         admitimg.setImageBitmap(BitmapFactory.decodeFile(getApplicationContext().getFilesDir().toString() + "/admitimg"));
 
-        String name = SharedPreference.getAttribute(getApplicationContext(),"id");
+        String name = SharedPreference.getAttribute(getApplicationContext(),"report");
         username.setText(name);
 
     }

@@ -56,17 +56,6 @@
                 android:text="멘토 구인" />
 
             <Button
-                android:id="@+id/mypage"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:background="#FFEB3B"
-                android:drawableTop="@drawable/person"
-                app:fontFamily="@font/binggraemelona"
-                android:text="마이" />
-
-            <Button
                 android:id="@+id/ret"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -77,6 +66,28 @@
                 app:fontFamily="@font/binggraemelona"
                 android:text="로그아웃" />
 
+            <Button
+                android:id="@+id/report"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="#FFEB3B"
+                app:fontFamily="@font/binggraemelona"
+                android:drawableTop="@drawable/back"
+                android:text="신고" />
+
+            <Button
+                android:id="@+id/mypage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="#FFEB3B"
+                android:drawableTop="@drawable/person"
+                app:fontFamily="@font/binggraemelona"
+                android:text="마이" />
+
 
         </LinearLayout>
 
@@ -85,7 +96,7 @@
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="607dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -290,6 +301,20 @@
                 <!-- 모든 소모임리스트-->
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <GridView
+                        android:id="@+id/listview3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:numColumns="2" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:orientation="horizontal">
 
@@ -304,17 +329,6 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:fontFamily="@font/binggraemelona" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ListView
-                        android:id="@+id/listview3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
                 </LinearLayout>
 
             </LinearLayout>

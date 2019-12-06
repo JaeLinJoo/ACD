@@ -49,6 +49,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#ffffff"
             android:orientation="vertical">
 
             <LinearLayout
@@ -257,6 +258,7 @@
                         android:layout_weight="1"
                         android:background="#ffffff"
                         android:ems="10"
+                        android:gravity="right"
                         android:inputType="numberDecimal|textNoSuggestions"
                         android:textSize="15sp"
                         app:fontFamily="@font/binggraemelona" />
@@ -436,6 +438,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="#FCE0DEDE" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -485,6 +488,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="#FCE0DEDE" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
@@ -530,10 +534,12 @@
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="#FCE0DEDE" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
@@ -582,10 +588,12 @@
                     </RadioGroup>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="#FCE0DEDE" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
@@ -622,6 +630,7 @@
                             android:layout_weight="1"
                             android:background="#ffffff"
                             android:ems="10"
+                            android:gravity="right"
                             android:inputType="numberDecimal|textNoSuggestions"
                             android:textSize="15sp"
                             app:fontFamily="@font/binggraemelona" />
@@ -636,6 +645,7 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
@@ -738,6 +748,7 @@
 
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"

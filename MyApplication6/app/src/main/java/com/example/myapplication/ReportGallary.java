@@ -124,7 +124,14 @@ public class ReportGallary extends AppCompatActivity {
                                 for(int i = 0;i < b.length;i++){
                                     b[i] = (byte)d.img[i];
                                 }
-                                mMyAdapter.addItem(BitmapFactory.decodeByteArray(b,0,b.length),d.objective, d.key, d.id);
+                                //mMyAdapter.addItem(BitmapFactory.decodeByteArray(b,0,b.length),d.objective, d.key, d.id);
+                                if(d.objective!=null){
+                                    mMyAdapter.addItem(BitmapFactory.decodeByteArray(b,0,b.length),d.objective.replace(";",","), d.key, d.id);
+                                }
+                                else{
+                                    mMyAdapter.addItem(BitmapFactory.decodeByteArray(b,0,b.length),"", d.key, d.id);
+                                }
+
                             }
                             listView.setAdapter(mMyAdapter);
                             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -143,7 +150,14 @@ public class ReportGallary extends AppCompatActivity {
                                     String filepath = getApplicationContext().getFilesDir().toString()+"/admitimg";
 
                                     //Toast.makeText(getApplicationContext(),filepath,Toast.LENGTH_LONG).show();
-                                    SharedPreference.setAttribute(getApplicationContext(), "report", mMyAdapter.getItem(i).getName());
+                                    //SharedPreference.setAttribute(getApplicationContext(), "report", mMyAdapter.getItem(i).getName());
+                                    if(mMyAdapter.getItem(i).getName()!=null){
+                                        SharedPreference.setAttribute(getApplicationContext(), "report", mMyAdapter.getItem(i).getName().replace(";",","));
+                                    }
+                                    else{
+                                        SharedPreference.setAttribute(getApplicationContext(), "report", "");
+                                    }
+
                                     SharedPreference.setAttribute(getApplicationContext(), "idtemp", "x");
                                     SharedPreference.setAttribute(getApplicationContext(),"datetemp", mMyAdapter.getItem(i).getContents());
                                     SharedPreference.setAttribute(getApplicationContext(), "teamnametemp",mMyAdapter.getItem(i).getState());

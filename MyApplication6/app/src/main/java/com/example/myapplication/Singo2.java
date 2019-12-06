@@ -6,7 +6,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.myapplication.RetrofitInterface.GetService;
@@ -21,7 +20,6 @@ import static com.example.myapplication.RetrofitInterface.GetIP.BASE;
 
 public class Singo2 extends Activity {
 
-    RadioButton one,all;
     EditText reason;
 
     Retrofit retrofit = new Retrofit.Builder()
@@ -37,8 +35,6 @@ public class Singo2 extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_singo2);
 
-        one = (RadioButton) findViewById(R.id.radioButton);
-        all = (RadioButton) findViewById(R.id.radioButton2);
         reason = (EditText) findViewById(R.id.reason);
     }
 

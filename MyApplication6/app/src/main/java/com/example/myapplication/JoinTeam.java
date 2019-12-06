@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class JoinTeam extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
-    boolean ismentor = false;
+    int ismentor = 0;
     boolean mentor_submit = false;
     TextView teamname, member_count, category1, category2, teamname1, intro, peroid, obj, admit, mentor_pay, time, mentor_state;
     ImageView imageView;
@@ -94,7 +94,18 @@ public class JoinTeam extends AppCompatActivity {
                     mentor_pay.setText(dummy.mentor_pay);
                     time.setText(dummy.time);
                     if(dummy.ismentor.equals("1")){
-                        ismentor = true;
+                        ismentor = 1;
+                        mentor_state.setText("멘토를 구하는 중입니다.");
+                    }
+                    else if(dummy.ismentor.equals("0")){
+                        ismentor = 0;
+                        mentor_state.setText("멘토가 필요없는 소모임입니다.");
+                        mentor_pay.setText("x");
+                    }
+                    else if(dummy.ismentor.equals("2")){
+                        ismentor = 2;
+                        mentor_state.setText("멘토를 이미 구했습니다.");
+
                     }
 
                     String[] s = dummy.objlist.split(";");
@@ -170,12 +181,15 @@ public class JoinTeam extends AppCompatActivity {
         mentorbt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                if(!ismentor){
-                    Toast.makeText(getApplicationContext(),"이미 멘토가 지원 되었거나 멘토가 필요없는 소모임 입니다!",Toast.LENGTH_LONG).show();
+                if(ismentor==0){
+                    Toast.makeText(getApplicationContext(),"멘토가 필요없는 소모임 입니다!",Toast.LENGTH_LONG).show();
                 }
-                else{
+                else if(ismentor==1){
                     Intent intent = new Intent(getApplicationContext(),MentorPopup.class);
                     startActivityForResult(intent,1);
+                }
+                else if(ismentor==2){
+                    Toast.makeText(getApplicationContext(),"멘토가 이미 지원 되었습니다!",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -191,7 +205,7 @@ public class JoinTeam extends AppCompatActivity {
                 String mentor_submit_s = SharedPreference.getAttribute(getApplicationContext(), "mentor_submit");
 
                 if (mentor_submit_s == "true") {
-                    //mentor_state.setText("멘토가 지원된 상태입니다.");
+                    mentor_state.setText("멘토가 지원된 상태입니다.");
                     mentor_submit = true;
                 }
 

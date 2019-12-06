@@ -164,7 +164,13 @@ public class TeamPage extends AppCompatActivity {
                     final DateAdapter mMyAdapter = new DateAdapter();
                     List<Date> dummy = response.body();
                     for(Date d: dummy){
-                        mMyAdapter.addItem(d.date, d.time,d.user,d.state);
+                        if(d.user!=null){
+                            mMyAdapter.addItem(d.date, d.time,d.user.replace(";",","),d.state);
+                        }
+                        else{
+                            mMyAdapter.addItem(d.date, d.time,"",d.state);
+                        }
+
                     }
                     listView.setAdapter(mMyAdapter);
 

@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -291,6 +292,21 @@ public class MakeTeamPage extends AppCompatActivity {
             }
         });
 
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pay.setText("0");
+                pay.setFilters(new InputFilter[]{new InputFilter.LengthFilter(1)});
+            }
+        });
+
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pay.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
+            }
+        });
+
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -488,7 +504,6 @@ public class MakeTeamPage extends AppCompatActivity {
             }
         };
     }
-
     public void OnClickHandler_start(View view){
         DatePickerDialog dialog_start = new DatePickerDialog(this,callbackMethod_start,2019,11,22);
         dialog_start.show();
@@ -515,7 +530,7 @@ public class MakeTeamPage extends AppCompatActivity {
                     f.createNewFile();
 
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    img.compress(Bitmap.CompressFormat.JPEG,1,bos);
+                    img.compress(Bitmap.CompressFormat.JPEG,50,bos);
                     byte[] bitmapdata = bos.toByteArray();
 
                     FileOutputStream fos = new FileOutputStream(f);

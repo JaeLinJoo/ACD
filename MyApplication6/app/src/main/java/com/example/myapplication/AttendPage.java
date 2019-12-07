@@ -57,7 +57,7 @@ public class AttendPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attend_page);
-
+        final DateAdapter mMyAdapter = new DateAdapter();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -109,10 +109,22 @@ public class AttendPage extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<DummyMessage> call, Response<DummyMessage> response) {
                             if(response.isSuccessful()){
-                                Toast.makeText(getApplicationContext(), response.body().message,Toast.LENGTH_LONG).show();
+                                if(response.body().check){
+                                    Toast.makeText(getApplicationContext(), response.body().message,Toast.LENGTH_LONG).show();
+                                    for(int i = 0; i < mMyAdapter.getCount(); i++){
+                                        if(mMyAdapter.getItem(i).getName().equals(date1.getText().toString())){
+                                            mMyAdapter.getItem(i).setCount(attendlist.getText().toString().replace(";",","));
+                                            mMyAdapter.getItem(i).setState("마감");
+                                            break;
+                                        }
+                                    }
+                                    listView.setAdapter(mMyAdapter);
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(), response.body().message, Toast.LENGTH_LONG).show();
+                                }
                             }
                         }
-
                         @Override
                         public void onFailure(Call<DummyMessage> call, Throwable t) {
 
@@ -143,35 +155,48 @@ public class AttendPage extends AppCompatActivity {
         timebt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(start == "" || time.getText().toString().equals("")){
+                if(date.getText().toString().equals("") || time.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "날짜와 시간을 입력하세요!", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl(BASE)
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
-                    GetService service = retrofit.create(GetService.class);
+                    boolean lock = false;
+                    for(int i = 0; i < mMyAdapter.getCount(); i++){
+                        if(mMyAdapter.getItem(i).getName().equals(date.getText().toString())){
+                            lock = true;
+                        }
+                    }
+                    if(!lock){
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl(BASE)
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
+                        GetService service = retrofit.create(GetService.class);
 
-                    Call<DummyMessage> call = service.addday(SharedPreference.getAttribute(getApplicationContext(),"teamname"),start,time.getText().toString());
-                    call.enqueue(new Callback<DummyMessage>(){
-                        @Override
-                        public void onResponse(Call<DummyMessage> call, Response<DummyMessage> response) {
-                            if (response.isSuccessful()) {
-                                DummyMessage dummy = response.body();
-                                if(dummy.check){
-                                    Toast.makeText(getApplicationContext(), dummy.message, Toast.LENGTH_LONG).show();
+                        Call<DummyMessage> call = service.addday(SharedPreference.getAttribute(getApplicationContext(),"teamname"),date.getText().toString(),time.getText().toString());
+                        call.enqueue(new Callback<DummyMessage>(){
+                            @Override
+                            public void onResponse(Call<DummyMessage> call, Response<DummyMessage> response) {
+                                if (response.isSuccessful()) {
+                                    DummyMessage dummy = response.body();
+                                    if(dummy.check){
+                                        Toast.makeText(getApplicationContext(), dummy.message, Toast.LENGTH_LONG).show();
+                                    }
+                                } else
+                                {
+                                    Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
                                 }
-                            } else
-                            {
-                                Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
                             }
-                        }
-                        @Override
-                        public void onFailure(Call<DummyMessage> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(Call<DummyMessage> call, Throwable t) {
+                                Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                        mMyAdapter.addItem(date.getText().toString(), time.getText().toString(),"","예정");
+                        listView.setAdapter(mMyAdapter);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"이미 이 날짜에 일정이 있습니다!",Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
@@ -180,10 +205,15 @@ public class AttendPage extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Date>> call, Response<List<Date>> response) {
                 if (response.isSuccessful()) {
-                    final DateAdapter mMyAdapter = new DateAdapter();
+
                     List<Date> dummy = response.body();
                     for(Date d: dummy){
-                        mMyAdapter.addItem(d.date, d.time,d.user,d.state);
+                        if(d.user != null){
+                            mMyAdapter.addItem(d.date, d.time,d.user.replace(";",","),d.state);
+                        }
+                        else{
+                            mMyAdapter.addItem(d.date, d.time,"",d.state);
+                        }
                     }
                     listView.setAdapter(mMyAdapter);
                     listView.setOnTouchListener(new View.OnTouchListener() {
@@ -211,6 +241,9 @@ public class AttendPage extends AppCompatActivity {
                                             }
                                             imageView.setImageBitmap(BitmapFactory.decodeByteArray(b, 0, b.length));
                                         }
+                                        else{
+                                            imageView.setImageResource(0);
+                                        }
                                         if(dummy.user!=null){
                                             if(dummy.user.contains(";")){
                                                 attendlist.setText(dummy.user.replace(";",","));
@@ -218,6 +251,9 @@ public class AttendPage extends AppCompatActivity {
                                             else{
                                                 attendlist.setText(dummy.user);
                                             }
+                                        }
+                                        else{
+                                            attendlist.setText("");
                                         }
                                     }
                                 }
@@ -243,14 +279,14 @@ public class AttendPage extends AppCompatActivity {
             @Override
             public void onResponse(Call<Getusers> call, Response<Getusers> response) {
                 if(response.isSuccessful()){
-                    final UserAdapter mMyAdapter = new UserAdapter();
+                    final UserAdapter mMyAdapter1 = new UserAdapter();
                     Getusers dummy = response.body();
 
                     String[] users = dummy.users.split(";");
                     for(int i = 0; i< users.length; i++){
-                        mMyAdapter.addItem(users[i]);
+                        mMyAdapter1.addItem(users[i]);
                     }
-                    userlist.setAdapter(mMyAdapter);
+                    userlist.setAdapter(mMyAdapter1);
                     userlist.setOnTouchListener(new View.OnTouchListener() {
                         @Override
                         public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -261,7 +297,7 @@ public class AttendPage extends AppCompatActivity {
                     userlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            final String name = mMyAdapter.getItem(i).getName();
+                            final String name = mMyAdapter1.getItem(i).getName();
                             String attendlt = "";
                             attendlt = attendlt+attendlist.getText().toString();
                             if(attendlt.contains(name)){
@@ -279,7 +315,9 @@ public class AttendPage extends AppCompatActivity {
                                         attendlt+=name;
                                     }
                                     else{
-                                        attendlt = attendlt + "," + name;
+                                        if(!attendlt.contains(name)){
+                                            attendlt = attendlt + "," + name;
+                                        }
                                     }
                                     attendlist.setText(attendlt);
                                 }

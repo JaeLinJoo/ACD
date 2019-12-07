@@ -307,7 +307,7 @@
                         android:layout_weight="1"
                         android:background="#ffffff"
                         android:ems="10"
-                        android:gravity="right"
+                        android:gravity="right|center_vertical"
                         android:inputType="numberDecimal|textNoSuggestions"
                         android:textSize="15sp"
                         app:fontFamily="@font/binggraemelona" />

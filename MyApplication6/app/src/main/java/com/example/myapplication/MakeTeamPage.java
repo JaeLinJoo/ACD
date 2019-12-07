@@ -37,6 +37,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -504,12 +508,31 @@ public class MakeTeamPage extends AppCompatActivity {
             }
         };
     }
+
     public void OnClickHandler_start(View view){
-        DatePickerDialog dialog_start = new DatePickerDialog(this,callbackMethod_start,2019,11,22);
+        final Calendar c = Calendar.getInstance();
+        int year=c.get(Calendar.YEAR)-1;
+        int month=c.get(Calendar.MONTH)+1;
+        int day=c.get(Calendar.DAY_OF_MONTH);
+        Calendar cal=new GregorianCalendar(Locale.KOREA);
+        cal.setTime(new Date());
+        cal.add(Calendar.DAY_OF_YEAR,8);
+        DatePickerDialog dialog_start = new DatePickerDialog(this,callbackMethod_start,year,month,day);
+        dialog_start.getDatePicker().setMinDate(cal.getTimeInMillis());
         dialog_start.show();
     }
     public void OnClickHandler_finish(View view){
-        DatePickerDialog dialog_finish = new DatePickerDialog(this,callbackMethod_finish,2019,11,22);
+        final Calendar c = Calendar.getInstance();
+        int year=c.get(Calendar.YEAR)-1;
+        int month=c.get(Calendar.MONTH);
+        int day=c.get(Calendar.DAY_OF_MONTH);
+        Calendar cal=new GregorianCalendar(Locale.KOREA);
+        cal.setTime(new Date());
+        cal.add(Calendar.DAY_OF_YEAR,22);
+        DatePickerDialog dialog_finish = new DatePickerDialog(this,callbackMethod_finish,year,month,day);
+        dialog_finish.getDatePicker().setMinDate(cal.getTimeInMillis());
+        cal.add(Calendar.DAY_OF_YEAR,10);
+        dialog_finish.getDatePicker().setMaxDate(cal.getTimeInMillis());
         dialog_finish.show();
     }
 

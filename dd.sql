@@ -14,13 +14,13 @@ team char(200)
 );
 
 create table team(
-name char(20),
-objective char(50),
+name char(15),
+objective char(100),
 objectives char(200),
-admit char(10),
+admit char(200),
 pay int(4),
 time char(20),
-intro char(20),
+intro char(200),
 start char(20),
 end char(20),
 mentor char(2),

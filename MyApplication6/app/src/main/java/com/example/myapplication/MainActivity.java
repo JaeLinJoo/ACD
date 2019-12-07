@@ -20,14 +20,14 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-
 public class MainActivity extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
 
     EditText position, password;
     Button getButton, register;
     TextView info;
-    String text,text1;
+    String text, text1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
         register = (Button) findViewById(R.id.register);
         //test = (Button)findViewById(R.id.button5);
 
-        register.setOnClickListener(new View.OnClickListener(){
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), register.class);
                 startActivity(intent);
             }
@@ -66,32 +66,36 @@ public class MainActivity extends AppCompatActivity {
                 text = position.getText().toString();
                 text1 = password.getText().toString();
 
-                LoginInterface service = retrofit.create(LoginInterface.class);
+                if (text.equals("admin") && text1.equals("1111")) {
+                    Toast.makeText(getApplicationContext(), "로그인성공!-관리자", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), AdminPage.class);
+                    startActivity(intent);
+                } else {
+                    LoginInterface service = retrofit.create(LoginInterface.class);
 
-                Call<Dummy> call = service.listDummies(text,text1);
-                call.enqueue(dummies);
+                    Call<Dummy> call = service.listDummies(text, text1);
+                    call.enqueue(dummies);
+                }
             }
         });
     }
 
-    Callback dummies = new Callback<Dummy>(){
+    Callback dummies = new Callback<Dummy>() {
         @Override
         public void onResponse(Call<Dummy> call, Response<Dummy> response) {
             if (response.isSuccessful()) {
                 Dummy dummy = response.body();
 
                 //StringBuilder builder = new StringBuilder();
-                if(dummy.isCheck()){
+                if (dummy.isCheck()) {
                     Toast.makeText(getApplicationContext(), "로그인성공!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), MainPage.class);
-                    SharedPreference.setAttribute(getApplicationContext(),"id",text);
+                    SharedPreference.setAttribute(getApplicationContext(), "id", text);
                     startActivity(intent);
-                }
-                else{
+                } else {
                     Toast.makeText(getApplicationContext(), "아이디와 비밀번호가 일치하지 않습니다!", Toast.LENGTH_LONG).show();
                 }
-            } else
-            {
+            } else {
                 Toast.makeText(getApplicationContext(), "실패!", Toast.LENGTH_LONG).show();
             }
         }

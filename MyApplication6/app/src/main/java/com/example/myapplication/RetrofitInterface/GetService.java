@@ -1,6 +1,7 @@
 package com.example.myapplication.RetrofitInterface;
 
 import com.example.myapplication.AdmitList;
+import com.example.myapplication.AttendSingoList;
 import com.example.myapplication.Calculate;
 import com.example.myapplication.Date;
 import com.example.myapplication.Dummy;
@@ -10,6 +11,7 @@ import com.example.myapplication.Getusers;
 import com.example.myapplication.JoinList;
 import com.example.myapplication.MainPage;
 import com.example.myapplication.MyInfo;
+import com.example.myapplication.ObjSingoList;
 import com.example.myapplication.ObjectiveAdmit;
 import com.example.myapplication.TeamInfo;
 import com.example.myapplication.TeamList;
@@ -126,5 +128,35 @@ public interface GetService {
     @FormUrlEncoded
     @POST("/reportAttend")
     Call<DummyMessage> reportAttend(@Field("name") String name, @Field("date") String date, @Field("message") String message);
+
+    @GET("/getObjSingoHistory")
+    Call<List<ObjSingoList>> getObjSingoHistory();
+
+    @GET("/getAttendSingoHistory")
+    Call<List<AttendSingoList>> getAttendSingoHistory();
+
+    @GET("/getBaIntro/{teamName}")
+    Call<TeamList> getBaIntro(@Path("teamName") String teamName);
+
+    @GET("/getBeforeApproval")
+    Call<List<TeamList>> getBeforeApproval();
+
+    @GET("/getObjSingoDetail/{teamName},{objective},{id}")
+    Call<ObjSingoList> getObjSingoDetail(@Path("teamName") String teamName, @Path("objective") String objective, @Path("id") String id);
+
+    @GET("/getAttendSingoDetail/{teamName},{date},{user}")
+    Call<AttendSingoList> getAttendSingoDetail(@Path("teamName") String teamName, @Path("date") String date, @Path("user") String user);
+
+    @FormUrlEncoded
+    @POST("/postApproval")
+    Call<Dummy> postApproval(@Field("name") String name);
+
+    @FormUrlEncoded
+    @POST("/postObjSingo")
+    Call<Dummy> postObjSingo(@Field("pass") String pass, @Field("name") String name, @Field("id") String id, @Field("obj") String obj);
+
+    @FormUrlEncoded
+    @POST("/postAttendSingo")
+    Call<Dummy> postAttendSingo(@Field("pass") String pass, @Field("name") String name, @Field("date") String date);
 
 }

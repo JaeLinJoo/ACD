@@ -33,6 +33,15 @@
         <activity
             android:name=".Singo"
             android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".Ba_Intro"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".ObjSingoDetail"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".AttendSingoDetail"
+            android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".AttendPage" />
         <activity android:name=".TestPage" />
         <activity android:name=".MentorPage" />
@@ -46,6 +55,8 @@
         <activity android:name=".MainPage" />
         <activity android:name=".register" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".AdminPage" />
+
     </application>
 
 </manifest>

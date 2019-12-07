@@ -11,6 +11,32 @@ public class TeamList {
     private String user;
     private String mentor_pay;
     private String mentor;
+    String objective;
+    String objectives;
+    String start;
+    String end;
+    String admit;
+
+    public String getObjectives() {
+        return objectives;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public String getAdmit() {
+        return admit;
+    }
+
+    public String getObjective() {
+        return objective;
+    }
+
 
     public String getName() {
         return name;

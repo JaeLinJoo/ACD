@@ -185,7 +185,7 @@ app.post('/admit',multer({storage: storage}).single('image'),function(req, res){
     var obj = req.body.objective;
 
     connection.query('UPDATE teamObjective SET img = ? where id =? AND name =? AND objective =?',[req.file.filename ,id, name, obj])
-    connection.query('UPDATE teamObjective SET isadmit = ? where id =? AND name =? AND objective =?',['인증 완료',id, name, obj])
+    connection.query('UPDATE teamObjective SET isadmit = ? where id =? AND name =? AND objective =?',['인증 됨',id, name, obj])
     result={check: true, message:'인증 완료'};
     res.json(result);
 })
@@ -413,14 +413,14 @@ app.post('/calculateObjective',function(req, res){
         if(!err){
             for(var i = 0; i < rows.length; i++){
                 if(rows[i].id==id){
-                    if(rows[i].isadmit == '인증 완료'){
+                    if(rows[i].isadmit == '인증 됨'){
                         yesin++;
                     }
                     else{
                         noin++;
                     }
                 }
-                if(rows[i].isadmit == '인증 완료'){
+                if(rows[i].isadmit == '인증 됨'){
                     yesgr++;
                 }
                 else{
@@ -590,7 +590,7 @@ app.post('/updateattend',function(req, res){
                         connection.query('UPDATE teamAttend SET value = ? where name = ? AND date = ?', [value, name, date]);
                     }
                 })
-                result = {check: true, message: '출석인증 수정 성공'};
+                result = {check: true, message: '수정 성공'};
                 res.json(result);
             }
             else{
@@ -636,7 +636,7 @@ app.post('/showObjectiveList',function(req, res){
     connection.query('SELECT * from teamObjective', function(err, rows){
         if(!err){
             for(var i = 0; i < rows.length; i++){
-                if(rows[i].isadmit == '인증 완료'){
+                if(rows[i].isadmit == '인증 됨'){
                     data = fs.readFileSync(__dirname +"\\uploads\\" + rows[i].img);
                     str = data.toJSON().data;
                     result.push({img: str, id: rows[i].id, objective: rows[i].objective, key: rows[i].name})
@@ -671,7 +671,16 @@ app.post('/reportObjective', function(req, res){
     var objective = req.body.objective;
     var message = req.body.message;
 
-  connection.query('UPDATE teamAttend SET isreported = ?, reportmessage = ? where name = ? AND date = ?', ['신고', message, name, date]);
+    connection.query('UPDATE teamObjective SET isreported = ?, reportmessage = ? where id = ? AND name = ? AND objective = ?',['신고', message, id, name, objective]);
+    res.json({check: true, message: '신고 완료'});
+})
+
+app.post('/reportAttend', function(req, res){
+    var name = req.body.name;
+    var date = req.body.date;
+    var message = req.body.message;
+
+   connection.query('UPDATE teamAttend SET isreported = ?, reportmessage = ? where name = ? AND date = ?', ['신고', message, name, date]);
     res.json({
         check: true,
         message: '신고 완료'

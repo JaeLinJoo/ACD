@@ -115,6 +115,15 @@ public class ChallengeTeam extends AppCompatActivity {
                         mMyAdapter.addItem(s[i]);
                     }
                     objlist.setAdapter(mMyAdapter);
+
+                    objlist.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View view, MotionEvent motionEvent) {
+                            scrollView.requestDisallowInterceptTouchEvent(true);
+                            return false;
+                        }
+                    });
+
                     if(dummy.img != null){
                         byte[] b = new byte[dummy.img.length];
 

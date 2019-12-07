@@ -3,11 +3,13 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +34,7 @@ public class JoinTeam extends AppCompatActivity {
     ListView objlist;
     Button mentorbt, submit,ret;
     EditText can;
+    ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,8 @@ public class JoinTeam extends AppCompatActivity {
         mentorbt =(Button) findViewById(R.id.mentorbt);
         submit = (Button) findViewById(R.id.submit);
         can = (EditText) findViewById(R.id.can);
+
+        scrollView = (ScrollView) findViewById(R.id.scrollView);
 
         ret = (Button)findViewById(R.id.ret);
 
@@ -93,6 +98,7 @@ public class JoinTeam extends AppCompatActivity {
                     admit.setText(dummy.admit);
                     mentor_pay.setText(dummy.mentor_pay);
                     time.setText(dummy.time);
+
                     if(dummy.ismentor.equals("1")){
                         ismentor = 1;
                         mentor_state.setText("멘토를 구하는 중입니다.");
@@ -113,6 +119,13 @@ public class JoinTeam extends AppCompatActivity {
                         mMyAdapter.addItem(s[i]);
                     }
                     objlist.setAdapter(mMyAdapter);
+                    objlist.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View view, MotionEvent motionEvent) {
+                            scrollView.requestDisallowInterceptTouchEvent(true);
+                            return false;
+                        }
+                    });
 
                     if(dummy.img != null){
                         byte[] b = new byte[dummy.img.length];
@@ -204,7 +217,7 @@ public class JoinTeam extends AppCompatActivity {
                 //데이터 받기
                 String mentor_submit_s = SharedPreference.getAttribute(getApplicationContext(), "mentor_submit");
 
-                if (mentor_submit_s == "true") {
+                if (mentor_submit_s.equals("true")) {
                     mentor_state.setText("멘토가 지원된 상태입니다.");
                     mentor_submit = true;
                 }

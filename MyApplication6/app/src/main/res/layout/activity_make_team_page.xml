@@ -118,42 +118,42 @@
                     android:textSize="10sp"
                     app:fontFamily="@font/binggraemelona" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:weightSum="1">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
 
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.21"
+                        app:fontFamily="@font/binggraemelona" />
 
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="120dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.21"
-                    app:fontFamily="@font/binggraemelona" />
+                    <Spinner
+                        android:id="@+id/spinner2"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.21"
+                        app:fontFamily="@font/binggraemelona" />
 
-                <Spinner
-                    android:id="@+id/spinner2"
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.21"
-                    app:fontFamily="@font/binggraemelona" />
+                    <Button
+                        android:id="@+id/btn_refresh"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.21"
+                        android:text="설정"
+                        app:fontFamily="@font/binggraemelona" />
 
-                <Button
-                    android:id="@+id/btn_refresh"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="0.21"
-                    android:text="설정"
-                    app:fontFamily="@font/binggraemelona" />
-
-            </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -187,6 +187,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/red_border"
                     android:ems="10"
+                    android:hint="15자 이내로 작성하세요."
                     android:inputType="textNoSuggestions|textPersonName"
                     android:textSize="15sp"
                     app:fontFamily="@font/binggraemelona" />
@@ -214,11 +215,12 @@
                 android:textSize="13sp"
                 android:textStyle="bold"
                 app:fontFamily="@font/binggraemelona" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="소모임 인원은 최소 2명, 최대 11명입니다."
+                android:text="소모임 인원은 신청인 포함 최소 2명, 최대 11명입니다.\n멘토가 필요한 경우, 멘토를 포함한 인원 수를 선택하세요."
                 android:textSize="10sp"
                 app:fontFamily="@font/binggraemelona" />
 
@@ -505,6 +507,7 @@
                         android:background="@drawable/red_border"
                         android:ems="10"
                         android:gravity="start|top"
+                        android:hint="100자 이내로 작성하세요."
                         android:inputType="textMultiLine"
                         android:textSize="15sp"
                         app:fontFamily="@font/binggraemelona" />
@@ -818,7 +821,7 @@
                         android:background="@drawable/red_border"
                         android:ems="10"
                         android:gravity="start|top"
-                        android:hint="소모임 특징을 간단하게 소개해주세요!"
+                        android:hint="소모임 특징을 간단하게 소개해주세요!\n200자 이내로 작성하세요."
                         android:inputType="textMultiLine|textNoSuggestions"
                         android:textSize="15sp"
                         app:fontFamily="@font/binggraemelona" />

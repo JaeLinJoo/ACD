@@ -15,13 +15,15 @@
 
         <Button
             android:id="@+id/ret"
-            android:layout_width="40dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:background="#00ff0000"
-            android:text="◀"
+            android:gravity="center|center_vertical"
+            android:text="＜"
             android:textColor="#ffffff"
-            android:textSize="30sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,8 +85,15 @@
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="갤러리"
+        android:textColor="#0f0f0f"
         android:textSize="20sp"
         app:fontFamily="@font/binggraemelona" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="다른 아캔더들의 인증을 구경해보세요!\n인증무효가 필요하다고 생각이 들때 사유와 함께 신고해주세요 : )" />
 
     <GridView
         android:id="@+id/list"

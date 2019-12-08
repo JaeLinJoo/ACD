@@ -15,13 +15,15 @@
 
         <Button
             android:id="@+id/ret"
-            android:layout_width="40dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:background="#00ff0000"
-            android:text="◀"
+            android:gravity="center|center_vertical"
+            android:text="＜"
             android:textColor="#ffffff"
-            android:textSize="30sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView24"
@@ -56,13 +58,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#CE283593" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:background="#FF283593">
+                android:background="@drawable/pro_bg">
 
                 <LinearLayout
                     android:layout_width="130dp"
@@ -84,12 +81,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="7dp"
                         android:layout_weight="1"
-                        android:background="@drawable/layout_p"
+                        android:background="@drawable/button_p"
                         android:gravity="center"
                         android:text="사진수정"
-                        android:textColor="#000000"
+                        android:textColor="#ffffff"
                         app:fontFamily="@font/binggraemelona" />
 
                 </LinearLayout>
@@ -102,7 +99,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="230dp"
                         android:layout_height="35dp"
                         android:gravity="center"
                         android:orientation="horizontal">
@@ -112,11 +109,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:background="#502196F3"
                             android:gravity="center"
                             android:text="홍길동"
                             android:textColor="#ffffff"
                             android:textSize="25dp"
-                            android:textStyle="bold"
                             app:fontFamily="@font/binggraemelona" />
                     </LinearLayout>
 
@@ -168,7 +165,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="380dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -212,7 +209,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="380dp"
                 android:orientation="vertical">
 
                 <LinearLayout

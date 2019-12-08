@@ -16,13 +16,15 @@
 
         <Button
             android:id="@+id/ret"
-            android:layout_width="40dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:background="#00ff0000"
-            android:text="◀"
+            android:gravity="center|center_vertical"
+            android:text="＜"
             android:textColor="#ffffff"
-            android:textSize="30sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -179,18 +181,18 @@
 
                 <TextView
                     android:id="@+id/textView52"
-                    android:layout_width="37dp"
+                    android:layout_width="70dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="날짜"
+                    android:text="출석인증날짜 :"
                     android:textColor="#2B2B2B"
-                    android:textStyle="bold"
+                    android:textStyle="normal|bold"
                     app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:id="@+id/date1"
-                    android:layout_width="267dp"
+                    android:layout_width="250dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"

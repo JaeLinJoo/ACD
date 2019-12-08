@@ -14,13 +14,15 @@
 
         <Button
             android:id="@+id/ret"
-            android:layout_width="40dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:background="#00ff0000"
-            android:text="◀"
+            android:gravity="center|center_vertical"
+            android:text="＜"
             android:textColor="#ffffff"
-            android:textSize="30sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,7 +85,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="123dp"
+                android:layout_height="115dp"
                 android:layout_margin="5dp"
                 android:orientation="horizontal">
 
@@ -107,9 +109,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_weight="1"
-                        app:fontFamily="@font/binggraemelona"
                         android:gravity="right|center_vertical"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        app:fontFamily="@font/binggraemelona" />
 
                     <LinearLayout
                         android:layout_width="230dp"
@@ -175,7 +177,7 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart"
                 android:layout_width="match_parent"
-                android:layout_height="340dp" />
+                android:layout_height="360dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -197,7 +199,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 android:orientation="horizontal">
 
                 <ListView

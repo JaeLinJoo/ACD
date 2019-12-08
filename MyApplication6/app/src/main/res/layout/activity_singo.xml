@@ -68,11 +68,10 @@
             android:background="@drawable/layout_g"
             android:gravity="center"
             android:onClick="mOnClose"
-            android:padding="16dp"
             android:text="신고"
-            app:fontFamily="@font/binggraemelona"
             android:textColor="#ff7a00"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:fontFamily="@font/binggraemelona" />
 
         <Button
             android:id="@+id/cancle"
@@ -81,11 +80,10 @@
             android:background="@drawable/layout_g"
             android:gravity="center"
             android:onClick="mOnClose_x"
-            android:padding="16dp"
-            app:fontFamily="@font/binggraemelona"
             android:text="닫기"
             android:textColor="#ff7a00"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:fontFamily="@font/binggraemelona" />
     </LinearLayout>
     <!--// 닫기 버튼 -->
 </LinearLayout>

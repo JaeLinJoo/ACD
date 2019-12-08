@@ -31,7 +31,7 @@
         android:id="@+id/under_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@drawable/layout_g"
+        android:background="@drawable/layout_g2"
         android:gravity="bottom"
         android:orientation="vertical">
 

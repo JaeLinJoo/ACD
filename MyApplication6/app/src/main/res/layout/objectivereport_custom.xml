@@ -7,14 +7,14 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="178dp"
-        android:layout_marginTop="7dp"
-        android:background="@drawable/layout_border"
+        android:layout_width="180dp"
+        android:layout_height="190dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_border2"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="190dp"
+            android:layout_width="170dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -40,15 +40,17 @@
                     android:gravity="center"
                     android:text="목표"
                     android:textColor="#000000"
+                    android:textSize="13sp"
                     app:fontFamily="@font/binggraemelona" />
 
                 <TextView
                     android:id="@+id/objective"
-                    android:layout_width="139dp"
+                    android:layout_width="130dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="#000000"
+                    android:textSize="13sp"
                     app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
         </LinearLayout>

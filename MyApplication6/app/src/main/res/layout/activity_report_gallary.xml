@@ -93,7 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="다른 아캔더들의 인증을 구경해보세요!\n인증무효가 필요하다고 생각이 들때 사유와 함께 신고해주세요 : )" />
+        android:text="다른 아캔더들의 인증을 구경해보세요!\n인증무효가 필요하다고 느낀다면 사유와 함께 신고해주세요 : )" />
 
     <GridView
         android:id="@+id/list"

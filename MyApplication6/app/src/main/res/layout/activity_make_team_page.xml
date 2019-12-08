@@ -18,7 +18,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:background="#FDD835"
+            android:background="#00ff0000"
             android:text="◀"
             android:textColor="#ffffff"
             android:textSize="30sp" />
@@ -27,13 +27,14 @@
             android:id="@+id/textView21"
             android:layout_width="206dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10sp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="   챌린지 소모임 신청하기"
-            app:fontFamily="@font/binggraemelona"
+            android:text="챌린지 소모임 신청하기"
             android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
 
     </LinearLayout>
 
@@ -308,6 +309,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:background="#ffffff"
+                        android:hint="최소, 최대 범위에 맞게 입력하세요."
                         android:ems="10"
                         android:gravity="right|center_vertical"
                         android:inputType="numberDecimal|textNoSuggestions"
@@ -608,7 +610,7 @@
                         android:background="@drawable/red_border"
                         android:ems="10"
                         android:gravity="start|top"
-                        android:hint="객관적인 방식으로 적어주세요.\n(예시)\n-목표:  \n-소목표:  \n-인증방식: "
+                        android:hint="객관적인 방식으로 적어주세요.\n(예시)\n-소목표: 토익 모의고사 800점이상 맞기  \n-인증방식: 채점 결과 점수 + 학생증 혹은 신분증 이름 나오게 찍어서 올리기"
                         android:inputType="textMultiLine|textNoSuggestions"
                         android:textSize="15sp"
                         app:fontFamily="@font/binggraemelona" />
@@ -798,7 +800,7 @@
                         android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:gravity="center_vertical"
-                        android:text="  소모임 소개 (공지)"
+                        android:text="  소모임 소개"
                         android:textColor="#000000"
                         android:textSize="13sp"
                         android:textStyle="bold"
@@ -821,7 +823,7 @@
                         android:background="@drawable/red_border"
                         android:ems="10"
                         android:gravity="start|top"
-                        android:hint="소모임 특징을 간단하게 소개해주세요!\n200자 이내로 작성하세요."
+                        android:hint="소모임을 어필할 수 있는 특징을 간단하게 소개해주세요!\n200자 이내로 작성하세요."
                         android:inputType="textMultiLine|textNoSuggestions"
                         android:textSize="15sp"
                         app:fontFamily="@font/binggraemelona" />

@@ -18,7 +18,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:background="#FDD835"
+            android:background="#00ff0000"
             android:text="◀"
             android:textColor="#ffffff"
             android:textSize="30sp" />
@@ -26,12 +26,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:background="#FDD835"
             android:gravity="center_vertical"
-            android:text="   인증관리"
+            android:text="인증관리"
             android:textColor="#FFFFFF"
-            android:textSize="24dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/binggraemelona" />
     </LinearLayout>

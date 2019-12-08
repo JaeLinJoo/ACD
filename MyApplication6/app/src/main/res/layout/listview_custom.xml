@@ -46,7 +46,7 @@
                 android:gravity="left|center_vertical"
                 android:text="TextView"
                 android:textColor="#000000"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 app:fontFamily="@font/binggraemelona" />
 
             <LinearLayout
@@ -56,8 +56,10 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="15dp"
+                    android:layout_width="13sp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="3dp"
                     app:srcCompat="@drawable/count" />
 
                 <TextView

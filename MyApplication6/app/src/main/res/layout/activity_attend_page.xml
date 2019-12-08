@@ -19,7 +19,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:background="#FDD835"
+            android:background="#00ff0000"
             android:text="◀"
             android:textColor="#ffffff"
             android:textSize="30sp" />

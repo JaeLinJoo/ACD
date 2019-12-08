@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="65dp"
         android:layout_gravity="center"
         android:background="#FFFFFF">
 
@@ -23,28 +23,22 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="164dp"
+        android:layout_height="175dp"
         android:background="@drawable/ad2"
-        android:gravity="center">
-
-        <Space
-            android:layout_width="30dp"
-            android:layout_height="160dp"
-            android:layout_weight="1" />
-    </LinearLayout>
+        android:gravity="center" />
 
     <LinearLayout
         android:id="@+id/under_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="#70FFEB3B"
+        android:background="@drawable/layout_g"
         android:gravity="bottom"
         android:orientation="vertical">
 
         <!-- bottom navigation var-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -53,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#70FFEB3B"
+                android:background="#00ff0000"
                 android:drawableTop="@drawable/add"
                 android:text="소모임 만들기"
                 android:textSize="10sp"
@@ -64,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#70FFEB3B"
+                android:background="#00ff0000"
                 android:drawableTop="@drawable/mento"
                 android:text="멘토 구인"
                 android:textSize="10sp"
@@ -75,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#70FFEB3B"
+                android:background="#00ff0000"
                 android:drawableTop="@drawable/gallary"
                 android:text="갤러리"
                 android:textSize="10sp"
@@ -86,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#70FFEB3B"
+                android:background="#00ff0000"
                 android:drawableTop="@drawable/person"
                 android:text="마이"
                 android:textSize="10sp"
@@ -97,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#70FFEB3B"
+                android:background="#00ff0000"
                 android:drawableTop="@drawable/logout"
                 android:text="로그아웃"
                 android:textSize="10sp"
@@ -128,14 +122,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
+                android:layout_height="100dp"
                 android:background="#ffffff"
                 android:orientation="vertical">
 
                 <!-- 카테고리 버튼-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="25dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -146,7 +140,7 @@
                         android:gravity="center_vertical"
                         android:text="   카테고리별 소모임 찾기"
                         android:textColor="#070707"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textStyle="normal"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
@@ -304,11 +298,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:background="#FFFFFF" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
                 android:background="#FCE0DEDE" />
 
             <LinearLayout
@@ -319,7 +308,7 @@
                 <!-- 모든 소모임리스트-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="25dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -330,7 +319,7 @@
                         android:gravity="center_vertical"
                         android:text="   전체 모집중인 소모임"
                         android:textColor="#070707"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 

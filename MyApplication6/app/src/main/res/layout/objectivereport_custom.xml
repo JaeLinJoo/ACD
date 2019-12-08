@@ -21,14 +21,14 @@
             <ImageView
                 android:id="@+id/iv_img"
                 android:layout_width="match_parent"
-                android:layout_height="132dp"
+                android:layout_height="120dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/layout_border"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/layout_g"
                 android:orientation="horizontal">
 
                 <TextView

@@ -18,7 +18,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:background="#FDD835"
+            android:background="#00ff0000"
             android:text="◀"
             android:textColor="#ffffff"
             android:textSize="30sp" />
@@ -27,13 +27,14 @@
             android:id="@+id/textView24"
             android:layout_width="250dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10sp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="   My Page"
-            app:fontFamily="@font/binggraemelona"
+            android:text="My Page"
             android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
 
     </LinearLayout>
 
@@ -60,8 +61,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="180dp"
                 android:background="#FF283593">
 
                 <LinearLayout
@@ -184,7 +184,7 @@
                         android:layout_height="wrap_content"
                         android:text="   진행중인 소모임"
                         android:textColor="#000000"
-                        android:textSize="17sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         app:fontFamily="@font/binggraemelona" />
 
@@ -193,7 +193,7 @@
                         android:layout_height="wrap_content"
                         android:text="   꾸준한 참여가 중요합니다!"
                         android:textColor="#FB484848"
-                        android:textSize="15dp"
+                        android:textSize="13sp"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 
@@ -212,7 +212,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="350dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -227,7 +227,7 @@
                         android:layout_height="wrap_content"
                         android:text="   모집중인 소모임"
                         android:textColor="#000000"
-                        android:textSize="17dp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         app:fontFamily="@font/binggraemelona" />
 
@@ -236,7 +236,7 @@
                         android:layout_height="wrap_content"
                         android:text="    인원이 모두 모였는지 확인해보세요!"
                         android:textColor="#FB484848"
-                        android:textSize="15dp"
+                        android:textSize="13sp"
                         app:fontFamily="@font/binggraemelona" />
                 </LinearLayout>
 

@@ -18,7 +18,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:background="#FDD835"
+            android:background="#00ff0000"
             android:text="◀"
             android:textColor="#ffffff"
             android:textSize="30sp" />
@@ -27,12 +27,13 @@
             android:id="@+id/textView70"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:background="#FDD835"
             android:gravity="center_vertical"
-            android:text="   카테고리별 소모임"
+            android:text="카테고리별 소모임"
             android:textColor="#FFFFFF"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/binggraemelona" />
     </LinearLayout>
@@ -67,7 +68,7 @@
                     android:gravity="center"
                     android:text="TextView"
                     android:textColor="#1E1D1D"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
@@ -89,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:text="   모집중인 소모임"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textStyle="bold"
                     app:fontFamily="@font/binggraemelona" />
 
@@ -98,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:text="    함께 하자. 함께 받자. 함께 도전해보세요!"
                     android:textColor="#FB484848"
-                    android:textSize="15dp"
+                    android:textSize="13sp"
                     app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 
@@ -127,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:text="   진행중인 소모임"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:fontFamily="@font/binggraemelona" />
 
@@ -136,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:text="     아주 잘 하고있는지 확인해주세요!"
                     android:textColor="#FB484848"
-                    android:textSize="15dp"
+                    android:textSize="13sp"
                     app:fontFamily="@font/binggraemelona" />
             </LinearLayout>
 

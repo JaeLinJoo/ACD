@@ -203,9 +203,9 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#FCD0CECE" />
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#FCD0CECE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -239,6 +239,49 @@
 
                 <GridView
                     android:id="@+id/listViewM"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:numColumns="2" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCD0CECE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:background="#FFECB3"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="    종료된 소모임"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/binggraemelona" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="    종료된 소모임 입니다. 자신이 했던 기록들을 살펴보세요."
+                        android:textColor="#FB484848"
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
+                </LinearLayout>
+
+                <GridView
+                    android:id="@+id/listView_end"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"

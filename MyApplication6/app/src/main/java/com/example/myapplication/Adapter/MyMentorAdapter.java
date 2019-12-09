@@ -47,7 +47,7 @@ public class MyMentorAdapter extends BaseAdapter {
         /* 'listview_custom'에 정의된 위젯에 대한 참조 획득 */
         ImageView iv_img = (ImageView) convertView.findViewById(R.id.iv_img) ;
         TextView tv_name = (TextView) convertView.findViewById(R.id.tv_name) ;
-        //TextView tv_contents = (TextView) convertView.findViewById(R.id.tv_contents) ;
+        TextView tv_contents = (TextView) convertView.findViewById(R.id.count) ;
         TextView tv_count = (TextView) convertView.findViewById(R.id.pay) ;
         // tv_state = (TextView) convertView.findViewById(R.id.state) ;
         TextView tv_category = (TextView) convertView.findViewById(R.id.category) ;
@@ -58,7 +58,7 @@ public class MyMentorAdapter extends BaseAdapter {
         /* 각 위젯에 세팅된 아이템을 뿌려준다 */
         iv_img.setImageBitmap(myItem.getIcon());
         tv_name.setText(myItem.getName());
-        //tv_contents.setText(myItem.getContents());
+        tv_contents.setText(myItem.getContents());
         tv_count.setText(myItem.getCount());
         //tv_state.setText(myItem.getState());
         tv_category.setText(myItem.getCategory());
@@ -77,7 +77,7 @@ public class MyMentorAdapter extends BaseAdapter {
         /* MyItem에 아이템을 setting한다. */
         mItem.setIcon(img);
         mItem.setName(name);
-        //mItem.setContents(contents);
+        mItem.setContents(contents);
         mItem.setCount(count);
         //mItem.setState(state);
         mItem.setCategory(category);

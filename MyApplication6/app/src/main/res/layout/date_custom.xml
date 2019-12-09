@@ -79,10 +79,9 @@
 
         <TextView
             android:id="@+id/textView25"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/layout_p"
+            android:background="#64B5F6"
             android:gravity="center"
             android:text="TextView"
             app:fontFamily="@font/binggraemelona" />

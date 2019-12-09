@@ -57,6 +57,10 @@ public class DateAdapter extends BaseAdapter {
         tv_user.setText(myItem.getCount());
         tv_state.setText(myItem.getState());
 
+        if(tv_state.getText()=="마감"){
+            tv_state.setBackgroundColor(context.getResources().getColor(R.color.attendYes));
+        }
+
         /* (위젯에 대한 이벤트리스너를 지정하고 싶다면 여기에 작성하면된다..)  */
 
         return convertView;

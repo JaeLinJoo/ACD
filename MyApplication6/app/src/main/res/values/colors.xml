@@ -4,5 +4,5 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#D81B60</color>
     <color name="admitYes">#C5E1A5</color>
-    <color name="admitNo">#EF9A9A</color>
+    <color name="attendYes">#F44336</color>
 </resources>

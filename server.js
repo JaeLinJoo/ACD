@@ -9,7 +9,7 @@ var crypto = require('crypto');
 var fs = require('fs');
 
 storage = multer.diskStorage({
-    destination: __dirname+'/uploads/',
+    destination: './uploads/',
     filename: function(req, file, cb) {
       return crypto.pseudoRandomBytes(16, function(err, raw) {
         if (err) {
@@ -28,7 +28,7 @@ var connection = mysql.createConnection({
     host: 'localhost',
     port: '3306',
     user: 'root',
-    password: 'asnalr34',
+    password: 'root',
     database: 'mydb',
     debug: false
 }); 
@@ -202,7 +202,7 @@ app.post('/showAdmit',function(req,res){
                 str = null;
             }
             else{
-                data = fs.readFileSync(__dirname +"\\uploads\\" + rows[0].img);
+                data = fs.readFileSync(__dirname +"//uploads//" + rows[0].img);
                 data.toJSON().data;
             }
             result = {img: str, isadmit: rows[0].isadmit};
@@ -235,7 +235,7 @@ app.get('/showTeamList/:position',function(req, res){
                 var count = s.length.toString()+' / '+rows[i].member_count;
                 var str, data;
                 
-                data = fs.readFileSync(__dirname +"\\uploads\\" + rows[i].img);
+                data = fs.readFileSync(__dirname +"//uploads//" + rows[i].img);
                 str = data.toJSON().data;
                 
                 result.push({name: name, content: content, mainimg: str, category1: category1, category2: category2, state: state, count: count, user: user, mentor_pay: mentor, mentor: rows[i].mentor});
@@ -298,7 +298,7 @@ app.post('/submit',function(req, res){
                 result = {check: false, message: '이미 소모임에 가입 하셨습니다!' };
                 res.json(result);
             }
-            else if(req.body.isMentor == 'false' && n.length == rows[0].member_count-1){
+            else if(rows[0].mentor == '1'&&req.body.isMentor == 'false' && n.length == rows[0].member_count-1){
                 result = {check: false, message: '멘토를 구해야 합니다!'};
                 res.json(result);
             }

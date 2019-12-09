@@ -134,7 +134,7 @@ public class TeamPage extends AppCompatActivity {
                     for (int i = 0; i < valList.size(); i++) {
                         entries.add(new BarEntry((Integer) valList.get(i), i));
                     }
-
+                    barChart.setDescription("");
                     BarDataSet depenses = new BarDataSet(entries, "달성률");
                     depenses.setAxisDependency(YAxis.AxisDependency.LEFT);
 

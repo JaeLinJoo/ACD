@@ -1,4 +1,4 @@
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'asnalr34';
+CREATE USER 'root'@'loacalhost' IDENTIFIED WITH mysql_native_password BY 'root';
 drop database mydb;
 create database mydb;
 use mydb;

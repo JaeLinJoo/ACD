@@ -69,7 +69,7 @@ public class MentorPage extends AppCompatActivity {
                                 b[i] = (byte)d.getMainimg()[i];
                             }
 
-                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getMentor_pay(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getCount(),d.getMentor_pay(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
 
                         }
                     }

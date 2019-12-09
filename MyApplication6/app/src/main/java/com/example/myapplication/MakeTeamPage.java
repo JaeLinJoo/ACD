@@ -531,7 +531,7 @@ public class MakeTeamPage extends AppCompatActivity {
         cal.add(Calendar.DAY_OF_YEAR,22);
         DatePickerDialog dialog_finish = new DatePickerDialog(this,callbackMethod_finish,year,month,day);
         dialog_finish.getDatePicker().setMinDate(cal.getTimeInMillis());
-        cal.add(Calendar.DAY_OF_YEAR,10);
+        cal.add(Calendar.DAY_OF_YEAR,70);
         dialog_finish.getDatePicker().setMaxDate(cal.getTimeInMillis());
         dialog_finish.show();
     }

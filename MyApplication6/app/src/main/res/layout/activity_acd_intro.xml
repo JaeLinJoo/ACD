@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_g"
+    android:orientation="vertical">
+
+    <!-- 타이틀바 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="#E0F7FA"
+            android:gravity="center"
+            android:text="아주캔두잇 소개"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
+    </LinearLayout>
+    <!-- //end 타이틀바 -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/intro3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:text=" 평소 성취감을 느끼기 어려웠다구요?"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFDE7"
+                    android:padding="5dp"
+                    android:text="아주캔두잇을 통해 목표 달성할 때 마다 달성율 그래프를 통해 진척도를 파악하고, 100% 달성 시 지급되는 캔으로 성취감을 획득하세요!"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    app:fontFamily="@font/binggraemelona" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/intro1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:text="혼자하기 어렵다구요?"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFDE7"
+                    android:padding="5dp"
+                    android:text="아주캔두잇을 통해 함께할 사람을 모아보세요!\n혼자서는 역부족이라고 생각이 들 때, 나를 도와줄 멘토를 구해보세요!"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    app:fontFamily="@font/binggraemelona" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/intro2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:text=" 소모임 일정관리가 어려웠다구요?"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFDE7"
+                    android:padding="5dp"
+                    android:text="동아리, 소학회 등 너무 대규모 인원에 일정 잡는 것이 어려우셨다면 아주캔두잇을 통해 편리한 일정관리를 사용해보세요! "
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    app:fontFamily="@font/binggraemelona" />
+
+            </LinearLayout>
+
+
+
+            <!-- 버튼 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="53dp"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:onClick="mOnClose_x"
+                    android:padding="16dp"
+                    android:text="닫기"
+                    android:textColor="#E53935"
+                    android:textSize="15sp"
+                    app:fontFamily="@font/binggraemelona" />
+            </LinearLayout>
+            <!--// 닫기 버튼 -->
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
+

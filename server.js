@@ -374,7 +374,8 @@ app.post('/getGroupId',function(req,res){
                 category: category,
                 can: can,
                 objectives:group.objectives,
-                img: str
+                img: str,
+                leader:group.leader
             };
             res.json(result);
         }

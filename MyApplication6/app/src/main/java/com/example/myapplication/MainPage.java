@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -32,8 +33,10 @@ public class MainPage extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
 
     ScrollView scrollView;
-    Button ret, maketeam, mentor, mypage, sport, music, lang, human, craft, etc,report;
+    Button ret, maketeam, mentor, mypage, sport, music, lang, human, craft, etc,report,guide;
     GridView listView;
+    ImageView info;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,8 @@ public class MainPage extends AppCompatActivity {
         etc = (Button) findViewById(R.id.etc);
         scrollView = (ScrollView) findViewById(R.id.scrollView3);
         report = (Button) findViewById(R.id.report);
+        guide = (Button)findViewById(R.id.guide);
+        info = (ImageView) findViewById(R.id.imageView8);
 
         dataSetting();
 
@@ -70,6 +75,22 @@ public class MainPage extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 //로그아웃시 정말 로그아웃이 되도록.
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+        guide.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(),GuidlinePopup.class);
+                startActivity(intent);
+            }
+        });
+
+        info.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(),AcdIntro.class);
                 startActivity(intent);
             }
         });

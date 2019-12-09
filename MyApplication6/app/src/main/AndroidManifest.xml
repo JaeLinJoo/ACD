@@ -42,6 +42,12 @@
         <activity
             android:name=".AttendSingoDetail"
             android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".GuidlinePopup"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".AcdIntro"
+            android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".AttendPage" />
         <activity android:name=".TestPage" />
         <activity android:name=".MentorPage" />

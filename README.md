@@ -8,5 +8,5 @@
     목표를 달성하면 리워드를 받는 서비스
     
 [앱 실행화면 Hi-Fi 관계도]
- ![hi-fi-rel](./hi-fi-rel.png)
+ ![hi-fi-rel](./hi-fi-rel.PNG)
     

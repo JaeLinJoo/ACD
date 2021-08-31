@@ -4,8 +4,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+<<<<<<< HEAD
     android:layout_height="match_parent">
 
+=======
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FDD835"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ret"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="#00ff0000"
+            android:gravity="center|center_vertical"
+            android:text="＜"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10sp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="My Page"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
+
+    </LinearLayout>
+
+>>>>>>> lab_acd/master
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
@@ -15,13 +54,22 @@
         android:gravity="center"
         android:orientation="vertical">
 
+<<<<<<< HEAD
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+=======
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+>>>>>>> lab_acd/master
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
+<<<<<<< HEAD
                 android:layout_height="60dp"
                 android:background="#FFE082"
                 android:orientation="horizontal">
@@ -190,6 +238,238 @@
                 android:layout_margin="5dp" />
 
         </LinearLayout>
+=======
+                android:layout_height="180dp"
+                android:background="@drawable/pro_bg">
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <Button
+                        android:id="@+id/imgbt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="7dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_p"
+                        android:gravity="center"
+                        android:text="사진수정"
+                        android:textColor="#ffffff"
+                        app:fontFamily="@font/binggraemelona" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="230dp"
+                        android:layout_height="35dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#502196F3"
+                            android:gravity="center"
+                            android:text="홍길동"
+                            android:textColor="#ffffff"
+                            android:textSize="25dp"
+                            app:fontFamily="@font/binggraemelona" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="230dp"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/mypagecan"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ImageView28"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/acd_icon" />
+
+                        <TextView
+                            android:id="@+id/can"
+                            android:layout_width="170dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="#000000"
+                            android:textSize="20dp"
+                            app:fontFamily="@font/binggraemelona" />
+
+                        <TextView
+                            android:id="@+id/textView18"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="CAN"
+                            android:textColor="#000000"
+                            android:textSize="17dp"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/binggraemelona" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCD0CECE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:background="#45BFDFF6"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/진행중인소모임"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="   진행중인 소모임"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/binggraemelona" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="   꾸준한 참여가 중요합니다!"
+                        android:textColor="#FB484848"
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
+                </LinearLayout>
+
+                <GridView
+                    android:id="@+id/listviewJ"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:numColumns="2" />
+            </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#FCD0CECE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:background="#45F4C1C8"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="   모집중인 소모임"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/binggraemelona" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="    인원이 모두 모였는지 확인해보세요!"
+                        android:textColor="#FB484848"
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
+                </LinearLayout>
+
+                <GridView
+                    android:id="@+id/listViewM"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:numColumns="2" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCD0CECE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:background="#FFECB3"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="    종료된 소모임"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/binggraemelona" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="    종료된 소모임 입니다. 자신이 했던 기록들을 살펴보세요."
+                        android:textColor="#FB484848"
+                        android:textSize="13sp"
+                        app:fontFamily="@font/binggraemelona" />
+                </LinearLayout>
+
+                <GridView
+                    android:id="@+id/listView_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:numColumns="2" />
+
+            </LinearLayout>
+>>>>>>> lab_acd/master
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

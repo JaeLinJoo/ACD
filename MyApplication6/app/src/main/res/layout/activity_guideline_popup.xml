@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_g"
+    android:orientation="vertical">
+
+    <!-- 타이틀바 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="#E0F7FA"
+            android:gravity="center"
+            android:text="아주캔두잇 이용 가이드"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
+    </LinearLayout>
+    <!-- //end 타이틀바 -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!-- Notice -->
+
+            <LinearLayout
+                android:id="@+id/guide1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/submit_button"
+                    android:text=" ★ 소모임 만들기"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFDE7"
+                    android:padding="5dp"
+                    android:text="소모임 만들기 페이지에 나와있는 항목에 알맞게 입력하면 됩니다.
+                    \n-소모임 작성 항목
+                    \n소모임을 대표할 이미지, 카테고리 설정, 소모임 목표(최종목표), 소목표(소모임 목표를 이루기까지의 중간목표), 객관적인 인증방식, 멘토 필요여부, 멘토 지원비,주 단위 만나는 요일과 시간, 자신이 만드는 소모임을 어필할 수 있는 간단한 소개."
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/guide2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/submit_button"
+                    android:text=" ★ 인증하기"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFDE7"
+                    android:padding="5dp"
+                    android:text="-출석인증\n만난 날짜에 맞는 일정리스트를 선택하여 소모임 멤버가 다 나오도록 활동사진을 찍고,팀장이 멤버별 출석을 체크합니다.\n
+                    \n-목표인증\n인증해야할 소목표를 선택하여 참여 소모임의 인증방식에 맞게 인증합니다.
+                    \n소모임마다 인증방식이 다르기 때문에 인증방식을 반드시 확인해주세요."
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/guide7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/submit_button"
+                    android:text=" ★ 인증무효신고하기"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFDE7"
+                    android:padding="5dp"
+                    android:text="공정한 환경을 조성하기 위해 참가자들의 신고가 가능한 시스템을 구축해두었습니다. 갤러리 페이지를 통해 인증 사진들을 검토해보세요.
+                    \n-신고된 이미지는 아주캔두잇 관리자가 당일 전수검사를 통해 관리합니다.
+                    \n-고의적 신고라고 간주되는 경우 신고자에게 불이익이 있습니다."
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/guide3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/submit_button"
+                    android:text=" ★ 소모임 관리"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFDE7"
+                    android:padding="5dp"
+                    android:text="-일정관리 및 출석인증에 따른 출석률 계산\n소모임 팀장이 만나기로 한 시간을 입력하여 일정관리를 용이하게 했습니다. 또한 출석인증을 통한 소모임 탈주자가 생기지 않게 하고자 했습니다.
+                    \n\n-목표인증에 따른 목표달성률\함께하는 데에서 오는 시너지 효과를 얻기 위해 팀 탈성률에 대한 개인의 달성률도 비교함으로써 자신이 얼만큼 소모임 목표에 따라가고 있는지 보여줍니다."
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/guide4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/submit_button"
+                    android:text=" ★ 캔을 거는 이유"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFDE7"
+                    android:padding="5dp"
+                    android:text="일종의 소모임 예치금입니다.\n중도포기를 방지하기 위해 캔을 걺으로써 자신이 목표하는 바를 달성하여 성취감을 얻게 하고자 함입니다.
+                    \n사행성으로 넘어가는 것을 막기 위해 최대 참가 캔을 제한합니다."
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/guide5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/submit_button"
+                    android:text=" ★ 캔 환급"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFDE7"
+                    android:padding="5dp"
+                    android:text="도전 종료 후 달성률에 따라 참가 캔이 환급됩니다. 소모임 전체 모인 캔에 대한 자신이 건 캔에 비례하여 개인의 목표달성률에 따라 환급됩니다. 목표달성률이 100%일 경우에만 추가 캔이 지급됩니다."
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/guide6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/submit_button"
+                    android:text=" ★ 100% 달성 상금"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFDE7"
+                    android:padding="5dp"
+                    android:text="100% 달성자는 10캔을 추가로 받습니다."
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
+
+            </LinearLayout>
+
+
+
+
+            <!-- 버튼 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="53dp"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:onClick="mOnClose_x"
+                    android:padding="16dp"
+                    android:text="닫기"
+                    android:textColor="#E53935"
+                    android:textSize="15sp"
+                    app:fontFamily="@font/binggraemelona" />
+            </LinearLayout>
+
+            <!--// 닫기 버튼 -->
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
+

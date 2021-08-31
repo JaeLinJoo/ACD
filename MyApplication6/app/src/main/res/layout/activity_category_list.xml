@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FDD835"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ret"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="#00ff0000"
+            android:gravity="center|center_vertical"
+            android:text="＜"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView70"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="#FDD835"
+            android:gravity="center_vertical"
+            android:text="카테고리별 소모임"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -17,10 +52,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#ffffff"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
+<<<<<<< HEAD
                 android:layout_height="60dp"
                 android:orientation="horizontal">
 
@@ -34,10 +71,28 @@
                     android:text="   카테고리별 소모임"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+=======
+                android:layout_height="45dp"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_border"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textColor="#1E1D1D"
+                    android:textSize="17sp"
+                    app:fontFamily="@font/binggraemelona" />
+>>>>>>> lab_acd/master
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
+<<<<<<< HEAD
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:orientation="vertical">
@@ -57,21 +112,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFCDD2"
+=======
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:background="#50FFEBEE"
+                android:gravity="center_vertical"
+>>>>>>> lab_acd/master
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView14"
                     android:layout_width="match_parent"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
                     android:text="   모집중인 소모임"
                     android:textColor="#FB070707"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+=======
+                    android:layout_height="wrap_content"
+                    android:text="   모집중인 소모임"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="    함께 하자. 함께 받자. 함께 도전해보세요!"
+                    android:textColor="#FB484848"
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
+>>>>>>> lab_acd/master
             </LinearLayout>
 
-            <ListView
+            <GridView
                 android:id="@+id/list1"
                 android:layout_width="match_parent"
+<<<<<<< HEAD
                 android:layout_height="284dp"
                 android:layout_margin="5dp" />
 
@@ -90,13 +173,53 @@
                     android:textColor="#FB070707"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+=======
+                android:layout_height="400dp"
+                android:layout_margin="5dp"
+                android:numColumns="2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:background="#4CE3F2FD"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/진행중인소모임"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="   진행중인 소모임"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="     아주 잘 하고있는지 확인해주세요!"
+                    android:textColor="#FB484848"
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
+>>>>>>> lab_acd/master
             </LinearLayout>
 
-            <ListView
+            <GridView
                 android:id="@+id/list2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+<<<<<<< HEAD
                 android:layout_margin="5dp" />
+=======
+                android:layout_margin="5dp"
+                android:numColumns="2" />
+>>>>>>> lab_acd/master
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

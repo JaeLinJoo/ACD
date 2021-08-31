@@ -1,21 +1,24 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.GridView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.Adapter.MyAdapter;
+import com.example.myapplication.RetrofitInterface.GetIP;
+import com.example.myapplication.RetrofitInterface.GetService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -26,7 +29,6 @@ import java.util.List;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,17 +39,18 @@ public class MyPage extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
     private static final int REQUEST_CODE = 0;
 
+    ScrollView scrollView;
     Button imgbt, ret;
     ImageView imageView;
     TextView name, can;
-    ListView lv, lv1;
+    GridView lv, lv1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
-
-        lv = (ListView) findViewById(R.id.listviewJ);
-        lv1 =(ListView) findViewById(R.id.listViewM);
+        scrollView = (ScrollView) findViewById(R.id.scrollView2);
+        lv = (GridView) findViewById(R.id.listviewJ);
+        lv1 =(GridView) findViewById(R.id.listViewM);
 
         imgbt = (Button) findViewById(R.id.imgbt);
         ret = (Button) findViewById(R.id.ret);
@@ -58,6 +61,7 @@ public class MyPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         imageView = (ImageView) findViewById(R.id.imageView2);
         name = (TextView) findViewById(R.id.name);
         can = (TextView) findViewById(R.id.can);
@@ -82,17 +86,12 @@ public class MyPage extends AppCompatActivity {
                     name.setText(dummy.getName());
                     can.setText(Integer.toString(dummy.getCan()));
                     if(dummy.getPath() != null){
-                        String buffer = dummy.getPath();
+                        byte[] b = new byte[dummy.getPath().length];
 
-                        byte[] a = string2Bin(buffer);
-                        writeToFile("profile.jpg", a);
-
-                        File file = new File(getApplicationContext().getFilesDir().toString()+"/profile.jpg");
-                        if(file.exists()){
-                            String filepath = file.getPath();
-                            Bitmap bitmap = BitmapFactory.decodeFile(filepath);
-                            imageView.setImageBitmap(bitmap);
+                        for(int i =0;i<b.length;i++){
+                            b[i] = (byte)dummy.getPath()[i];
                         }
+                        imageView.setImageBitmap(BitmapFactory.decodeByteArray(b, 0, b.length));
                     }
                 } else
                 {
@@ -112,6 +111,20 @@ public class MyPage extends AppCompatActivity {
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(intent, REQUEST_CODE);
+            }
+        });
+        lv.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+        lv1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
             }
         });
     }
@@ -183,30 +196,6 @@ public class MyPage extends AppCompatActivity {
         });
     }
 
-    public byte[] string2Bin(String str){
-        byte[] result = new byte[str.length()];
-        for(int i = 0; i<str.length(); i++){
-            result[i] = (byte)Character.codePointAt(str, i);
-        }
-        return result;
-    }
-
-    public void writeToFile(String filename, byte[] pData) {
-        if(pData == null){
-            return;
-        }
-        int lByteArraySize = pData.length;
-
-        try{
-            File lOutFile = new File(getApplicationContext().getFilesDir().toString()+"/"+filename);
-            FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
-            lFileOutputStream.flush();
-            lFileOutputStream.write(pData);
-            lFileOutputStream.close();
-        }catch(Throwable e){
-            e.printStackTrace(System.out);
-        }
-    }
     private void dataSetting(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE)
@@ -219,23 +208,20 @@ public class MyPage extends AppCompatActivity {
         call.enqueue(new Callback<List<TeamList>>(){
             @Override
             public void onResponse(Call<List<TeamList>> call, Response<List<TeamList>> response) {
-                Bitmap bitmap;
                 final MyAdapter mMyAdapter = new MyAdapter();
                 if (response.isSuccessful()) {
                     List<TeamList> dummy = response.body();
 
                     for(TeamList d:dummy){
                         if(d.getState().equals("진행중") && d.getUser().contains(SharedPreference.getAttribute(getApplicationContext(),"id"))){
-                            byte[] a = string2Bin(d.getMainimg());
-                            writeToFile("teamprofile.jpg", a);
+                            byte[] b = new byte[d.getMainimg().length];
 
-                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
-
-                            if(file.exists()) {
-                                String filepath = file.getPath();
-                                bitmap = BitmapFactory.decodeFile(filepath);
-                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            for(int i =0;i < b.length;i++){
+                                b[i] = (byte)d.getMainimg()[i];
                             }
+
+                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getCategory1()+" / "+d.getCategory2());
+
                         }
                     }
                     /* 리스트뷰에 어댑터 등록 */
@@ -271,23 +257,19 @@ public class MyPage extends AppCompatActivity {
         call.enqueue(new Callback<List<TeamList>>(){
             @Override
             public void onResponse(Call<List<TeamList>> call, Response<List<TeamList>> response) {
-                Bitmap bitmap;
                 final MyAdapter mMyAdapter = new MyAdapter();
                 if (response.isSuccessful()) {
                     List<TeamList> dummy = response.body();
 
                     for(TeamList d:dummy){
                         if(d.getState().equals("모집중")&& d.getUser().contains(SharedPreference.getAttribute(getApplicationContext(),"id"))){
-                            byte[] a = string2Bin(d.getMainimg());
-                            writeToFile("teamprofile.jpg", a);
+                            byte[] b = new byte[d.getMainimg().length];
 
-                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
-
-                            if(file.exists()){
-                                String filepath = file.getPath();
-                                bitmap = BitmapFactory.decodeFile(filepath);
-                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            for(int i =0;i < b.length;i++){
+                                b[i] = (byte)d.getMainimg()[i];
                             }
+
+                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getCategory1()+" / "+d.getCategory2());
                         }
                     }
                     /* 리스트뷰에 어댑터 등록 */

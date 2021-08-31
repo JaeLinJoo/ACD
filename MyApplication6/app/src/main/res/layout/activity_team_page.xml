@@ -1,160 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TeamPage">
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FDD835"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ret"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="#00ff0000"
+            android:gravity="center|center_vertical"
+            android:text="＜"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10sp"
+            android:layout_weight="1"
+            android:background="#FDD835"
+            android:gravity="center_vertical"
+            android:text="소모임 페이지"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
+    </LinearLayout>
+
 
     <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:fillViewport="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#ECF2FA"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/text_teamName"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:text="팀 이름"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <com.github.mikephil.charting.charts.BarChart
-                android:id="@+id/chart"
-                android:layout_width="match_parent"
-                android:layout_height="227dp" />
-
+                android:layout_height="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="#FC113279" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal" >
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/textView15"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/teamname"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:background="@drawable/teamname_border"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textColor="#FFD600"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/binggraemelona" />
 
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    tools:srcCompat="@tools:sample/avatars" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/label_finalGoal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="최종 목표 :: "
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-                    <TextView
-                        android:id="@+id/text_finalGoals"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="최종목표내용"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                        android:id="@+id/category"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:gravity="right|center_vertical"
+                        android:text="TextView"
+                        app:fontFamily="@font/binggraemelona" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="230dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/mypagecan"
                         android:orientation="horizontal">
 
-                        <Space
-                            android:layout_width="30dp"
-                            android:layout_height="match_parent" />
+                        <ImageView
+                            android:id="@+id/ImageView28"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/acd_icon" />
 
                         <TextView
-                            android:id="@+id/text_subGoals"
-                            android:layout_width="332dp"
-                            android:layout_height="60dp"
-                            android:text="중간목표들" />
+                            android:id="@+id/can"
+                            android:layout_width="170dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="#000000"
+                            android:textSize="20dp"
+                            app:fontFamily="@font/binggraemelona" />
 
-                        <Space
-                            android:layout_width="30dp"
-                            android:layout_height="match_parent" />
+                        <TextView
+                            android:id="@+id/textView18"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="CAN"
+                            android:textColor="#000000"
+                            android:textSize="17dp"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/binggraemelona" />
                     </LinearLayout>
 
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="#FC113279" />
 
-                <TextView
-                    android:id="@+id/label_verify"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="인증방식 :: "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:orientation="horizontal">
-
-                    <Space
-                        android:layout_width="30dp"
-                        android:layout_height="match_parent" />
-
-                    <TextView
-                        android:id="@+id/text_verify"
-                        android:layout_width="332dp"
-                        android:layout_height="match_parent"
-                        android:text="인증 방식 내용 블라블라"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                    <Space
-                        android:layout_width="30dp"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/button_check"
+            <TextView
+                android:id="@+id/textView37"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="출석체크" />
+                android:layout_marginLeft="5dp"
+                android:text="달성률"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/binggraemelona" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/chart"
+                android:layout_width="300dp"
+                android:layout_height="400dp"
+                android:layout_gravity="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="#FC113279" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="일정"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/binggraemelona" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:orientation="horizontal">
+
+                <ListView
+                    android:id="@+id/list6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="#FC113279" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:fontFamily="@font/binggraemelona"
+                    android:layout_weight="1"
+                    android:background="@drawable/teamname_border"
+                    android:text="일정 및 출석관리"
+                    android:textColor="#FFF59D"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    app:fontFamily="@font/binggraemelona"
+                    android:background="@drawable/teamname_border"
+                    android:text="목표 인증"
+                    android:textColor="#FFF59D"
+                    android:textStyle="bold"/>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

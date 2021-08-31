@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FDD835"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ret"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="#00ff0000"
+            android:gravity="center|center_vertical"
+            android:text="＜"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="#FDD835"
+            android:gravity="center_vertical"
+            android:text="인증관리"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:fillViewport="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" ※인증은 목표당 한번씩만 가능합니다."
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  소모임의 인증방식에 맞는 인증을 신중히 남겨주세요."
+                    android:textColor="#A3A3A3"
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#293376"
+                android:gravity="center"
+                android:text="인증 목표 리스트"
+                android:textColor="#FDD835"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:fontFamily="@font/binggraemelona" />
+
+            <ListView
+                android:id="@+id/listview3"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:divider="#E8EAF6"
+                android:dividerHeight="5dp" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#293376"
+                android:gravity="center"
+                android:text="인증하기"
+                android:textColor="#FDD835"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:fontFamily="@font/binggraemelona" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/objective"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#C5CAE9"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="인증할 목표를 선택해주세요."
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:fontFamily="@font/binggraemelona" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="126dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/layout_g"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/button4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="인증하기"
+                            app:fontFamily="@font/binggraemelona" />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="91dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="22dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="인증여부"
+                    android:textSize="18dp"
+                    app:fontFamily="@font/binggraemelona" />
+
+                <TextView
+                    android:id="@+id/isadmit"
+                    android:layout_width="278dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#F8BBD0"
+                    android:gravity="center|center_vertical"
+                    android:text="ㅡ"
+                    android:textColor="#000000"
+                    app:fontFamily="@font/binggraemelona" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

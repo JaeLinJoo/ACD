@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,9 +9,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myapplication.MyItem;
+import com.example.myapplication.R;
+
 import java.util.ArrayList;
 
-public class MyObjectiveAdapter extends BaseAdapter {
+public class MyMentorAdapter extends BaseAdapter {
+    /* 아이템을 세트로 담기 위한 어레이 */
     private ArrayList<MyItem> mItems = new ArrayList<>();
 
     @Override
@@ -31,37 +35,52 @@ public class MyObjectiveAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         Context context = parent.getContext();
 
         /* 'listview_custom' Layout을 inflate하여 convertView 참조 획득 */
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.showobjective_custom, parent, false);
+            convertView = inflater.inflate(R.layout.mentor_custom, parent, false);
         }
 
         /* 'listview_custom'에 정의된 위젯에 대한 참조 획득 */
+        ImageView iv_img = (ImageView) convertView.findViewById(R.id.iv_img) ;
         TextView tv_name = (TextView) convertView.findViewById(R.id.tv_name) ;
+        TextView tv_contents = (TextView) convertView.findViewById(R.id.count) ;
+        TextView tv_count = (TextView) convertView.findViewById(R.id.pay) ;
+        // tv_state = (TextView) convertView.findViewById(R.id.state) ;
+        TextView tv_category = (TextView) convertView.findViewById(R.id.category) ;
 
         /* 각 리스트에 뿌려줄 아이템을 받아오는데 mMyItem 재활용 */
         MyItem myItem = getItem(position);
 
         /* 각 위젯에 세팅된 아이템을 뿌려준다 */
-
+        iv_img.setImageBitmap(myItem.getIcon());
         tv_name.setText(myItem.getName());
+        tv_contents.setText(myItem.getContents());
+        tv_count.setText(myItem.getCount());
+        //tv_state.setText(myItem.getState());
+        tv_category.setText(myItem.getCategory());
 
         /* (위젯에 대한 이벤트리스너를 지정하고 싶다면 여기에 작성하면된다..)  */
+
 
         return convertView;
     }
 
     /* 아이템 데이터 추가를 위한 함수. 자신이 원하는대로 작성 */
-    public void addItem(String name) {
+    public void addItem(Bitmap img, String name, String contents, String count, String state, String category) {
 
         MyItem mItem = new MyItem();
 
         /* MyItem에 아이템을 setting한다. */
+        mItem.setIcon(img);
         mItem.setName(name);
-
+        mItem.setContents(contents);
+        mItem.setCount(count);
+        //mItem.setState(state);
+        mItem.setCategory(category);
 
         /* mItems에 MyItem을 추가한다. */
         mItems.add(mItem);

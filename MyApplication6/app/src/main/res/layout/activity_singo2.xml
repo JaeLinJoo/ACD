@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:background="#eeeeee"
+    android:orientation="vertical">
+
+    <!-- 타이틀바 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="#E53935"
+            android:gravity="center"
+            android:text="인증무효신고"
+            app:fontFamily="@font/binggraemelona"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <!-- //end 타이틀바 -->
+
+    <!-- Notice -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+
+        <EditText
+            android:id="@+id/reason"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/singo_reason"
+            android:ems="10"
+            android:gravity="start|top"
+            app:fontFamily="@font/binggraemelona"
+            android:hint="구체적인 사유를 적어주세요.\n(허위 신고시 불이익이 있을 수 있습니다.)"
+            android:inputType="textMultiLine"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <!-- 버튼 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/singo"
+            android:layout_width="175dp"
+            android:layout_height="53dp"
+            android:background="@drawable/layout_g"
+            android:gravity="center"
+            android:onClick="mOnClose"
+            android:text="신고 제출"
+            android:textColor="#E53935"
+            android:textSize="15sp"
+            app:fontFamily="@font/binggraemelona" />
+
+        <Button
+            android:id="@+id/cancle"
+            android:layout_width="175dp"
+            android:layout_height="53dp"
+            android:background="@drawable/layout_g"
+            android:gravity="center"
+            android:onClick="mOnClose_x"
+            android:text="취소"
+            android:textColor="#E53935"
+            android:textSize="15sp"
+            app:fontFamily="@font/binggraemelona" />
+    </LinearLayout>
+    <!--// 닫기 버튼 -->
+</LinearLayout>
+
+

@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+=======
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FDD835"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ret"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="#00ff0000"
+            android:gravity="center|center_vertical"
+            android:text="＜"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView70"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10sp"
+            android:layout_weight="1"
+            android:background="#FDD835"
+            android:gravity="center_vertical"
+            android:text="멘토구인 소모임 리스트"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
+    </LinearLayout>
+>>>>>>> lab_acd/master
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -21,6 +62,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+<<<<<<< HEAD
                 android:layout_height="60dp"
                 android:orientation="horizontal">
 
@@ -41,11 +83,26 @@
                 android:layout_height="wrap_content"
                 android:background="#FFCDD2"
                 android:orientation="vertical">
+=======
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:text="   일석이조의 멘토활동 "
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:fontFamily="@font/binggraemelona" />
+>>>>>>> lab_acd/master
 
                 <TextView
                     android:id="@+id/textView71"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+<<<<<<< HEAD
                     android:text="   모집중인 소모임"
                     android:textColor="#FB070707"
                     android:textSize="24sp"
@@ -57,6 +114,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="284dp"
                 android:layout_margin="5dp" />
+=======
+                    android:text="   나의 재능도 쑥쑥!  쏠쏠한 용돈벌이까지! "
+                    android:textColor="#FB828181"
+                    android:textSize="15dp"
+                    app:fontFamily="@font/binggraemelona" />
+            </LinearLayout>
+
+            <GridView
+                android:id="@+id/mentorlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:numColumns="2" />
+>>>>>>> lab_acd/master
 
         </LinearLayout>
     </ScrollView>

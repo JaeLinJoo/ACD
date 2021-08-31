@@ -1,19 +1,25 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.Adapter.MyAdapter;
+import com.example.myapplication.RetrofitInterface.GetIP;
+import com.example.myapplication.RetrofitInterface.GetService;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -23,10 +29,14 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainPage extends AppCompatActivity {
+
     private static final String BASE = GetIP.BASE;
 
-    Button ret, maketeam, mentor, mypage, sport, music, lang, human, craft, etc;
-    ListView listView;
+    ScrollView scrollView;
+    Button ret, maketeam, mentor, mypage, sport, music, lang, human, craft, etc,report,guide;
+    GridView listView;
+    ImageView info;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +49,15 @@ public class MainPage extends AppCompatActivity {
         maketeam = (Button) findViewById(R.id.maketeam);
         mentor = (Button) findViewById(R.id.mentor);
         mypage = (Button) findViewById(R.id.mypage);
-        listView = (ListView) findViewById(R.id.listview3);
+        listView = (GridView) findViewById(R.id.listview3);
         lang = (Button) findViewById(R.id.lang);
         human = (Button) findViewById(R.id.human);
         craft = (Button) findViewById(R.id.craft);
         etc = (Button) findViewById(R.id.etc);
+        scrollView = (ScrollView) findViewById(R.id.scrollView3);
+        report = (Button) findViewById(R.id.report);
+        guide = (Button)findViewById(R.id.guide);
+        info = (ImageView) findViewById(R.id.imageView8);
 
         dataSetting();
 
@@ -67,9 +81,35 @@ public class MainPage extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                //로그아웃시 정말 로그아웃이 되도록.
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
+
+        guide.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(),GuidlinePopup.class);
+                startActivity(intent);
+            }
+        });
+
+        info.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(),AcdIntro.class);
+                startActivity(intent);
+            }
+        });
+
+        report.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), ReportGallary.class);
+                startActivity(intent);
+            }
+            });
 
         maketeam.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -132,6 +172,45 @@ public class MainPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mentor.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MentorPage.class);
+                startActivity(intent);
+            }
+        });
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        GetService service = retrofit.create(GetService.class);
+
+        Call<Getcan> call = service.getcan(SharedPreference.getAttribute(getApplicationContext(),"id"));
+        call.enqueue(new Callback<Getcan>(){
+            @Override
+            public void onResponse(Call<Getcan> call, Response<Getcan> response) {
+                if (response.isSuccessful()) {
+                    Getcan dummy = response.body();
+                    SharedPreference.setAttribute(getApplicationContext(),"can", Integer.toString(dummy.can));
+                    Log.e("정보",Integer.toString(dummy.can));
+                } else
+                {
+                    Toast.makeText(getApplicationContext(), "실패1!", Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<Getcan> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void dataSetting(){
@@ -152,15 +231,15 @@ public class MainPage extends AppCompatActivity {
                     List<TeamList> dummy = response.body();
 
                     for(TeamList d:dummy){
-                        byte[] a = string2Bin(d.getMainimg());
-                        writeToFile("teamprofile.jpg", a);
+                        if(d.getState().equals("모집중")){
+                            byte[] b = new byte[d.getMainimg().length];
 
-                        File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
+                            for(int i =0;i < b.length;i++){
+                                b[i] = (byte)d.getMainimg()[i];
+                            }
 
-                        if(file.exists()){
-                            String filepath = file.getPath();
-                            bitmap = BitmapFactory.decodeFile(filepath);
-                            mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(), d.getCategory1()+" / "+d.getCategory2());
+                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getCategory1()+" / "+d.getCategory2());
+
                         }
                     }
                     /* 리스트뷰에 어댑터 등록 */
@@ -185,29 +264,9 @@ public class MainPage extends AppCompatActivity {
             }
         });
     }
-
-    public byte[] string2Bin(String str){
-        byte[] result = new byte[str.length()];
-        for(int i = 0; i<str.length(); i++){
-            result[i] = (byte)Character.codePointAt(str, i);
-        }
-        return result;
-    }
-
-    public void writeToFile(String filename, byte[] pData) {
-        if(pData == null){
-            return;
-        }
-        int lByteArraySize = pData.length;
-
-        try{
-            File lOutFile = new File(getApplicationContext().getFilesDir().toString()+"/"+filename);
-            FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
-            lFileOutputStream.flush();
-            lFileOutputStream.write(pData);
-            lFileOutputStream.close();
-        }catch(Throwable e){
-            e.printStackTrace(System.out);
-        }
+    public class Getcan{
+        int can;
     }
 }
+
+

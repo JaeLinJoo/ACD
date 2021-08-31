@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="#eeeeee"
+    android:orientation="vertical">
+
+    <!-- 타이틀바 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="#E0F7FA"
+            android:gravity="center"
+            android:text="멘토 지원 유의사항"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
+    </LinearLayout>
+    <!-- //end 타이틀바 -->
+
+    <!-- Notice -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/submit_button"
+            android:gravity="center"
+            android:text="★멘토가 될 시 꼭 지켜주세요!★"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:fontFamily="@font/binggraemelona" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFDE7"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="\n1. 멘토의 챌린지 캔은 팀의 달성률에 비례하여 환급됩니다.\n2. 멘토 지원비는 소모임 현장에서 팀장으로부터 지급됩니다.\n3. 책임감을 가지고 임해주세요.\n4. 소모임을 위해 최선을 다해주세요!\n"
+            android:textColor="#000000"
+            android:textSize="13sp"
+            app:fontFamily="@font/binggraemelona" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="\n\n멘토 지원 시,\n위 모든 사항을 숙지하고 있는 것으로 간주됩니다.\n이 소모임의 멘토로 지원하시겠습니까?"
+            android:textColor="#F8444242"
+            android:textSize="13sp"
+            app:fontFamily="@font/binggraemelona" />
+    </LinearLayout>
+
+    <!-- 버튼 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:gravity="right|center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/apply_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="53dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:onClick="mOnClose"
+            android:padding="16dp"
+            android:text="예. 지원합니다."
+            android:textColor="#5C6BC0"
+            android:textSize="15sp"
+            app:fontFamily="@font/binggraemelona" />
+
+        <Button
+            android:id="@+id/apply_no"
+            android:layout_width="wrap_content"
+            android:layout_height="53dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:onClick="mOnClose_x"
+            android:padding="16dp"
+            android:text="아니요."
+            android:textColor="#E53935"
+            android:textSize="15sp"
+            app:fontFamily="@font/binggraemelona" />
+    </LinearLayout>
+    <!--// 닫기 버튼 -->
+</LinearLayout>
+
+

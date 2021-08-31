@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+<<<<<<< HEAD
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -14,9 +15,61 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+=======
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:background="#FFFFFF">
+
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/upupupup" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:background="@drawable/ad2"
+        android:gravity="bottom|left" >
+
+        <Button
+            android:id="@+id/guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="#00ff0000"
+            android:drawableLeft="@drawable/guide"
+            android:fontFamily="@font/binggraemelona"
+            android:gravity="left|center_vertical"
+            android:text="  아주캔두잇 이용가이드"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/under_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/layout_g2"
+        android:gravity="bottom"
+        android:orientation="vertical">
+>>>>>>> lab_acd/master
+
+        <!-- bottom navigation var-->
         <LinearLayout
             android:layout_width="match_parent"
+<<<<<<< HEAD
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -31,11 +84,100 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="117dp"
+=======
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/maketeam"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:drawableTop="@drawable/add"
+                android:text="소모임 만들기"
+                android:textSize="10sp"
+                app:fontFamily="@font/binggraemelona" />
+
+            <Button
+                android:id="@+id/mentor"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:drawableTop="@drawable/mento"
+                android:text="멘토 구인"
+                android:textSize="10sp"
+                app:fontFamily="@font/binggraemelona" />
+
+            <Button
+                android:id="@+id/report"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:drawableTop="@drawable/gallary"
+                android:text="갤러리"
+                android:textSize="10sp"
+                app:fontFamily="@font/binggraemelona" />
+
+            <Button
+                android:id="@+id/mypage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:drawableTop="@drawable/person"
+                android:text="마이"
+                android:textSize="10sp"
+                app:fontFamily="@font/binggraemelona" />
+
+            <Button
+                android:id="@+id/ret"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:drawableTop="@drawable/logout"
+                android:text="로그아웃"
+                android:textSize="10sp"
+                app:fontFamily="@font/binggraemelona" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <!-- 광고-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#ffffff"
+>>>>>>> lab_acd/master
                 android:orientation="vertical">
 
                 <!-- 카테고리 버튼-->
                 <LinearLayout
                     android:layout_width="match_parent"
+<<<<<<< HEAD
                     android:layout_height="40dp"
                     android:orientation="horizontal">
 
@@ -128,10 +270,177 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
+=======
+                    android:layout_height="25dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="   카테고리별 소모임 찾기"
+                        android:textColor="#070707"
+                        android:textSize="15sp"
+                        android:textStyle="normal"
+                        app:fontFamily="@font/binggraemelona" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/category_button"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/sport"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/soccer" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="스포츠"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            app:fontFamily="@font/binggraemelona" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/category_button"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/music"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/music" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="악기"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            app:fontFamily="@font/binggraemelona" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/category_button"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/lang"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/language" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="언어"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            app:fontFamily="@font/binggraemelona" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/category_button"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/human"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/book" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="인문학"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            app:fontFamily="@font/binggraemelona" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/category_button"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/craft"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/paint" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="공예"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            app:fontFamily="@font/binggraemelona" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/category_button"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/etc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/information" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="기타"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            app:fontFamily="@font/binggraemelona" />
+                    </LinearLayout>
+                </LinearLayout>
+
+>>>>>>> lab_acd/master
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
+<<<<<<< HEAD
                 android:layout_height="74dp"
                 android:orientation="vertical">
 
@@ -175,6 +484,49 @@
             </LinearLayout>
 
 
+=======
+                android:layout_height="10dp"
+                android:background="#FCE0DEDE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:orientation="vertical">
+
+                <!-- 모든 소모임리스트-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="   전체 모집중인 소모임"
+                        android:textColor="#070707"
+                        android:textSize="15sp"
+                        app:fontFamily="@font/binggraemelona" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <GridView
+                        android:id="@+id/listview3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:numColumns="2" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+>>>>>>> lab_acd/master
         </LinearLayout>
     </ScrollView>
 

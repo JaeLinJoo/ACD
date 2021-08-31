@@ -1,19 +1,31 @@
 package com.example.myapplication;
 
+<<<<<<< HEAD
 import androidx.appcompat.app.AppCompatActivity;
 
+=======
+>>>>>>> lab_acd/master
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+<<<<<<< HEAD
+=======
+import android.widget.Button;
+import android.widget.GridView;
+>>>>>>> lab_acd/master
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.Adapter.MyAdapter;
+import com.example.myapplication.RetrofitInterface.GetIP;
+import com.example.myapplication.RetrofitInterface.GetService;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,17 +37,28 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CategoryList extends AppCompatActivity {
     private static final String BASE = GetIP.BASE;
     TextView cg;
-    ListView listView1, listView2;
+    GridView listView1, listView2;
+    Button ret;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_list);
 
-        listView1 = (ListView) findViewById(R.id.list1);
-        listView2 = (ListView) findViewById(R.id.list2);
+        listView1 = (GridView) findViewById(R.id.list1);
+        listView2 = (GridView) findViewById(R.id.list2);
         cg = (TextView) findViewById(R.id.category);
+        ret = (Button)findViewById(R.id.ret);
 
-        cg.setText(SharedPreference.getAttribute(getApplicationContext(),"category1"));
+        ret.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                startActivity(intent);
+            }
+        });
+
+        cg.setText("#"+SharedPreference.getAttribute(getApplicationContext(),"category1"));
         dataSetting();
     }
     private void dataSetting(){
@@ -58,33 +81,38 @@ public class CategoryList extends AppCompatActivity {
 
                     for(TeamList d:dummy){
                         if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1")) && d.getState().equals("모집중")){
-                            byte[] a = string2Bin(d.getMainimg());
-                            writeToFile("teamprofile.jpg", a);
+                            byte[] b = new byte[d.getMainimg().length];
 
-                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
-
-                            if(file.exists()){
-                                String filepath = file.getPath();
-                                bitmap = BitmapFactory.decodeFile(filepath);
-                                mMyAdapter.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            for(int i =0;i < b.length;i++){
+                                b[i] = (byte)d.getMainimg()[i];
                             }
+
+                            mMyAdapter.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getCategory1()+" / "+d.getCategory2());
+
                         }
                         if(d.getCategory1().equals(SharedPreference.getAttribute(getApplicationContext(),"category1")) && d.getState().equals("진행중")){
-                            byte[] a = string2Bin(d.getMainimg());
-                            writeToFile("teamprofile.jpg", a);
+                            byte[] b = new byte[d.getMainimg().length];
 
-                            File file = new File(getApplicationContext().getFilesDir().toString()+"/teamprofile.jpg");
-
-                            if(file.exists()){
-                                String filepath = file.getPath();
-                                bitmap = BitmapFactory.decodeFile(filepath);
-                                mMyAdapter1.addItem(bitmap, d.getName(), d.getContent(),d.getCount(),d.getState(),d.getCategory1()+" / "+d.getCategory2());
+                            for(int i =0;i < b.length;i++){
+                                b[i] = (byte)d.getMainimg()[i];
                             }
+
+                            mMyAdapter1.addItem(BitmapFactory.decodeByteArray(b, 0, b.length), d.getName(), d.getContent(),d.getCount(),d.getCategory1()+" / "+d.getCategory2());
+
                         }
                     }
                     /* 리스트뷰에 어댑터 등록 */
                     listView1.setAdapter(mMyAdapter);
+                    listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            SharedPreference.setAttribute(getApplicationContext(), "teamname", mMyAdapter.getItem(i).getName());
+                            Intent intent = new Intent(getApplicationContext(), JoinTeam.class);
+                            startActivity(intent);
+                        }
+                    });
                     listView2.setAdapter(mMyAdapter1);
+<<<<<<< HEAD
 
                     listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
@@ -94,11 +122,17 @@ public class CategoryList extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+=======
+>>>>>>> lab_acd/master
                     listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             SharedPreference.setAttribute(getApplicationContext(), "teamname", mMyAdapter1.getItem(i).getName());
+<<<<<<< HEAD
                             Intent intent = new Intent(getApplicationContext(), JoinTeam.class);
+=======
+                            Intent intent = new Intent(getApplicationContext(), ChallengeTeam.class);
+>>>>>>> lab_acd/master
                             startActivity(intent);
                         }
                     });
@@ -112,30 +146,5 @@ public class CategoryList extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "실패2!", Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    public byte[] string2Bin(String str){
-        byte[] result = new byte[str.length()];
-        for(int i = 0; i<str.length(); i++){
-            result[i] = (byte)Character.codePointAt(str, i);
-        }
-        return result;
-    }
-
-    public void writeToFile(String filename, byte[] pData) {
-        if(pData == null){
-            return;
-        }
-        int lByteArraySize = pData.length;
-        //Log.e("asdvggg",getApplicationContext().getFilesDir().toString()+"/"+filename);
-        try{
-            File lOutFile = new File(getApplicationContext().getFilesDir().toString()+"/"+filename);
-            FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
-            lFileOutputStream.flush();
-            lFileOutputStream.write(pData);
-            lFileOutputStream.close();
-        }catch(Throwable e){
-            e.printStackTrace(System.out);
-        }
     }
 }

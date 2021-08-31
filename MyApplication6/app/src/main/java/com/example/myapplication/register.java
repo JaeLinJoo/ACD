@@ -1,16 +1,16 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.RetrofitInterface.GetIP;
+import com.example.myapplication.RetrofitInterface.GetService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -83,6 +83,8 @@ public class register extends AppCompatActivity {
                 //Log.i(this.getClass().getName(), dummy.isCheck());
                 if(dummy.isCheck()){
                     Toast.makeText(getApplicationContext(), "가입성공!", Toast.LENGTH_LONG).show();
+                    //회원가입을 하고 로그인 했을 경우 로그아웃하고 다시 회원가입 페이지로 가지 않도록
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
                 else {

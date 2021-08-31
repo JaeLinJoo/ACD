@@ -1,4 +1,4 @@
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'asnalr34';
+CREATE USER 'root'@'loacalhost' IDENTIFIED WITH mysql_native_password BY 'root';
 drop database mydb;
 create database mydb;
 use mydb;
@@ -14,13 +14,13 @@ team char(200)
 );
 
 create table team(
-name char(20),
+name char(15),
 objective char(100),
-objectives char(50),
-admit char(10),
+objectives char(200),
+admit char(200),
 pay int(4),
 time char(20),
-intro char(20),
+intro char(200),
 start char(20),
 end char(20),
 mentor char(2),
@@ -32,11 +32,35 @@ leader char(15),
 user char(200),
 state char(2),
 current int(4),
-mentorname char(20)
+mentorname char(20),
+date char(100),
+time1 char(100)
 );
 
 create table teamUserInfo(
 id char(20),
 name char(20),
 can int(4)
+);
+
+create table teamObjective(
+id char(20),
+name char(20),
+objective char(30),
+isadmit char(10),
+img char(50),
+isreported char(10),
+reportmessage char(200)
+);
+
+create table teamAttend(
+name char(20),
+time char(20),
+date char(15),
+state char(10),
+user char(150),
+img char(50),
+value int(4),
+isreported char(10),
+reportmessage char(200)
 );

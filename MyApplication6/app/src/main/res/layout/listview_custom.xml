@@ -1,96 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal">
+        android:layout_width="180dp"
+        android:layout_height="230dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_border2"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/iv_img"
+<<<<<<< HEAD
             android:layout_width="50dp"
             android:layout_height="match_parent" />
+=======
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            tools:srcCompat="@tools:sample/avatars" />
+>>>>>>> lab_acd/master
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:background="#FFFDE7"
+            android:orientation="vertical"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:gravity="right|center_vertical"
+                android:text="TextView"
+                android:textSize="10sp"
+                app:fontFamily="@font/binggraemelona" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="left|center_vertical"
+                android:text="TextView"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                app:fontFamily="@font/binggraemelona" />
 
             <LinearLayout
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="팀 이름:" />
-
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="팀 소개:" />
-            </LinearLayout>
-
-            <LinearLayout
+<<<<<<< HEAD
                 android:layout_width="126dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+=======
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:orientation="horizontal">
+>>>>>>> lab_acd/master
 
-                <TextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:layout_width="13sp"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="3dp"
+                    app:srcCompat="@drawable/count" />
 
                 <TextView
-                    android:id="@+id/tv_contents"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="TextView" />
+                    android:id="@+id/count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textSize="13sp"
+                    app:fontFamily="@font/binggraemelona" />
+
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="79dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/category"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="TextView" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_contents"
+                        android:layout_width="match_parent"
+                        android:layout_height="38dp"
+                        android:gravity="start|center_vertical"
+                        android:text="TextView"
+                        android:textSize="10sp"
+                        app:fontFamily="@font/binggraemelona" />
+
+                </LinearLayout>
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="42dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="모집인원:" />
-
-            <TextView
-                android:id="@+id/count"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/state"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="TextView" />
         </LinearLayout>
 
     </LinearLayout>
